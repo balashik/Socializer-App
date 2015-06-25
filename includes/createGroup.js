@@ -15,11 +15,9 @@ $(document).ready(function(){
             lastReset:Date.now()
         }
 
-
-        
         var allData = {
-            key: 123123,
-            pn: 0543191901,
+            key: "123123",
+            pn: "0543191901",
             group: group
         }
         
@@ -32,22 +30,14 @@ $(document).ready(function(){
         }, "jsonp");
         */
         $.ajax({
-            type: "POST",
+            method: "POST",
             url: "http://socializerapp.herokuapp.com/createGroup",
             data: json,
-            contentType: 'application/json',
-            crossDomain: true,
             dataType: "json",
-            headers: {
-                "Access-Control-Allow-Origin": "*"
-            },
             success: function(data) {
                 console.log(data);
-            },
+            }
         });
-        
-        
-
 
     });
 });
