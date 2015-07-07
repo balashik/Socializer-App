@@ -1,11 +1,11 @@
 var app= angular.module('Socializer-App',[]);
- 
+
 // temp user data, this data need to be taken from user phone
 var userData = {
     key: "123123",
     pn: "0543191901"
 }
-
+var selectedContacts=[];
 app.controller('bodyController',function($scope,$http){
     $http.post("http://socializerapp.herokuapp.com/login",JSON.stringify(userData)).then(function(data){
         
@@ -13,19 +13,40 @@ app.controller('bodyController',function($scope,$http){
             $scope.pageLogo ="Your Contacts";
             $scope.topRightButton="Choose";
             
-           
-            
+            var contactsLetters=[];
+            var x;
             $.getJSON("./js/contacts.json", function(data){
-                var contactsLetters= setLetters(data);
+                contactsLetters = setLetters(data);
                 
                 for(var i=0;i<contactsLetters.length;i++){
                     $("#contacts").append("<div id='letterTitles'>"+contactsLetters[i]+"</div>");
                     for(var j=0;j<data.contactList.length;j++){
                          if(contactsLetters[i]==data.contactList[j].name.charAt(0).toUpperCase()){
-                            $("#contacts").append("<div id='contactDiv'>"+data.contactList[j].name+"</div>");
+                            $("#contacts").append("<div class='contactDiv'>"+data.contactList[j].name+"</div>");
                          }
                     }
                 }
+                
+                $(".contactDiv").click(function(){
+                
+                   // selectedContacts = getContact();
+                    for(var i=0;i<selectedContacts.length;i++){
+                        if(selectedContacts[i].phoneNumber==data.contactList[($(this).index()-1)].phoneNumber){
+                            console.log("found");
+                            selectedContacts.splice(i,1);
+                            $(this).css("background", "#33394c");
+                            console.log(selectedContacts);
+                            return;
+                            
+                        }
+                    }
+                    console.log("not found");
+                    selectedContacts.push(data.contactList[($(this).index()-1)]);
+                    $(this).css("background", "#2a2e3e");
+                    console.log(selectedContacts);
+                    
+                
+                });
                 
             
             });
@@ -35,6 +56,7 @@ app.controller('bodyController',function($scope,$http){
     
     
 });
+
              
 function setLetters(data){
     var abc = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
@@ -51,40 +73,3 @@ function setLetters(data){
 }
 
 
-/*
-
-$( document ).ready(function() {
-	var selectedContacts=[];
-    var abc = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
-	if(selectedContacts.length==0) {
-		$("#topLinkR").append("Choose");
-	}
-	else {
-		$("#topLinkR").append("Next");
-	}
-	
-
-
-    $.getJSON("./includes/contacts.json", function(JSON){
-        
-        abc.forEach(function(l){
-            var lDiv = $("<div id='letterTitles' ><\div>");
-            lDiv.html(l);
-            $("#contacts").append(lDiv);
-            for(i=0;i< JSON.contactList.length ;i++){
-                if(l==JSON.contactList[i].name.charAt(0).toUpperCase()){
-                    var div = $("<div id='contactDiv' ><\div>");
-                    div.html(JSON.contactList[i].name);
-                    $("#contacts").append(div);
-                }
-			
-		      }
-        });
-        
-
-
-    });
-});
-
-
-*/

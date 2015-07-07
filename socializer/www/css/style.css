@@ -12,7 +12,6 @@ ul li a{
 }
 .wrapper{
     width:640px;
-    /*background-color: #2a2e3e;*/
     background-color: #33394c;
 	
 }
@@ -110,7 +109,7 @@ h1#createGroup{
     background-color:#33394c;
 }
 #letterTitles{
-    padding-left: 16px;
+    padding-left: 17px;
     height: 6.8%;
     background-color: #2e354b;
     font-size: 23px;
@@ -127,19 +126,21 @@ h1#createGroup{
 }
 
 
-#contactDiv{
+.contactDiv{
 	height:13.2%;
 	border-bottom:solid;
     border-width: 1px;
     border-color: #2a2e3e;
     padding-top:26px;
     padding-bottom:26px;
-    margin-left: 21px;
-    margin-right: 21px;
+    padding-left:51px;
+    /*margin-left: 21px;
+    margin-right: 21px;*/
     font-size:24px;
     color: #ffffff;
     font-family: 'Lato';
 }
+
 
 
 
