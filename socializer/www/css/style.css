@@ -2,18 +2,22 @@
 
 *{
 	margin:0 auto;
+	display:block;
 }
+
+html, body { height:100%; }
 
 ul li a{
 	text-decoration:none;
 }
-
 .wrapper{
-    background-color: #2a2e3e;
+    width:640px;
+    /*background-color: #2a2e3e;*/
+    background-color: #33394c;
 	
 }
 
-#topLinkR{
+a#topLinkR{
     font-family: Lato;
     font-size:29px;
     color: #feb5a8;
@@ -22,7 +26,7 @@ ul li a{
     margin-right:24px;
 }
 
-#topLinkL{
+a#topLinkL{
     font-family: Lato;
     font-size:29px;
     color: #feb5a8;
@@ -31,6 +35,8 @@ ul li a{
     
     
 }
+
+
 
 header{
     width:100%;
@@ -50,7 +56,7 @@ header{
     font-family:Lato;
     font-weight: 300;
     width:211px;
-    height: 25px;
+    height: 25px;;
     color: #feb5a8;
     font-size: 26px;
 	
@@ -64,6 +70,7 @@ header{
 }
 
 #search input{
+    width: 522px;
     height:50px;
     background-color: #33394c;
     border: 1px black;
