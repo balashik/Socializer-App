@@ -10,8 +10,8 @@ html, body { height:100%; }
 ul li a{
 	text-decoration:none;
 }
+
 .wrapper{
-    width:640px;
     background-color: #2a2e3e;
 	
 }
@@ -35,11 +35,9 @@ a#topLinkL{
     
 }
 
-
-
 header{
     width:100%;
-	height:84px;
+	height:84vw;
 	border-bottom: thin solid;
     border-color: #1b2135;
     background-color:#33394c;
@@ -64,12 +62,11 @@ header{
 #search{
     height:7.3%;
     background-color: #2a2e3e;
-    padding-top:15px;
-    padding-bottom: 15px;
+    padding-top:15vw;
+    padding-bottom: 15vw;
 }
 
 #search input{
-    width: 522px;
     height:50px;
     background-color: #33394c;
     border: 1px black;
