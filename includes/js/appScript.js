@@ -1,30 +1,23 @@
 var app= angular.module('Socializer-App',[]);
-var myJSON; //contacts json
+ 
 // temp user data, this data need to be taken from user phone
 var userData = {
     key: "123123",
     pn: "0543191901"
 }
+
 app.controller('bodyController',function($scope,$http){
     $http.post("http://socializerapp.herokuapp.com/login",JSON.stringify(userData)).then(function(data){
+        
         if(data.data.result>0){
             $scope.pageLogo ="Your Contacts";
             $scope.topRightButton="Choose";
-            var abc = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
-            var contactsLetters=[];
-
+            
+           
+            
             $.getJSON("./includes/js/contacts.json", function(data){
+                var contactsLetters= setLetters(data);
                 
-                for(var i=0;i<abc.length;i++){
-                    for(var j=0;j<data.contactList.length;j++){
-                        if(abc[i]==data.contactList[j].name.charAt(0).toUpperCase()){
-                            contactsLetters.push(abc[i]);
-                            abc.splice(i,1);
-                            
-                            
-                        }
-                    }
-                } 
                 for(var i=0;i<contactsLetters.length;i++){
                     $("#contacts").append("<div id='letterTitles'>"+contactsLetters[i]+"</div>");
                     for(var j=0;j<data.contactList.length;j++){
@@ -43,7 +36,19 @@ app.controller('bodyController',function($scope,$http){
     
 });
              
-
+function setLetters(data){
+    var abc = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
+    var myABC=[];
+    for(var i=0;i<abc.length;i++){
+        for(var j=0;j<data.contactList.length;j++){
+            if(abc[i]==data.contactList[j].name.charAt(0).toUpperCase()){
+                myABC.push(abc[i]);
+                abc.splice(i,1);                    
+            }
+        }
+    } 
+    return myABC;
+}
 
 
 /*
