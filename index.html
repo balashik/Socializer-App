@@ -1,36 +1,47 @@
 <!DOCTYPE html>
 
-<html>
+<html ng-app="Socializer-App">
 <head>
     <meta charset="utf-8">
     
 	<title></title>
 	
-<!--jquery-->
-	<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
-	<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-
-	<link rel="stylesheet" type="text/css" href="includes/style.css">
-	<script src="includes/appScript.js"></script>
 	
 </head>
 
-<body>
+<body ng-controller="bodyController">
 
 <div class="wrapper">
 	<header>
-            <div id="logo">Your Contacts</div>
+            <div id="logo">{{pageLogo}}</div>
 			<ul>
 				<li>
-					<a href="create.html" id = "topLinkR"></a>
+					<a id = "topLinkR">{{topRightButton}}</a>
 				</li>
 			</ul>
 	</header>
     <div id="search">
         <input type="text" name="search" placeholder=" Search"></input>
     </div>
-	<div id="contacts"></div>
+    <div id="contacts">
+        <!--<div id="contactDiv">gal</div>-->
+        <div id="letterTitles">
+        
+        </div>
 	
 	
-</div>	
+    </div>
+</div>
+    
+    
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+	<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="includes/css/style.css">
+	
+	<script src="includes/js/lib/angular/angular.min.js"></script>
+    <script src="includes/js/appScript.js"></script>
+    
+    
 </body>
+</html>
