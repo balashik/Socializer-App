@@ -93,8 +93,17 @@ header{
     border:0px;
     
 }
-
+#createFrequency{
+    height: 80px;
+    background-color: #33394c;
+    font-family: Lato;
+    font-weight: 300;
+    color: #feb5a8;
+    font-size: 35px;
+    margin-top:46px;
+}
 div#createGroup{
+    
     color: rgba(254, 181, 168, 0.35);
 }
 
@@ -104,11 +113,44 @@ h1#createGroup{
 }
 
 
-#freindsList{
+#friendsList{
     height: 181px;
     background-color:#33394c;
 }
-#letterTitles{
+
+
+#createGroupfriends{
+    position:relative;
+    border-color: #ffc5bb;
+    border-style: solid;
+    border-width: 2px;
+    
+    width: 172px;
+    height: 55px;
+    float: left;
+    margin-left:16px;
+    margin-top:27px;
+    
+}
+#createGroupfriends h{
+    margin-top:17px;
+    text-align: center;
+    font-family: Lato;
+    font-weight: 300;
+    font-size: 25px;
+    color:#ffc5bb;
+    z-index: -10;
+}
+#cancelImage{
+    margin-right: -16px;
+    margin-top:-16px;
+    width:32px;
+    height: 32px;
+    background: url(images/Vector-Smart-Object-copy-4.png);
+    z-index: 10;
+    
+}
+.letterTitles{
     padding-left: 17px;
     height: 6.8%;
     background-color: #2e354b;
@@ -140,8 +182,19 @@ h1#createGroup{
     color: #ffffff;
     font-family: 'Lato';
 }
-
-
+#newFrequencyNav{
+    height: 125px;
+}
+#newFrequencyNav ul li{
+    font-family: Lato;
+    font-size: 25px;
+    font-weight: 300;
+    color: #feb5a8;
+    float:left;
+    margin-top:56px;
+    margin-left:68px;
+    
+}
 
 
 .onoffswitch {
@@ -200,7 +253,6 @@ h1#createGroup{
 .onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
     right: 0px; 
 }
-
 
 
 
