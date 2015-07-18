@@ -182,7 +182,16 @@ function initListPage(){
     $("#listContactDiv").append("<div id="+"contactName"+">"+'contactName'+"</div>");
     $("#"+"contactName").append("<div id='freqStats'>"+"0/7 W"+"</div>");
     
-    $("#listImg").click(function(){
+    
+    $("#statsView").click(function(){
+        $("div").remove("#sortTitle");
+        $("div").remove("#groupName");
+        $("div").remove("#listContactDiv");
+        initStatsPage();
+    });
+    
+    
+    $("#addGroup").click(function(){
         //clearing this page
         //initContactsPage 
     
@@ -191,6 +200,16 @@ function initListPage(){
         
 
 
+}
+
+function initStatsPage(){
+    console.log("testa");
+    $("#statsView").css("background-color","#252a3d");
+    $("#listView").css("background-color","#33394c");
+    $("#statsImg").css("background-image","url(./css/images/stats2.png)");
+    $("#listImg").css("background-image","url(./css/images/list2.png)");
+    
+    
 }
 function initCreateFrequencyPage(){
     //header
