@@ -170,9 +170,20 @@ function initListPage(){
     $("#selectViewNav").append("<div id='listView'></div><div id='statsView'></div>");
     $("#listView").append("<div id='listImg'></div>");
     $("#statsView").append("<div id='statsImg'></div>");
-    /*<div id='listImg'></div>
-    <div id='statsImg'></div>*/
     
+    //sort title
+    $(".wrapper").append("<div id='sortTitle'></div>");
+    
+    //forloop
+    $(".wrapper").append("<div id='groupName'>"+"groupName"+"</div>");
+    
+    $("#listImg").click(function(){
+        //clearing this page
+        //initContactsPage 
+    
+    
+    })
+        
 
 
 }
