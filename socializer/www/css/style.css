@@ -10,6 +10,11 @@ html, body { height:100%; }
 ul li a{
 	text-decoration:none;
 }
+ul{
+    padding:0px;
+
+}
+
 .wrapper{
     width:640px;
     background-color: #33394c;
@@ -118,7 +123,7 @@ h1#createGroup{
 }
 
 
-#createGroupfriends{
+.createGroupfriends{
     position:relative;
     border-color: #ffc5bb;
     border-style: solid;
@@ -140,7 +145,7 @@ h1#createGroup{
     color:#ffc5bb;
     z-index: -10;
 }
-#cancelImage{
+.cancelImage{
     margin-right: -16px;
     margin-top:-16px;
     width:32px;
@@ -257,6 +262,58 @@ h1#createGroup{
 #frequencyResult{
     text-align: center;
     font: 400 25px / 26px Lato;
+}
+
+
+#addGroup{
+    width: 50px;
+    height: 50px;
+    background-image: url(images/addGroup.png);
+}
+
+#settings{
+    width: 51px;
+    height: 50px;
+    background-image:url(images/settings.png);
+}
+
+#selectViewNav{
+    
+    height: 92px;
+    background-color:#33394c;
+}
+
+#listView{
+    float:left;
+    width: 320px;
+    height: 92px;
+    /*border-color: #1b2135;
+    border-style: solid;
+    border-width: 1px;*/
+    background-color: #252a3d;
+}
+#statsView{
+    float:left;
+    width: 320px;
+    height: 92px;
+    /*border-color: #1b2135;
+    border-style: solid;
+    border-width: 1px;*/
+}
+
+#listImg{
+    margin-top:17px;
+    width: 39px;
+    height: 61px;
+    background-image: url(images/list.png);
+}
+#statsImg{
+    margin-top:28px;
+    width: 61px;
+    height: 38px;
+    background-image: url(images/stats.png);
+
+
 }
 
 

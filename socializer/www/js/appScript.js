@@ -74,10 +74,15 @@ $(document).ready(function(){
                                                     },
                                                     contacts:[]
                                     };
-                                    $("#cancelImage").click(function(){
+                                    
+                                    $(".cancelImage").click(function(){
                                         selectedContacts.splice($(this).index(),1);
                                         $(this).parent().remove();
-                                        console.log("canceled " + selectedContacts);
+                                    });
+                                    
+                                    //add a reminder
+                                    $(".notifyMe").click(function(){
+                                        $(this).css("color","#feb5a8");
                                     });
                                     $("#createFrequency").click(function(){
                                         clearCreateGroupPage();
@@ -120,8 +125,11 @@ $(document).ready(function(){
                                 }
                                 if(pageNum==1){
                         
-                                    //clearing page
+                                    //pressed done
+                                    
+                                    //need to send group data to the server
                                     clearCreateGroupPage();
+                                    initListPage();
                                     
                                     
                                     
@@ -151,6 +159,23 @@ $(document).ready(function(){
             }
         });
 });
+
+function initListPage(){
+    $("#topLinkR").html("");
+    $("#topLinkL").html("");
+    $("#logo").html("");
+    $("#topLinkR").append("<div id='addGroup'></div>");
+    $("#topLinkL").append("<div id='settings'></div>");
+    $(".wrapper").append("<nav id='selectViewNav'></nav>");
+    $("#selectViewNav").append("<div id='listView'></div><div id='statsView'></div>");
+    $("#listView").append("<div id='listImg'></div>");
+    $("#statsView").append("<div id='statsImg'></div>");
+    /*<div id='listImg'></div>
+    <div id='statsImg'></div>*/
+    
+
+
+}
 function initCreateFrequencyPage(){
     //header
     $("#topLinkR").html("Done");
@@ -226,19 +251,19 @@ function initCreateGroupPage(){
     
     //body
     $(".wrapper").css("background","#2a2e3e"); 
-    $(".wrapper").append("<input type='text' name='groupname' placeholder='Group Name' id='createGroup'></input>");
+    $(".wrapper").append("<input type='text' name='groupname' placeholder='Group Name' id='createGroup' class='groupName'></input>");
     //$(".wrapper").append("<input type='text' name='frequency' placeholder='Frequency' id='createGroup'></input>");
     $(".wrapper").append("<div id='createFrequency'>frequency</div>");
-    $(".wrapper").append(" <div id='createGroup'>⊕Add a Reminder</div>");
+    $(".wrapper").append(" <div id='createGroup' class='notifyMe'>⊕Add a Reminder</div>");
     $(".wrapper").append(" <h1 id='createGroup'>Friends</h1>");
     $(".wrapper").append(" <div id='friendsList'></div>");
     $(".wrapper").append(" <div id='createGroup'>Missed call snoozer <div class='onoffswitch'><input type='checkbox' name='onoffswitch' class='onoffswitch-checkbox' id='myonoffswitch' checked><label class='onoffswitch-label' for='myonoffswitch'><span class='onoffswitch-inner'></span><span class='onoffswitch-switch'></span></label></div></div>");
     
     for(var i=0;i<selectedContacts.length;i++){
         console.log(selectedContacts[i].name);
-        $("#friendsList").append("<div id='createGroupfriends'></div>");
+        $("#friendsList").append("<div class='createGroupfriends' id='contact"+i+"'></div>");
         // $("#createGroupfriends").append("<h>"+selectedContacts[i].name+"</h>");
-        $("#createGroupfriends").append("<div id='cancelImage'></div>");
+        $("#contact"+i).append("<div class='cancelImage'></div>");
     }
 
     pageNum++;
