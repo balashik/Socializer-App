@@ -1,15 +1,34 @@
 var newGroup={  
     name:"",
+    phoneNumber:"",
+    contacts:[],
     frequency:{
-        type:0,
-        whatsApp:0,
-        sms:0,
-        call:0
+        frequencyType:0,
+        calls:0,
+        whatsapp:0,
+        sms:0, 
     },
-    contacts:[]
+    lastReset:Date.now()
 };
-var selectedContacts=[];
-var pageNum=0;
+var selectedContacts=[{
+    name:String,
+    phoneNumber:String,
+    communications:{
+        calls:{
+            count:0,
+            missed:"false"
+        },
+        whatsapp:{
+            count:0,
+            missed:"false"
+        },
+        sms:{
+            count:0,
+            missed:"false"
+        }
+    }
+}];
+    
 $(document).ready(function(){
 
     
@@ -37,7 +56,6 @@ $(document).ready(function(){
 
 
 function initListPage(){
-    console.log("enter");
     //header
     $("#topLinkR").html("");
     $("#topLinkL").html("");
@@ -83,6 +101,8 @@ function initListPage(){
 }
 
 function initStatsPage(){
+    $("#topLinkL").unbind("click");
+    $("#topLinkR").unbind("click");
     
     //body
     $("#statsView").css("background-color","#252a3d");
@@ -100,12 +120,17 @@ function initStatsPage(){
     
     
 }
+
 function initCreateFrequencyPage(){
-     var newFrequency = {   type:0,
-                            whatsApp:0,
-                            SMS:0,
-                            call:0
-                        }
+     var newFrequency = {
+        frequencyType:0,
+        calls:0,
+        whatsapp:0,
+        sms:0,
+    }
+     
+    $("#topLinkL").unbind("click");
+    $("#topLinkR").unbind("click");
      
     //header
     $("#topLinkR").html("Done");
@@ -133,19 +158,19 @@ function initCreateFrequencyPage(){
         if($(this).text()=='Weekly'){
             $("a").css("border-bottom","0px solid");
             $(this).css("border-bottom","1px solid");
-            newFrequency.type=0;
+            newFrequency.frequencyType=0;
             return;
         }
         if($(this).text()=='Biweekly'){
             $("a").css("border-bottom","0px solid");
             $(this).css("border-bottom","1px solid");
-            newFrequency.type=1;
+            newFrequency.frequencyType=1;
             return;
         }
         if($(this).text()=='Monthly'){
             $("a").css("border-bottom","0px solid");
             $(this).css("border-bottom","1px solid");
-            newFrequency.type=2;
+            newFrequency.frequencyType=2;
             return;
         }
                                             
@@ -169,6 +194,8 @@ function clearFrequencyPage(){
 }
 
 function initContactsPage(){
+    $("#topLinkL").unbind("click");
+    $("#topLinkR").unbind("click");
     
     //header
     $(".wrapper").append("<header></header");
@@ -248,6 +275,9 @@ function clearContactPage(){
 
 
 function initCreateGroupPage(){
+    
+    $("#topLinkL").unbind("click");
+    $("#topLinkR").unbind("click");
     //header
     $("#topLinkL").html("Back");
     $("#logo").html("New Group");
@@ -295,9 +325,26 @@ function initCreateGroupPage(){
     
     //pressed next group create finished, send data to server 
     $("#topLinkR").click(function(){
-        //move to groups list page    
-        clearCreateGroupPage();
-        initListPage();
+        newGroup.name=$(".groupName").val();
+        newGroup.lastReset = Date.now();
+        
+        console.log(JSON.stringify(newGroup));
+        $.ajax({
+            method: "POST",
+            url: "http://socializerapp.herokuapp.com/createGroup",
+            data: JSON.stringify(newGroup),
+            dataType: "json",
+            success: function(data) {
+                console.log(data);
+                
+                //move to groups list page    
+                clearCreateGroupPage();
+                initListPage();
+        
+            }
+        });
+        
+        
         return;
                                     
     });
