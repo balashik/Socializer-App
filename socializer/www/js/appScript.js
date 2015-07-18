@@ -1,4 +1,13 @@
-
+var newGroup={  
+    name:"",
+    frequency:{
+        type:0,
+        whatsApp:0,
+        sms:0,
+        call:0
+    },
+    contacts:[]
+};
 var selectedContacts=[];
 var pageNum=0;
 $(document).ready(function(){
@@ -18,154 +27,24 @@ $(document).ready(function(){
             data: userData,
             dataType: "json",
             success: function(data) {
-            
                 if(data.result>0){
-                    
-                    initContactsPage();
-                    var contactsLetters=[];
-                    $.getJSON("./js/contacts.json", function(data){
-                        contactsLetters = setLetters(data);
-
-                        for(var i=0;i<contactsLetters.length;i++){
-                            $(".wrapper").append("<div class='letterTitles'>"+contactsLetters[i]+"</div>");
-                            for(var j=0;j<data.contactList.length;j++){
-                                 if(contactsLetters[i]==data.contactList[j].name.charAt(0).toUpperCase()){
-                                    $(".wrapper").append("<div class='contactDiv' id='"+j+"'>"+data.contactList[j].name+"</div>");
-                                 }
-                            }
-                        }
-
-                        //click on contact name
-                        $(".contactDiv").click(function(){
-                            console.log("devdvdvd");
-
-
-                            for(var i=0;i<selectedContacts.length;i++){
-                                if(selectedContacts[i].phoneNumber==data.contactList[($(this).attr("id"))].phoneNumber){
-                                    selectedContacts.splice(i,1);
-                                    if(selectedContacts.length==0){
-                                        $("#topLinkR").html("Choose");
-                                    }
-                                    $(this).css("background", "#33394c");
-                                    return;
-
-                                }
-                            }
-                            selectedContacts.push(data.contactList[($(this).attr("id"))]);
-                            $("#topLinkR").html("Next");
-                            $(this).css("background", "#2a2e3e");     
-                         });
-                        
-                        $("#topLinkR").click(function(){
-                                
-                                console.log("pageNum" + pageNum);
-                                if(pageNum==0){
-                                    
-                                    clearContactPage();
-                                    //initializing page
-                                    initCreateGroupPage();
-                                    var newGroup={  
-                                                    name:"",
-                                                    frequency:{
-                                                        type:0,
-                                                        whatsApp:0,
-                                                        sms:0,
-                                                        call:0
-                                                    },
-                                                    contacts:[]
-                                    };
-                                    
-                                    $(".cancelImage").click(function(){
-                                        selectedContacts.splice($(this).index(),1);
-                                        $(this).parent().remove();
-                                    });
-                                    
-                                    //add a reminder
-                                    $(".notifyMe").click(function(){
-                                        $(this).css("color","#feb5a8");
-                                    });
-                                    $("#createFrequency").click(function(){
-                                        clearCreateGroupPage();
-                                        
-                                        initCreateFrequencyPage();
-                                        var newFrequency = {
-                                                            type:0,
-                                                            whatsApp:0,
-                                                            SMS:0,
-                                                            call:0
-                                                            }
-                                        $("a").click(function(){
-                                            if($(this).text()=='Weekly'){
-                                                $("a").css("border-bottom","0px solid");
-                                                $(this).css("border-bottom","1px solid");
-                                                newFrequency.type=0;
-                                            }
-                                            if($(this).text()=='Biweekly'){
-                                                $("a").css("border-bottom","0px solid");
-                                                $(this).css("border-bottom","1px solid");
-                                                newFrequency.type=1;
-                                            }
-                                            if($(this).text()=='Monthly'){
-                                                $("a").css("border-bottom","0px solid");
-                                                $(this).css("border-bottom","1px solid");
-                                                newFrequency.type=2;
-                                            }
-                                            
-                                        });
-                                        //pressed Done 
-                                        $("#topLinkR").click(function(){
-                                            newGroup.frequency = newFrequency;
-                                            clearFrequencyPage();
-                                            console.log(newGroup.frequency);
-                                            
-                                        });
-                                 
-                                    });
-                                    return;
-                                }
-                                if(pageNum==1){
-                        
-                                    //pressed done
-                                    
-                                    //need to send group data to the server
-                                    clearCreateGroupPage();
-                                    initListPage();
-                                    
-                                    
-                                    
-                                    return; 
-                                }
-                                
-                            
-                            
-                        });
-                        //back button
-                        $("#topLinkL").click(function(){
-                            if(pageNum==1){
-                              clearCreateGroupPage();
-                                initContactsPage();
-                                pageNum--;
-                                return;
-                            }
-                                
-                        });
-
-                        
-
-
-                    });
-                   
+                    initContactsPage();    
                 }
             }
         });
+
 });
 
+
 function initListPage(){
+    console.log("enter");
+    //header
     $("#topLinkR").html("");
     $("#topLinkL").html("");
     $("#logo").html("");
     $("#topLinkR").append("<div id='settings'></div>");
     $("#topLinkL").append("<div id='addGroup'></div>");
+    //body
     $(".wrapper").append("<nav id='selectViewNav'></nav>");
     $("#selectViewNav").append("<div id='listView'></div><div id='statsView'></div>");
     $("#listView").append("<div id='listImg'></div>");
@@ -188,6 +67,7 @@ function initListPage(){
         $("div").remove("#groupName");
         $("div").remove("#listContactDiv");
         initStatsPage();
+        return;
     });
     
     
@@ -203,15 +83,30 @@ function initListPage(){
 }
 
 function initStatsPage(){
-    console.log("testa");
+    
+    //body
     $("#statsView").css("background-color","#252a3d");
     $("#listView").css("background-color","#33394c");
     $("#statsImg").css("background-image","url(./css/images/stats2.png)");
     $("#listImg").css("background-image","url(./css/images/list2.png)");
     
     
+    $("#listView").click(function(){
+        $("div").remove("#listView");
+        $("div").remove("#statsView");
+        initListPage();
+        return;
+    });
+    
+    
 }
 function initCreateFrequencyPage(){
+     var newFrequency = {   type:0,
+                            whatsApp:0,
+                            SMS:0,
+                            call:0
+                        }
+     
     //header
     $("#topLinkR").html("Done");
     $("#logo").html("Frequency");
@@ -220,20 +115,50 @@ function initCreateFrequencyPage(){
    $(".wrapper").append("<nav id='newFrequencyNav'></nav>");
     $("#newFrequencyNav").append("<ul><li><a>Weekly</a></li><li><a>Biweekly</a></li><li><a>Monthly</a></li></ul>");
     $(".wrapper").append("<div id='frequencySelect'></div>");
-    $("#frequencySelect").append("<div class='whatsAppSlider'></div>");
+    /*$("#frequencySelect").append("<div class='whatsAppSlider'></div>");
     $(".whatsAppSlider").slider({
         max:50,
         min:25,
         orientation:'vertical'
         
-    });
+    });*/
     $(".wrapper").append("<div id='frequencySummery'></div>");
     $("#frequencySummery").append("<h>Frequency summery</h>");
     $("#frequencySummery").append("<div id='device' class='w'><div id='whatsAppIcon'></div><div id='deviceName'>WhatsApp</div><div id='frequencyResult'>X Times</div></div>");
     $("#frequencySummery").append("<div id='device' class='s'><div id='smsIcon'></div><div id='deviceName'>SMS</div><div id='frequencyResult'>X Times</div></div>");
     $("#frequencySummery").append("<div id='device' class='c'><div id='callIcon'></div><div id='deviceName'>Calls</div><div id='frequencyResult'>X Times</div></div>");
-
-    $("#frequencySummery").append("<div id='frequencyResult' class='t'>Total:X</div>"); 
+    $("#frequencySummery").append("<div id='frequencyResult' class='t'>Total:X</div>");
+    
+    $("a").click(function(){
+        if($(this).text()=='Weekly'){
+            $("a").css("border-bottom","0px solid");
+            $(this).css("border-bottom","1px solid");
+            newFrequency.type=0;
+            return;
+        }
+        if($(this).text()=='Biweekly'){
+            $("a").css("border-bottom","0px solid");
+            $(this).css("border-bottom","1px solid");
+            newFrequency.type=1;
+            return;
+        }
+        if($(this).text()=='Monthly'){
+            $("a").css("border-bottom","0px solid");
+            $(this).css("border-bottom","1px solid");
+            newFrequency.type=2;
+            return;
+        }
+                                            
+    });
+    
+    //pressed Done frequency saved
+    $("#topLinkR").click(function(){
+        newGroup.frequency = newFrequency;
+        //moving back to createGroup Page
+        clearFrequencyPage();
+        initCreateGroupPage();
+        return;
+    });
 }
 
 function clearFrequencyPage(){
@@ -261,6 +186,55 @@ function initContactsPage(){
     //body
     $(".wrapper").append("<div id='search'><input type='text' name='search' placeholder='Search'></input></div>");
     
+    
+    var contactsLetters=[];
+    $.getJSON("./js/contacts.json", function(data){
+        contactsLetters = setLetters(data);
+        for(var i=0;i<contactsLetters.length;i++){
+            $(".wrapper").append("<div class='letterTitles'>"+contactsLetters[i]+"</div>");
+            for(var j=0;j<data.contactList.length;j++){
+                if(contactsLetters[i]==data.contactList[j].name.charAt(0).toUpperCase()){
+                    $(".wrapper").append("<div class='contactDiv' id='"+j+"'>"+data.contactList[j].name+"</div>");
+                }
+            }
+        }
+        
+        //click on contact name
+        $(".contactDiv").click(function(){
+
+            for(var i=0;i<selectedContacts.length;i++){
+                if(selectedContacts[i].phoneNumber==data.contactList[($(this).attr("id"))].phoneNumber){
+                    selectedContacts.splice(i,1);
+                    if(selectedContacts.length==0){
+                        $("#topLinkR").html("Choose");
+                    }
+                    $(this).css("background", "#33394c");
+                    return;
+
+                }
+            }
+            selectedContacts.push(data.contactList[($(this).attr("id"))]);
+            $("#topLinkR").html("Next");
+            $(this).css("background", "#2a2e3e");     
+        });
+        
+        //moving to create group page
+        $("#topLinkR").click(function(){
+            //moving all contacts selected into new group contacts
+            newGroup.contacts = selectedContacts;
+            
+            //moving into createGroupPage
+            clearContactPage();
+            //initializing createGroupPage
+            initCreateGroupPage();
+            
+            return;
+        });
+        
+        
+        
+    });
+    
 
     
     
@@ -270,13 +244,10 @@ function clearContactPage(){
     $("div").remove("#search");
     $(".letterTitles").css("display","none");
     $(".contactDiv").css("display","none");
-
-
-
-
 }
+
+
 function initCreateGroupPage(){
-    console.log("entered here");
     //header
     $("#topLinkL").html("Back");
     $("#logo").html("New Group");
@@ -300,9 +271,49 @@ function initCreateGroupPage(){
         // $("#createGroupfriends").append("<h>"+selectedContacts[i].name+"</h>");
         $("#contact"+i).append("<div class='cancelImage'></div>");
     }
+    
+    //removing a contact from grouplist
+    $(".cancelImage").click(function(){
+        newGroup.splice($(this).index(),1);
+        $(this).parent().remove();
+        return;
+    });
+    
+    //add a reminder
+    $(".notifyMe").click(function(){
+        $(this).css("color","#feb5a8");
+        return;
+    });
+    
+    //frequency page
+    $("#createFrequency").click(function(){
+        //go to creating frequency page
+        clearCreateGroupPage();                                
+        initCreateFrequencyPage();
+        return;
+    });
+    
+    //pressed next group create finished, send data to server 
+    $("#topLinkR").click(function(){
+        //move to groups list page    
+        clearCreateGroupPage();
+        initListPage();
+        return;
+                                    
+    });
+    
+    //moving back to contacts page
+    $("#topLinkL").click(function(){
+        clearCreateGroupPage();
+        initContactsPage();
+        return;
+    });
 
-    pageNum++;
 }
+
+
+
+
 function clearCreateGroupPage(){
     $("input").remove("#createGroup");
     $("div").remove("#createFrequency");
