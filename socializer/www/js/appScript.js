@@ -164,8 +164,8 @@ function initListPage(){
     $("#topLinkR").html("");
     $("#topLinkL").html("");
     $("#logo").html("");
-    $("#topLinkR").append("<div id='addGroup'></div>");
-    $("#topLinkL").append("<div id='settings'></div>");
+    $("#topLinkR").append("<div id='settings'></div>");
+    $("#topLinkL").append("<div id='addGroup'></div>");
     $(".wrapper").append("<nav id='selectViewNav'></nav>");
     $("#selectViewNav").append("<div id='listView'></div><div id='statsView'></div>");
     $("#listView").append("<div id='listImg'></div>");
@@ -176,6 +176,11 @@ function initListPage(){
     
     //forloop
     $(".wrapper").append("<div id='groupName'>"+"groupName"+"</div>");
+    $(".wrapper").append("<div id='listContactDiv'></div>");
+    
+    //for loop
+    $("#listContactDiv").append("<div id="+"contactName"+">"+'contactName'+"</div>");
+    $("#"+"contactName").append("<div id='freqStats'>"+"0/7 W"+"</div>");
     
     $("#listImg").click(function(){
         //clearing this page

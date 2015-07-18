@@ -330,7 +330,27 @@ h1#createGroup{
     border-bottom-width: 1px;
 }
 
+#listContactDiv{
+    background-color:#33394c;
+    height:85px;
+    
+}
 
+#contactName{
+    float:left;
+    margin-left:52px;
+    width: 540px;
+    padding-top:26px;
+    font: 400 33px / 25px Lato;
+    color: #ff7058;
+    /*margin-top:26px;*/
+}
+#freqStats{
+    float:right;
+    width:100px;
+    font: 300 33px / 25px Lato;
+    color: #ff7058;
+}
 
 
 .onoffswitch {
