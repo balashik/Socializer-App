@@ -124,6 +124,7 @@ function initStatsPage(){
     $("#listView").click(function(){
         $("div").remove("#listView");
         $("div").remove("#statsView");
+        $("nav").remove("#selectViewNav");
         initListPage();
         return;
     });
@@ -374,6 +375,7 @@ function initCreateGroupPage(){
         var jsonGroup = JSON.stringify(newGroup);
         var group = {group:newGroup};
         
+        //createGroup
         $.ajax({
             method: "POST",
             url: "http://socializerapp.herokuapp.com/createGroup",
