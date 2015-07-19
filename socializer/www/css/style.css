@@ -354,6 +354,365 @@ h1#createGroup{
 }
 
 
+/*
+slider total
+*/
+
+input[type=range].totalSlide {
+  -webkit-appearance: none;
+  width: 100%;
+  margin: 10.05px 0;
+}
+input[type=range].totalSlide:focus {
+  outline: none;
+}
+input[type=range].totalSlide::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 7.9px;
+  cursor: pointer;
+  box-shadow: 1px 1px 3px #000000, 0px 0px 1px #0d0d0d;
+  background: #7cc69e;
+  border-radius: 1px;
+  border: 0px solid #7cc69e;
+}
+input[type=range].totalSlide::-webkit-slider-thumb {
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  border: 0px solid rgba(0, 0, 0, 0);
+  height: 28px;
+  width: 28px;
+  border-radius: 50px;
+  background: #d7d7d7;
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -10.05px;
+}
+input[type=range].totalSlide:focus::-webkit-slider-runnable-track {
+  background: #7cc69e;
+}
+input[type=range].totalSlide::-moz-range-track {
+  width: 100%;
+  height: 7.9px;
+  cursor: pointer;
+  box-shadow: 1px 1px 3px #000000, 0px 0px 1px #0d0d0d;
+  background: #7cc69e;
+  border-radius: 1px;
+  border: 0px solid #7cc69e;
+}
+input[type=range].totalSlide::-moz-range-thumb {
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  border: 0px solid rgba(0, 0, 0, 0);
+  height: 28px;
+  width: 28px;
+  border-radius: 50px;
+  background: #d7d7d7;
+  cursor: pointer;
+}
+input[type=range].totalSlide::-ms-track {
+  width: 100%;
+  height: 7.9px;
+  cursor: pointer;
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+input[type=range].totalSlide::-ms-fill-lower {
+  background: #7cc69e;
+  border: 0px solid #7cc69e;
+  border-radius: 2px;
+  box-shadow: 1px 1px 3px #000000, 0px 0px 1px #0d0d0d;
+}
+input[type=range].totalSlide::-ms-fill-upper {
+  background: #7cc69e;
+  border: 0px solid #7cc69e;
+  border-radius: 2px;
+  box-shadow: 1px 1px 3px #000000, 0px 0px 1px #0d0d0d;
+}
+input[type=range].totalSlide::-ms-thumb {
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  border: 0px solid rgba(0, 0, 0, 0);
+  height: 28px;
+  width: 28px;
+  border-radius: 50px;
+  background: #d7d7d7;
+  cursor: pointer;
+  height: 7.9px;
+}
+input[type=range].totalSlide:focus::-ms-fill-lower {
+  background: #7cc69e;
+}
+input[type=range].totalSlide:focus::-ms-fill-upper {
+  background: #7cc69e;
+}
+
+/*whatsapp slide*/
+
+input[type=range].whatsAppSlide {
+  -webkit-appearance: none;
+  width: 100%;
+  margin: 10.05px 0;
+}
+input[type=range].whatsAppSlide:focus {
+  outline: none;
+}
+input[type=range].whatsAppSlide::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 7.9px;
+  cursor: pointer;
+  box-shadow: 1px 1px 3px #000000, 0px 0px 1px #0d0d0d;
+  background: #ff6f57;
+  border-radius: 1px;
+  border: 0px solid #ff6f57;
+}
+input[type=range].whatsAppSlide::-webkit-slider-thumb {
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  border: 0px solid rgba(0, 0, 0, 0);
+  height: 28px;
+  width: 28px;
+  border-radius: 50px;
+  background: #d7d7d7;
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -10.05px;
+}
+input[type=range].whatsAppSlide:focus::-webkit-slider-runnable-track {
+  background: #ff6f57;
+}
+input[type=range].whatsAppSlide::-moz-range-track {
+  width: 100%;
+  height: 7.9px;
+  cursor: pointer;
+  box-shadow: 1px 1px 3px #000000, 0px 0px 1px #0d0d0d;
+  background: #ff6f57;
+  border-radius: 1px;
+  border: 0px solid #ff6f57;
+}
+input[type=range].whatsAppSlide::-moz-range-thumb {
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  border: 0px solid rgba(0, 0, 0, 0);
+  height: 28px;
+  width: 28px;
+  border-radius: 50px;
+  background: #d7d7d7;
+  cursor: pointer;
+}
+input[type=range].whatsAppSlide::-ms-track {
+  width: 100%;
+  height: 7.9px;
+  cursor: pointer;
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+input[type=range].whatsAppSlide::-ms-fill-lower {
+  background: #ff6f57;
+  border: 0px solid #ff6f57;
+  border-radius: 2px;
+  box-shadow: 1px 1px 3px #000000, 0px 0px 1px #0d0d0d;
+}
+input[type=range].whatsAppSlide::-ms-fill-upper {
+  background: #ff6f57;
+  border: 0px solid #ff6f57;
+  border-radius: 2px;
+  box-shadow: 1px 1px 3px #000000, 0px 0px 1px #0d0d0d;
+}
+input[type=range].whatsAppSlide::-ms-thumb {
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  border: 0px solid rgba(0, 0, 0, 0);
+  height: 28px;
+  width: 28px;
+  border-radius: 50px;
+  background: #d7d7d7;
+  cursor: pointer;
+  height: 7.9px;
+}
+input[type=range].whatsAppSlide:focus::-ms-fill-lower {
+  background: #ff6f57;
+}
+input[type=range].whatsAppSlide:focus::-ms-fill-upper {
+  background: #ff6f57;
+}
+
+/*sms slide*/
+
+input[type=range].SMSSlide {
+  -webkit-appearance: none;
+  width: 100%;
+  margin: 10.05px 0;
+}
+input[type=range].SMSSlide:focus {
+  outline: none;
+}
+input[type=range].SMSSlide::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 7.9px;
+  cursor: pointer;
+  box-shadow: 1px 1px 3px #000000, 0px 0px 1px #0d0d0d;
+  background: #f8a99c;
+  border-radius: 1px;
+  border: 0px solid #f8a99c;
+}
+input[type=range].SMSSlide::-webkit-slider-thumb {
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  border: 0px solid rgba(0, 0, 0, 0);
+  height: 28px;
+  width: 28px;
+  border-radius: 50px;
+  background: #d7d7d7;
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -10.05px;
+}
+input[type=range].SMSSlide:focus::-webkit-slider-runnable-track {
+  background: #f8a99c;
+}
+input[type=range].SMSSlide::-moz-range-track {
+  width: 100%;
+  height: 7.9px;
+  cursor: pointer;
+  box-shadow: 1px 1px 3px #000000, 0px 0px 1px #0d0d0d;
+  background: #f8a99c;
+  border-radius: 1px;
+  border: 0px solid #f8a99c;
+}
+input[type=range].SMSSlide::-moz-range-thumb {
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  border: 0px solid rgba(0, 0, 0, 0);
+  height: 28px;
+  width: 28px;
+  border-radius: 50px;
+  background: #d7d7d7;
+  cursor: pointer;
+}
+input[type=range].SMSSlide::-ms-track {
+  width: 100%;
+  height: 7.9px;
+  cursor: pointer;
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+input[type=range].SMSSlide::-ms-fill-lower {
+  background: #f8a99c;
+  border: 0px solid #f8a99c;
+  border-radius: 2px;
+  box-shadow: 1px 1px 3px #000000, 0px 0px 1px #0d0d0d;
+}
+input[type=range].SMSSlide::-ms-fill-upper {
+  background: #f8a99c;
+  border: 0px solid #f8a99c;
+  border-radius: 2px;
+  box-shadow: 1px 1px 3px #000000, 0px 0px 1px #0d0d0d;
+}
+input[type=range].SMSSlide::-ms-thumb {
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  border: 0px solid rgba(0, 0, 0, 0);
+  height: 28px;
+  width: 28px;
+  border-radius: 50px;
+  background: #d7d7d7;
+  cursor: pointer;
+  height: 7.9px;
+}
+input[type=range].SMSSlide:focus::-ms-fill-lower {
+  background: #f8a99c;
+}
+input[type=range].SMSSlide:focus::-ms-fill-upper {
+  background: #f8a99c;
+}
+
+/*calls slide*/
+input[type=range].CallsSlide {
+  -webkit-appearance: none;
+  width: 100%;
+  margin: 10.05px 0;
+}
+input[type=range].CallsSlide:focus {
+  outline: none;
+}
+input[type=range].CallsSlide::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 7.9px;
+  cursor: pointer;
+  box-shadow: 1px 1px 3px #000000, 0px 0px 1px #0d0d0d;
+  background: #fcd7d2;
+  border-radius: 1px;
+  border: 0px solid #fcd7d2;
+}
+input[type=range].CallsSlide::-webkit-slider-thumb {
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  border: 0px solid rgba(0, 0, 0, 0);
+  height: 28px;
+  width: 28px;
+  border-radius: 50px;
+  background: #d7d7d7;
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -10.05px;
+}
+input[type=range].CallsSlide:focus::-webkit-slider-runnable-track {
+  background: #fcd7d2;
+}
+input[type=range].CallsSlide::-moz-range-track {
+  width: 100%;
+  height: 7.9px;
+  cursor: pointer;
+  box-shadow: 1px 1px 3px #000000, 0px 0px 1px #0d0d0d;
+  background: #fcd7d2;
+  border-radius: 1px;
+  border: 0px solid #fcd7d2;
+}
+input[type=range].CallsSlide::-moz-range-thumb {
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  border: 0px solid rgba(0, 0, 0, 0);
+  height: 28px;
+  width: 28px;
+  border-radius: 50px;
+  background: #d7d7d7;
+  cursor: pointer;
+}
+input[type=range].CallsSlide::-ms-track {
+  width: 100%;
+  height: 7.9px;
+  cursor: pointer;
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+input[type=range].CallsSlide::-ms-fill-lower {
+  background: #fcd7d2;
+  border: 0px solid #fcd7d2;
+  border-radius: 2px;
+  box-shadow: 1px 1px 3px #000000, 0px 0px 1px #0d0d0d;
+}
+input[type=range].CallsSlide::-ms-fill-upper {
+  background: #fcd7d2;
+  border: 0px solid #fcd7d2;
+  border-radius: 2px;
+  box-shadow: 1px 1px 3px #000000, 0px 0px 1px #0d0d0d;
+}
+input[type=range].CallsSlide::-ms-thumb {
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  border: 0px solid rgba(0, 0, 0, 0);
+  height: 28px;
+  width: 28px;
+  border-radius: 50px;
+  background: #d7d7d7;
+  cursor: pointer;
+  height: 7.9px;
+}
+input[type=range].CallsSlide:focus::-ms-fill-lower {
+  background: #fcd7d2;
+}
+input[type=range].CallsSlide:focus::-ms-fill-upper {
+  background: #fcd7d2;
+}
+
+.sliders{
+    margin-top:50px;
+}
+
+
+/*switch*/
 .onoffswitch {
     float:right;
     position: relative; width: 79px;

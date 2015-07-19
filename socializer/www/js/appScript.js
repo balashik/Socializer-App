@@ -37,12 +37,12 @@ $(document).ready(function(){
         key: "123123",
         pn: "0543191901"
     }
-    var json=JSON.stringify(userData);
 
         //login request
         $.ajax({
             method: "POST",
             url: "http://socializerapp.herokuapp.com/login",
+            contentType: "application/x-www-form-urlencoded",
             data: userData,
             dataType: "json",
             success: function(data) {
@@ -70,6 +70,16 @@ function initListPage(){
     
     //sort title
     $(".wrapper").append("<div id='sortTitle'></div>");
+    //get All groups from server
+    /*$.ajax({
+        method: "POST",
+        url: "http://socializerapp.herokuapp.com/retriveAll",
+        contentType: "application/x-www-form-urlencoded",
+        dataType: "json",
+        success: function(data) {
+                console.log(data);
+            }
+        });*/
     
     //forloop
     $(".wrapper").append("<div id='groupName'>"+"groupName"+"</div>");
@@ -122,13 +132,15 @@ function initStatsPage(){
 }
 
 function initCreateFrequencyPage(){
-     var newFrequency = {
+    var total=0;
+    var wf,smsf,cf=0;
+    var newFrequency = {
         frequencyType:0,
         calls:0,
         whatsapp:0,
         sms:0,
     }
-     
+    
     $("#topLinkL").unbind("click");
     $("#topLinkR").unbind("click");
      
@@ -140,19 +152,39 @@ function initCreateFrequencyPage(){
    $(".wrapper").append("<nav id='newFrequencyNav'></nav>");
     $("#newFrequencyNav").append("<ul><li><a>Weekly</a></li><li><a>Biweekly</a></li><li><a>Monthly</a></li></ul>");
     $(".wrapper").append("<div id='frequencySelect'></div>");
-    /*$("#frequencySelect").append("<div class='whatsAppSlider'></div>");
-    $(".whatsAppSlider").slider({
-        max:50,
-        min:25,
-        orientation:'vertical'
-        
-    });*/
+    $("#frequencySelect").append("<input type='range'min='0' max='700' step='10' value='0' name='frequency' class='whatsAppSlide' onChange='changeWAValue(this.value)'></input>");
+    $("#frequencySelect").append("<input type='range'min='0' max='700' step='10' value='0' name='frequency' class='SMSSlide' onChange='changeSMSValue(this.value)'></input>");
+    $("#frequencySelect").append("<input type='range'min='0' max='700' step='10' value='0' name='frequency' class='CallsSlide' onChange='changeCValue(this.value)'></input>");
+    $("#frequencySelect").append("<input type='range'min='0' max='700' step='10' value='0' name='frequency' class='totalSlide' onChange='changeTOTALValue(this.value)'></input>");
+    $(".whatsAppSlide , .SMSSlide , .CallsSlide , .totalSlide").css("width","540px");
+    $(".whatsAppSlide , .SMSSlide , .CallsSlide , .totalSlide").css("margin-top","100px");
+    $(".whatsAppSlide , .SMSSlide , .CallsSlide , .totalSlide").css("margin-left","50px");
     $(".wrapper").append("<div id='frequencySummery'></div>");
     $("#frequencySummery").append("<h>Frequency summery</h>");
-    $("#frequencySummery").append("<div id='device' class='w'><div id='whatsAppIcon'></div><div id='deviceName'>WhatsApp</div><div id='frequencyResult'>X Times</div></div>");
-    $("#frequencySummery").append("<div id='device' class='s'><div id='smsIcon'></div><div id='deviceName'>SMS</div><div id='frequencyResult'>X Times</div></div>");
+    $("#frequencySummery").append("<div id='device' class='w'><div id='whatsAppIcon'></div><div id='deviceName'>WhatsApp</div><div id='frequencyResult'></div></div>");
+    $("#frequencySummery").append("<div id='device' class='s'><div id='smsIcon'></div><div id='deviceName'>SMS</div><div id='frequencyResult'>  X Times</div></div>");
     $("#frequencySummery").append("<div id='device' class='c'><div id='callIcon'></div><div id='deviceName'>Calls</div><div id='frequencyResult'>X Times</div></div>");
-    $("#frequencySummery").append("<div id='frequencyResult' class='t'>Total:X</div>");
+    $("#frequencySummery").append("<div id='frequencyResult' class='t'></div>");
+    total=wf+smsf+cf;
+    console.log(parseInt(cf));
+    $(".t").html(""+total);
+    changeWAValue = function (val){
+        $(".w #frequencyResult").html(val+" Times");
+        wf=parseInt(val);
+        
+        
+    }
+    
+    changeSMSValue = function (val){
+        $(".s #frequencyResult").html(val+" Times");
+        smsf=parseInt(val);
+        
+    }
+    changeCValue = function (val){
+        $(".c #frequencyResult").html(val+" Times");
+        cf=parseInt(val);
+       // $().html(total);
+    }
     
     $("a").click(function(){
         if($(this).text()=='Weekly'){
@@ -198,10 +230,11 @@ function initContactsPage(){
     $("#topLinkR").unbind("click");
     
     //header
-    $(".wrapper").append("<header></header");
+    /*$(".wrapper").append("<header></header");
     $("header").append("<div id='logo'></div>");
     $("header").append("<ul><li><a id = 'topLinkL'></a></li></ul>");
     $("header").append("<ul><li><a id = 'topLinkR'></a></li></ul>");
+    */
     
     $("#logo").html("Your Contacts");
     $("#topLinkR").html("Choose");
@@ -215,7 +248,7 @@ function initContactsPage(){
     
     
     var contactsLetters=[];
-    $.getJSON("./js/contacts.json", function(data){
+    /*$.getJSON("./js/contacts.json", function(data){
         contactsLetters = setLetters(data);
         for(var i=0;i<contactsLetters.length;i++){
             $(".wrapper").append("<div class='letterTitles'>"+contactsLetters[i]+"</div>");
@@ -260,7 +293,18 @@ function initContactsPage(){
         
         
         
-    });
+    });*/
+    
+    $.ajax({
+	dataType: "json",
+	url: "./js/contacts.json",
+	success: function(data) {
+		buildPage(data);
+	},
+	error: function(err) {
+		buildPage(JSON.parse(err.responseText));
+	}
+});
     
 
     
@@ -288,7 +332,6 @@ function initCreateGroupPage(){
     //body
     $(".wrapper").css("background","#2a2e3e"); 
     $(".wrapper").append("<input type='text' name='groupname' placeholder='Group Name' id='createGroup' class='groupName'></input>");
-    //$(".wrapper").append("<input type='text' name='frequency' placeholder='Frequency' id='createGroup'></input>");
     $(".wrapper").append("<div id='createFrequency'>frequency</div>");
     $(".wrapper").append(" <div id='createGroup' class='notifyMe'>⊕Add a Reminder</div>");
     $(".wrapper").append(" <h1 id='createGroup'>Friends</h1>");
@@ -328,15 +371,17 @@ function initCreateGroupPage(){
         newGroup.name=$(".groupName").val();
         newGroup.lastReset = Date.now();
         
-        console.log(JSON.stringify(newGroup));
+        var jsonGroup = JSON.stringify(newGroup);
+        var group = {group:newGroup};
+        
         $.ajax({
             method: "POST",
             url: "http://socializerapp.herokuapp.com/createGroup",
-            data: JSON.stringify(newGroup),
+            data: group,
+            contentType: "application/x-www-form-urlencoded",
             dataType: "json",
             success: function(data) {
                 console.log(data);
-                
                 //move to groups list page    
                 clearCreateGroupPage();
                 initListPage();
@@ -385,4 +430,47 @@ function setLetters(data){
     return myABC;
 }
 
+var buildPage = function(data) {
+	contactsLetters = setLetters(data);
+	for(var i=0;i<contactsLetters.length;i++){
+		$(".wrapper").append("<div class='letterTitles'>"+contactsLetters[i]+"</div>");
+		for(var j=0;j<data.contactList.length;j++){
+			if(contactsLetters[i]==data.contactList[j].name.charAt(0).toUpperCase()){
+				$(".wrapper").append("<div class='contactDiv' id='"+j+"'>"+data.contactList[j].name+"</div>");
+			}
+		}
+	}
+	
+	console.log("HERE");
+	//click on contact name
+	$(".contactDiv").click(function(){
 
+		for(var i=0;i<selectedContacts.length;i++){
+			if(selectedContacts[i].phoneNumber==data.contactList[($(this).attr("id"))].phoneNumber){
+				selectedContacts.splice(i,1);
+				if(selectedContacts.length==0){
+					$("#topLinkR").html("Choose");
+				}
+				$(this).css("background", "#33394c");
+				return;
+
+			}
+		}
+		selectedContacts.push(data.contactList[($(this).attr("id"))]);
+		$("#topLinkR").html("Next");
+		$(this).css("background", "#2a2e3e");     
+	});
+	
+	//moving to create group page
+	$("#topLinkR").click(function(){
+		//moving all contacts selected into new group contacts
+		newGroup.contacts = selectedContacts;
+		
+		//moving into createGroupPage
+		clearContactPage();
+		//initializing createGroupPage
+		initCreateGroupPage();
+		
+		return;
+	});
+}
