@@ -10,24 +10,7 @@ var newGroup={
     },
     lastReset:Date.now()
 };
-var selectedContacts=[{
-    name:String,
-    phoneNumber:String,
-    communications:{
-        calls:{
-            count:0,
-            missed:"false"
-        },
-        whatsapp:{
-            count:0,
-            missed:"false"
-        },
-        sms:{
-            count:0,
-            missed:"false"
-        }
-    }
-}];
+var selectedContacts=[];
 
 function onReady() {
     // temp user data, this data need to be taken from user phone
@@ -391,13 +374,13 @@ function initCreateGroupPage(){
     for(var i=0;i<selectedContacts.length;i++){
         console.log(selectedContacts[i].name);
         $("#friendsList").append("<div class='createGroupfriends' id='contact"+i+"'></div>");
-        // $("#createGroupfriends").append("<h>"+selectedContacts[i].name+"</h>");
         $("#contact"+i).append("<div class='cancelImage'></div>");
+        $(".createGroupfriends").append("<h>"+selectedContacts[i].name+"</h>");
     }
     
     //removing a contact from grouplist
     $(".cancelImage").click(function(){
-        newGroup.splice($(this).index(),1);
+        newGroup.contacts.splice($(this).index(),1);
         $(this).parent().remove();
         return;
     });
@@ -492,7 +475,6 @@ var buildPage = function(data) {
 		}
 	}
 	
-	console.log("HERE");
 	//click on contact name
 	$(".contactDiv").click(function(){
 
