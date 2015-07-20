@@ -81,17 +81,18 @@ function initListPage(){
                 if(data.result>0){
                     for(var i=0;i<data.data.length;i++){
                         if(data.data[i].frequency.frequencyType==0){
-                            
+                            console.log("1Loop"+i);
                             $(".wrapper").append("<div id='groupName'>"+data.data[i].name+"</div>");
-                            $(".wrapper").append("<div id='listContactDiv"+i+"'></div>");
+                            $(".wrapper").append("<div id='listContactDiv"+i+"' class='listContactDiv'></div>");
                             for(var j=0;j<data.data[i].contacts.length;j++){
-                                
-                                //$("#listContactDiv"+i).append("<div id="+data.data[i].contacts[j].name+" class=contactName>"+data.data[i].contacts[j].name+"</div>");
+                                console.log("2Loop"+j);
+                                $("#listContactDiv"+i).append("<div id='"+data.data[i].contacts[j].name+"' class='contactName'>"+data.data[i].contacts[j].name+"<div id='freqStats'>"+"0/7 W"+"</div></div>");
                                 //$("#"+data.data[i].contacts[j].name).append("<div id='freqStats'>"+"0/7 W"+"</div>");
                             }
-                            
+                            $("#listContactDiv"+i).append("<div class='clear'></div>");
                            
                         }
+                        
                     }
                     for(var i=0;i<data.data.length;i++){
                         if(data.data[i].frequency.frequencyType==1){
@@ -112,7 +113,7 @@ function initListPage(){
     
     //forloop
     //$(".wrapper").append("<div id='groupName'>"+"groupName"+"</div>");
-    //$(".wrapper").append("<div id='listContactDiv'></div>");
+    //$(".wrapper").append("<div id='listContactDiv' class='listContactDiv'></div>");
     
     //for loop
     //$("#listContactDiv").append("<div id="+"contactName"+" class=contactName>"+'contactName'+"</div>");
