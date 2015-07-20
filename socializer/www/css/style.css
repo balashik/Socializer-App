@@ -86,9 +86,10 @@ header{
 }
 
 #createGroup{
+    padding-left:20px;
     margin-top:46px;
     height: 82px;
-    width: 638px;
+    width: 620px;
     background-color:#33394c;
     font-family: Lato;
     font-weight: 300;
@@ -98,7 +99,9 @@ header{
     
 }
 #createFrequency{
+    padding-left:20px;
     height: 80px;
+    width: 620px;
     background-color: #33394c;
     font-family: Lato;
     font-weight: 300;
@@ -321,8 +324,8 @@ h1#createGroup{
 }
 
 #groupName{
+    margin-left:17px;
     margin-top: 12px;
-    margin-left: 17px;
     height: 46px;
     font: 300 33px / 25px Lato;
     color:white;
@@ -337,7 +340,7 @@ h1#createGroup{
     
 }
 
-#contactName{
+.contactName{
     float:left;
     margin-left:52px;
     width: 540px;

@@ -47,7 +47,8 @@ $(document).ready(function(){
             dataType: "json",
             success: function(data) {
                 if(data.result>0){
-                    initContactsPage();    
+                    initListPage();
+                    //initContactsPage();    
                 }
             }
         });
@@ -71,23 +72,51 @@ function initListPage(){
     //sort title
     $(".wrapper").append("<div id='sortTitle'></div>");
     //get All groups from server
-    /*$.ajax({
+    $.ajax({
         method: "POST",
-        url: "http://socializerapp.herokuapp.com/retriveAll",
+        url: "http://socializerapp.herokuapp.com/retrieveAll",
         contentType: "application/x-www-form-urlencoded",
         dataType: "json",
         success: function(data) {
-                console.log(data);
+                if(data.result>0){
+                    for(var i=0;i<data.data.length;i++){
+                        if(data.data[i].frequency.frequencyType==0){
+                            
+                            $(".wrapper").append("<div id='groupName'>"+data.data[i].name+"</div>");
+                            $(".wrapper").append("<div id='listContactDiv"+i+"'></div>");
+                            for(var j=0;j<data.data[i].contacts.length;j++){
+                                
+                                //$("#listContactDiv"+i).append("<div id="+data.data[i].contacts[j].name+" class=contactName>"+data.data[i].contacts[j].name+"</div>");
+                                //$("#"+data.data[i].contacts[j].name).append("<div id='freqStats'>"+"0/7 W"+"</div>");
+                            }
+                            
+                           
+                        }
+                    }
+                    for(var i=0;i<data.data.length;i++){
+                        if(data.data[i].frequency.frequencyType==1){
+                            //$(".wrapper").append("<div id='groupName'>"+data.data[i].name+"</div>");
+                            //$(".wrapper").append("<div id='listContactDiv'></div>");
+                        }
+                    }
+                    for(var i=0;i<data.data.length;i++){
+                        if(data.data[i].frequency.frequencyType==2){
+                            //$(".wrapper").append("<div id='groupName'>"+data.data[i].name+"</div>");
+                            //$(".wrapper").append("<div id='listContactDiv'></div>");
+                        }
+                    }
+                }
+                
             }
-        });*/
+        });
     
     //forloop
-    $(".wrapper").append("<div id='groupName'>"+"groupName"+"</div>");
-    $(".wrapper").append("<div id='listContactDiv'></div>");
+    //$(".wrapper").append("<div id='groupName'>"+"groupName"+"</div>");
+    //$(".wrapper").append("<div id='listContactDiv'></div>");
     
     //for loop
-    $("#listContactDiv").append("<div id="+"contactName"+">"+'contactName'+"</div>");
-    $("#"+"contactName").append("<div id='freqStats'>"+"0/7 W"+"</div>");
+    //$("#listContactDiv").append("<div id="+"contactName"+" class=contactName>"+'contactName'+"</div>");
+    //$("#"+"contactName").append("<div id='freqStats'>"+"0/7 W"+"</div>");
     
     
     $("#statsView").click(function(){
