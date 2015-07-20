@@ -42,3 +42,6 @@ Network Trash Folder
 Temporary Items
 .apdisk
 socializer/platforms/
+socializer/platforms/android/.gradle/2.2.1/taskArtifacts/cache.properties.lock
+*.lock
+socializer/platforms/android/.gradle/2.2.1/taskArtifacts/fileHashes.bin
