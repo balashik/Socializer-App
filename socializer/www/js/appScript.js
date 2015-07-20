@@ -87,13 +87,12 @@ function initListPage(){
                 if(data.result>0){
                     for(var i=0;i<data.data.length;i++){
                         if(data.data[i].frequency.frequencyType==0){
-                            console.log("1Loop"+i);
                             $(".wrapper").append("<div id='groupName'>"+data.data[i].name+"</div>");
                             $(".wrapper").append("<div id='listContactDiv"+i+"' class='listContactDiv'></div>");
                             for(var j=0;j<data.data[i].contacts.length;j++){
-                                console.log("2Loop"+j);
+    
                                 $("#listContactDiv"+i).append("<div id='"+data.data[i].contacts[j].name+"' class='contactName'>"+data.data[i].contacts[j].name+"<div id='freqStats'>"+"0/7 W"+"</div></div>");
-                                //$("#"+data.data[i].contacts[j].name).append("<div id='freqStats'>"+"0/7 W"+"</div>");
+                                
                             }
                             $("#listContactDiv"+i).append("<div class='clear'></div>");
                            
@@ -102,14 +101,26 @@ function initListPage(){
                     }
                     for(var i=0;i<data.data.length;i++){
                         if(data.data[i].frequency.frequencyType==1){
-                            //$(".wrapper").append("<div id='groupName'>"+data.data[i].name+"</div>");
-                            //$(".wrapper").append("<div id='listContactDiv'></div>");
+                            $(".wrapper").append("<div id='groupName'>"+data.data[i].name+"</div>");
+                            $(".wrapper").append("<div id='listContactDiv"+i+"' class='listContactDiv'></div>");
+                            for(var j=0;j<data.data[i].contacts.length;j++){
+    
+                                $("#listContactDiv"+i).append("<div id='"+data.data[i].contacts[j].name+"' class='contactName'>"+data.data[i].contacts[j].name+"<div id='freqStats'>"+"0/7 2W"+"</div></div>");
+                                
+                            }
+                            $("#listContactDiv"+i).append("<div class='clear'></div>");
                         }
                     }
                     for(var i=0;i<data.data.length;i++){
                         if(data.data[i].frequency.frequencyType==2){
-                            //$(".wrapper").append("<div id='groupName'>"+data.data[i].name+"</div>");
-                            //$(".wrapper").append("<div id='listContactDiv'></div>");
+                            $(".wrapper").append("<div id='groupName'>"+data.data[i].name+"</div>");
+                            $(".wrapper").append("<div id='listContactDiv"+i+"' class='listContactDiv'></div>");
+                            for(var j=0;j<data.data[i].contacts.length;j++){
+    
+                                $("#listContactDiv"+i).append("<div id='"+data.data[i].contacts[j].name+"' class='contactName'>"+data.data[i].contacts[j].name+"<div id='freqStats'>"+"0/7 M"+"</div></div>");
+                                
+                            }
+                            $("#listContactDiv"+i).append("<div class='clear'></div>");
                         }
                     }
                 }
@@ -117,19 +128,12 @@ function initListPage(){
             }
         });
     
-    //forloop
-    //$(".wrapper").append("<div id='groupName'>"+"groupName"+"</div>");
-    //$(".wrapper").append("<div id='listContactDiv' class='listContactDiv'></div>");
-    
-    //for loop
-    //$("#listContactDiv").append("<div id="+"contactName"+" class=contactName>"+'contactName'+"</div>");
-    //$("#"+"contactName").append("<div id='freqStats'>"+"0/7 W"+"</div>");
-    
     
     $("#statsView").click(function(){
         $("div").remove("#sortTitle");
         $("div").remove("#groupName");
-        $("div").remove("#listContactDiv");
+        $("div").remove(".listContactDiv");
+        
         initStatsPage();
         return;
     });
@@ -137,7 +141,14 @@ function initListPage(){
     
     $("#addGroup").click(function(){
         //clearing this page
-        //initContactsPage 
+        $("div").remove("#settings");
+        $("div").remove("#addGroup");
+        $("nav").remove("#selectViewNav");
+        $("div").remove("#sortTitle");
+        $("div").remove("#groupName");
+        $("div").remove(".listContactDiv");
+        //initContactsPage
+        initContactsPage();
     
     
     })
@@ -155,12 +166,14 @@ function initStatsPage(){
     $("#listView").css("background-color","#33394c");
     $("#statsImg").css("background-image","url(./css/images/stats2.png)");
     $("#listImg").css("background-image","url(./css/images/list2.png)");
-    
+    $(".wrapper").append("<nav id='newFrequencyNav'></nav>");
+    $("#newFrequencyNav").append("<ul><li><a>Weekly</a></li><li><a>Biweekly</a></li><li><a>Monthly</a></li></ul>");
     
     $("#listView").click(function(){
         $("div").remove("#listView");
         $("div").remove("#statsView");
         $("nav").remove("#selectViewNav");
+        $("nav").remove("#newFrequencyNav");
         initListPage();
         return;
     });

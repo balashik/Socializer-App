@@ -325,8 +325,10 @@ h1#createGroup{
 
 #groupName{
     background-color: #252a3d;
-    margin-left:17px;
-    margin-top: 12px;
+    /*margin-left:17px;
+    margin-top: 12px;*/
+    padding-left: 17px;
+    padding-top: 12px;
     height: 46px;
     font: 300 33px / 25px Lato;
     color:white;
@@ -342,17 +344,17 @@ h1#createGroup{
 }
 
 .contactName{
-    
+    padding-bottom: 35px;
+    padding-top:28px;
     float:left;
     margin-left:52px;
-    width: 540px;
-    padding-top:26px;
+    width: 530px;
     font: 400 33px / 25px Lato;
     color: #ff7058;
 }
 #freqStats{
     float:right;
-    width:100px;
+    width:110px;
     font: 300 33px / 25px Lato;
     color: #ff7058;
 }
