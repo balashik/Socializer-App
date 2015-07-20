@@ -139,7 +139,7 @@ h1#createGroup{
     margin-top:27px;
     
 }
-#createGroupfriends h{
+.createGroupfriends h{
     margin-top:17px;
     text-align: center;
     font-family: Lato;
@@ -149,13 +149,13 @@ h1#createGroup{
     z-index: -10;
 }
 .cancelImage{
+    float:right;
     margin-right: -16px;
     margin-top:-16px;
     width:32px;
     height: 32px;
     background: url(images/Vector-Smart-Object-copy-4.png);
     z-index: 10;
-    
 }
 .letterTitles{
     padding-left: 17px;
