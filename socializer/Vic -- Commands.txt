@@ -1,0 +1,3 @@
+fire logcat on cordova only:
+after android-sdk/platform-tools is added to %PATH%
+adb logcat CordovaLog:D *:S
