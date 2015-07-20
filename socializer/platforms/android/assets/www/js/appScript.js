@@ -1,4 +1,4 @@
-var newGroup = {  
+var newGroup={  
     name:"",
     phoneNumber:"",
     contacts:[],
@@ -29,16 +29,6 @@ var selectedContacts=[{
     }
 }];
 
-function isCordova() {
-    if(window._cordovaNative) {
-        return true;
-    } else {
-        return false
-    }
-}
-
-
-
 function onReady() {
     // temp user data, this data need to be taken from user phone
     var userData = {
@@ -46,32 +36,31 @@ function onReady() {
         pn: "0543191901"
     }
 
-    //login request
-    console.log("Trying login");
-    $.ajax({
-        method: "POST",
-        url: "http://socializerapp.herokuapp.com/login",
-        contentType: "application/x-www-form-urlencoded",
-        data: userData,
-        dataType: "json",
-        success: function(data) {
-            if(data.result>0){
-                initContactsPage();    
-                console.log("Login sucessful");
-            } else {
-                console.log("Login failed");
+        //login request
+        $.ajax({
+            method: "POST",
+            url: "http://socializerapp.herokuapp.com/login",
+            contentType: "application/x-www-form-urlencoded",
+            data: userData,
+            dataType: "json",
+            success: function(data) {
+                if(data.result>0){
+                    initListPage();
+                    //initContactsPage();    
+                }
             }
-        }
-    });
+        });
+
 }
-    
-if(isCordova()) {
-    document.addEventListener("deviceready", onReady, true);
+
+if(window._cordovaNative) {
+    document.addEventListener("deviceready", onReady);
     console.log("On cordova");
 } else {
     $(document).ready(onReady);
     console.log("Not on cordova");
 }
+
 
 function initListPage(){
     //header
@@ -89,23 +78,52 @@ function initListPage(){
     //sort title
     $(".wrapper").append("<div id='sortTitle'></div>");
     //get All groups from server
-    /*$.ajax({
+    $.ajax({
         method: "POST",
-        url: "http://socializerapp.herokuapp.com/retriveAll",
+        url: "http://socializerapp.herokuapp.com/retrieveAll",
         contentType: "application/x-www-form-urlencoded",
         dataType: "json",
         success: function(data) {
-                console.log(data);
+                if(data.result>0){
+                    for(var i=0;i<data.data.length;i++){
+                        if(data.data[i].frequency.frequencyType==0){
+                            console.log("1Loop"+i);
+                            $(".wrapper").append("<div id='groupName'>"+data.data[i].name+"</div>");
+                            $(".wrapper").append("<div id='listContactDiv"+i+"' class='listContactDiv'></div>");
+                            for(var j=0;j<data.data[i].contacts.length;j++){
+                                console.log("2Loop"+j);
+                                $("#listContactDiv"+i).append("<div id='"+data.data[i].contacts[j].name+"' class='contactName'>"+data.data[i].contacts[j].name+"<div id='freqStats'>"+"0/7 W"+"</div></div>");
+                                //$("#"+data.data[i].contacts[j].name).append("<div id='freqStats'>"+"0/7 W"+"</div>");
+                            }
+                            $("#listContactDiv"+i).append("<div class='clear'></div>");
+                           
+                        }
+                        
+                    }
+                    for(var i=0;i<data.data.length;i++){
+                        if(data.data[i].frequency.frequencyType==1){
+                            //$(".wrapper").append("<div id='groupName'>"+data.data[i].name+"</div>");
+                            //$(".wrapper").append("<div id='listContactDiv'></div>");
+                        }
+                    }
+                    for(var i=0;i<data.data.length;i++){
+                        if(data.data[i].frequency.frequencyType==2){
+                            //$(".wrapper").append("<div id='groupName'>"+data.data[i].name+"</div>");
+                            //$(".wrapper").append("<div id='listContactDiv'></div>");
+                        }
+                    }
+                }
+                
             }
-        });*/
+        });
     
     //forloop
-    $(".wrapper").append("<div id='groupName'>"+"groupName"+"</div>");
-    $(".wrapper").append("<div id='listContactDiv'></div>");
+    //$(".wrapper").append("<div id='groupName'>"+"groupName"+"</div>");
+    //$(".wrapper").append("<div id='listContactDiv' class='listContactDiv'></div>");
     
     //for loop
-    $("#listContactDiv").append("<div id="+"contactName"+">"+'contactName'+"</div>");
-    $("#"+"contactName").append("<div id='freqStats'>"+"0/7 W"+"</div>");
+    //$("#listContactDiv").append("<div id="+"contactName"+" class=contactName>"+'contactName'+"</div>");
+    //$("#"+"contactName").append("<div id='freqStats'>"+"0/7 W"+"</div>");
     
     
     $("#statsView").click(function(){
@@ -142,6 +160,7 @@ function initStatsPage(){
     $("#listView").click(function(){
         $("div").remove("#listView");
         $("div").remove("#statsView");
+        $("nav").remove("#selectViewNav");
         initListPage();
         return;
     });
@@ -365,7 +384,7 @@ function initCreateGroupPage(){
     
     //removing a contact from grouplist
     $(".cancelImage").click(function(){
-        // newGroup.splice($(this).index(),1);
+        newGroup.splice($(this).index(),1);
         $(this).parent().remove();
         return;
     });
@@ -386,18 +405,13 @@ function initCreateGroupPage(){
     
     //pressed next group create finished, send data to server 
     $("#topLinkR").click(function(){
-	
-		var sendData = {};
-		sendData.group = newGroup;
         newGroup.name=$(".groupName").val();
         newGroup.lastReset = Date.now();
         
         var jsonGroup = JSON.stringify(newGroup);
-        var group = { group: newGroup };
-		
-		console.log(typeof newGroup);
-		console.log(typeof sendData);
+        var group = {group:newGroup};
         
+        //createGroup
         $.ajax({
             method: "POST",
             url: "http://socializerapp.herokuapp.com/createGroup",
