@@ -65,6 +65,10 @@ if(window._cordovaNative) {
 
 
 function initListPage(){
+    
+    $("#statsView").unbind("click");
+    $("#listView").unbind("click");
+    
     //header
     $("#topLinkR").html("");
     $("#topLinkL").html("");
@@ -93,7 +97,8 @@ function initListPage(){
                             $(".wrapper").append("<div id='listContactDiv"+i+"' class='listContactDiv'></div>");
                             for(var j=0;j<data.data[i].contacts.length;j++){
     
-                                $("#listContactDiv"+i).append("<div id='"+data.data[i].contacts[j].name+"' class='contactName'>"+data.data[i].contacts[j].name+"<div id='freqStats'>"+"0/7 W"+"</div></div>");
+                                $("#listContactDiv"+i).append("<div id='"+data.data[i].contacts[j].name+"' class='contactName'>"+data.data[i].contacts[j].name+"<div id='freqStats'>"+"0/7 W"+"</div><div class='removeFromGroup'>Delete</div></div>");
+                                $(".removeFromGroup").css("display","none");
                                 
                             }
                             $("#listContactDiv"+i).append("<div class='clear'></div>");
@@ -107,8 +112,8 @@ function initListPage(){
                             $(".wrapper").append("<div id='listContactDiv"+i+"' class='listContactDiv'></div>");
                             for(var j=0;j<data.data[i].contacts.length;j++){
     
-                                $("#listContactDiv"+i).append("<div id='"+data.data[i].contacts[j].name+"' class='contactName'>"+data.data[i].contacts[j].name+"<div id='freqStats'>"+"0/7 2W"+"</div></div>");
-                                
+                                $("#listContactDiv"+i).append("<div id='"+data.data[i].contacts[j].name+"' class='contactName'>"+data.data[i].contacts[j].name+"<div id='freqStats'>"+"0/7 2W"+"</div></div><div class='removeFromGroup'>Delete</div>");
+                                $(".removeFromGroup").css("display","none");
                             }
                             $("#listContactDiv"+i).append("<div class='clear'></div>");
                         }
@@ -119,15 +124,28 @@ function initListPage(){
                             $(".wrapper").append("<div id='listContactDiv"+i+"' class='listContactDiv'></div>");
                             for(var j=0;j<data.data[i].contacts.length;j++){
     
-                                $("#listContactDiv"+i).append("<div id='"+data.data[i].contacts[j].name+"' class='contactName'>"+data.data[i].contacts[j].name+"<div id='freqStats'>"+"0/7 M"+"</div></div>");
-                                
+                                $("#listContactDiv"+i).append("<div id='"+data.data[i].contacts[j].name+"' class='contactName'>"+data.data[i].contacts[j].name+"<div id='freqStats'>"+"0/7 M"+"</div><div class='removeFromGroup'>Delete</div></div>");
+                                $(".removeFromGroup").css("display","none");
                             }
                             $("#listContactDiv"+i).append("<div class='clear'></div>");
                         }
                     }
                 }
                 
+                $(".contactName").on("swipeleft",function(){
+                    if($(this).width()==530){
+                        $(this).width(402);
+                        console.log("1");
+                    }else{
+                        console.log("2");
+                        $(this).width(530)
+                    }
+                   
+                    $(this).next(".removeFromGroup").toggle();
+                    
+                });    
             }
+        
         });
     
     
@@ -162,12 +180,14 @@ function initListPage(){
 function initStatsPage(){
     $("#topLinkL").unbind("click");
     $("#topLinkR").unbind("click");
-    
+    $("#statsView").unbind("click");
+    $("#listView").unbind("click");
     //body
-    $("#statsView").css("background-color","#252a3d");
-    $("#listView").css("background-color","#33394c");
-    $("#statsImg").css("background-image","url(./css/images/stats2.png)");
-    $("#listImg").css("background-image","url(./css/images/list2.png)");
+    
+    $("#statsView").css("background-color","#33394c");
+    $("#listView").css("background-color","#252a3d");
+    $("#statsImg").css("background-image","url(./css/images/stats.png)");
+    $("#listImg").css("background-image","url(./css/images/list.png)");
     $(".wrapper").append("<nav id='newFrequencyNav'></nav>");
     $("#newFrequencyNav").append("<ul><li><a>Weekly</a></li><li><a>Biweekly</a></li><li><a>Monthly</a></li></ul>");
     
@@ -282,11 +302,11 @@ function initContactsPage(){
     $("#topLinkR").unbind("click");
     
     //header
-    /*$(".wrapper").append("<header></header");
+    //$(".wrapper").append("<header></header");
     $("header").append("<div id='logo'></div>");
-    $("header").append("<ul><li><a id = 'topLinkL'></a></li></ul>");
-    $("header").append("<ul><li><a id = 'topLinkR'></a></li></ul>");
-    */
+    //$("header").append("<ul><li><a id = 'topLinkL'></a></li></ul>");
+    //$("header").append("<ul><li><a id = 'topLinkR'></a></li></ul>");
+    
     
     $("#logo").html("Your Contacts");
     $("#topLinkR").html("Choose");
@@ -394,7 +414,7 @@ function initCreateGroupPage(){
         $("#friendsList").append("<div class='createGroupfriends' id='contact"+i+"'></div>");
         $("#contact"+i).append("<div class='cancelImage'></div>");
         $("#contact"+i).html("<h>"+newGroup.contacts[i].name+"</h>");
-        //console.log(newGroup.contacts[i].name);
+        
     }
     
     //removing a contact from grouplist
