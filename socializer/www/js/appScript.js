@@ -390,11 +390,11 @@ function initCreateGroupPage(){
     $(".wrapper").append(" <div id='friendsList'></div>");
     $(".wrapper").append(" <div id='createGroup'>Missed call snoozer <div class='onoffswitch'><input type='checkbox' name='onoffswitch' class='onoffswitch-checkbox' id='myonoffswitch' checked><label class='onoffswitch-label' for='myonoffswitch'><span class='onoffswitch-inner'></span><span class='onoffswitch-switch'></span></label></div></div>");
     
-    for(var i=0;i<selectedContacts.length;i++){
-        console.log(selectedContacts[i].name);
+    for(var i=0;i<newGroup.contacts.length;i++){
         $("#friendsList").append("<div class='createGroupfriends' id='contact"+i+"'></div>");
         $("#contact"+i).append("<div class='cancelImage'></div>");
-        $(".createGroupfriends").append("<h>"+selectedContacts[i].name+"</h>");
+        $("#contact"+i).html("<h>"+newGroup.contacts[i].name+"</h>");
+        //console.log(newGroup.contacts[i].name);
     }
     
     //removing a contact from grouplist
