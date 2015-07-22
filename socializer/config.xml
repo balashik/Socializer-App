@@ -77,4 +77,6 @@
     <allow-intent href="itms:*"/>
     <allow-intent href="itms-apps:*"/>
   </platform>
+  <access origin="http://fonts.googleapis.com" />
+  <access origin="http://socializerapp.herokuapp.com" />
 </widget>

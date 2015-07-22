@@ -23,16 +23,42 @@ function initContactsPage(){
     
     var contactsLetters=[];
     
-    $.ajax({
-    	dataType: "json",
-    	url: "./js/contacts.json",
-    	success: function(data) {
-    		buildPage(data);
-    	},
-    	error: function(err) {
-    		buildPage(JSON.parse(err.responseText));
-    	}
-    });
+    if(window._cordovaNative) {
+        function onSuccess(contacts) {
+            alert('Found ' + contacts.length + ' contacts.');
+        };
+
+        function onError(contactError) {
+            alert('onError!');
+        };
+
+        // find all contacts with 'Bob' in any name field
+        var options      = new ContactFindOptions();
+        options.filter   = "Bob";
+        options.multiple = true;
+        var fields       = ["displayName", "name"];
+        navigator.contacts.find(fields, function(contacts) {
+
+        }, function(err) {
+            console.log("Error aquiring contacts: " + err);
+        }, options);
+
+    } else {
+
+         $.ajax({
+            dataType: "json",
+            url: "./js/contacts.json",
+            success: function(data) {
+                buildPage(data);
+            },
+            error: function(err) {
+                buildPage(JSON.parse(err.responseText));
+            }
+        });
+
+    }
+
+   
 }
 
 function clearContactPage(){

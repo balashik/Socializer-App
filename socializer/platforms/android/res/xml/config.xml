@@ -82,4 +82,6 @@
     <allow-intent href="sms:*" />
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
+    <access origin="http://fonts.googleapis.com" />
+    <access origin="http://socializerapp.herokuapp.com" />
 </widget>

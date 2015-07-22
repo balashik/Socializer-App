@@ -8,24 +8,17 @@ var newGroup={
         whatsapp:0,
         sms:0, 
     },
-    lastReset:Date.now()
+    lastReset:Date.now(),
+    reminder:false,
+    missedCallSnoozer:false
+    
 };
 
 var selectedContacts=[];
 
-if(console) {
-    logger.html("Console is available");
-} else {
-    logger.html("Console is not available");
-}
+
 
 function onReady() {
-
-    cordova.logger.useConsole(true);
-
-    cordova.logger.level("LOG");
-    cordova.logger.log("onReady called");
-    logger.html(cordova.logger.level() + " " + cordova.logger.useConsole());
 
     // temp user data, this data need to be taken from user phone
     var userData = {
