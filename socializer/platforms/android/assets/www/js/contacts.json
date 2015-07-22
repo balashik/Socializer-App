@@ -1,20 +1,22 @@
-{
-    "contactList": [
-        {
-            "name": "gal",
-            "phoneNumber": "111111111"
-        },
-        {
-            "name": "gurfankel",
-            "phoneNumber": "44444444"
-        },
-        {
-            "name": "victor",
-            "phoneNumber": "222222222"
-        },
-        {
-            "name": "salim",
-            "phoneNumber": "333333333"
-        }
-    ]
-}
+[
+    {
+        "id": "12345",
+        "displayName": "gal",
+        "phoneNumber": [ "111111111" ]
+    },
+    {
+        "id": "55ff55",
+        "displayName": "gurfankel",
+        "phoneNumber": [ "44444444" ]
+    },
+    {
+        "id": "gfdsaw3",
+        "displayName": "victor",
+        "phoneNumber": [ "222222222"]
+    },
+    {
+        "id": "kkjjfhd6",
+        "displayName": "salim",
+        "phoneNumber": [ "333333333" ]
+    }
+]

@@ -34,11 +34,16 @@ function initContactsPage(){
 
         // find all contacts with 'Bob' in any name field
         var options      = new ContactFindOptions();
-        options.filter   = "Bob";
         options.multiple = true;
         var fields       = ["displayName", "name"];
         navigator.contacts.find(fields, function(contacts) {
-
+            for(var i = 0; i < contacts.length; ++i) {
+                if(contacts[i].displayName == null) {
+                    contacts.splice(i, 1);
+                    --i;
+                }
+            }
+            buildPage(contacts);
         }, function(err) {
             console.log("Error aquiring contacts: " + err);
         }, options);
@@ -69,11 +74,13 @@ function clearContactPage(){
 
              
 function setLetters(data){
+    console.log(data);
     var abc = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
     var myABC=[];
     for(var i=0;i<abc.length;i++){
-        for(var j=0;j<data.contactList.length;j++){
-            if(abc[i]==data.contactList[j].name.charAt(0).toUpperCase()){
+        for(var j = 0; j < data.length; ++j){
+            console.log(data[j]);
+            if(abc[i]==data[j].displayName.charAt(0).toUpperCase()){
                 myABC.push(abc[i]);
                 abc.splice(i,1);                    
             }
@@ -84,11 +91,11 @@ function setLetters(data){
 
 var buildPage = function(data) {
     contactsLetters = setLetters(data);
-    for(var i=0;i<contactsLetters.length;i++){
+    for(var i = 0; i < contactsLetters.length; ++i){
         $(".wrapper").append("<div class='letterTitles'>"+contactsLetters[i]+"</div>");
-        for(var j=0;j<data.contactList.length;j++){
-            if(contactsLetters[i]==data.contactList[j].name.charAt(0).toUpperCase()){
-                $(".wrapper").append("<div class='contactDiv' id='"+j+"'>"+data.contactList[j].name+"</div>");
+        for(var j = 0; j < data.length; ++j){
+            if(contactsLetters[i] == data[j].displayName.charAt(0).toUpperCase()){
+                $(".wrapper").append("<div class='contactDiv' id='"+j+"'>"+data[j].displayName+"</div>");
             }
         }
     }
@@ -97,7 +104,7 @@ var buildPage = function(data) {
     $(".contactDiv").click(function(){
 
         for(var i=0;i<selectedContacts.length;i++){
-            if(selectedContacts[i].phoneNumber==data.contactList[($(this).attr("id"))].phoneNumber){
+            if(selectedContacts[i].id==data[($(this).attr("id"))].id){
                 selectedContacts.splice(i,1);
                 if(selectedContacts.length==0){
                     $("#topLinkR").html("Choose");
@@ -107,9 +114,9 @@ var buildPage = function(data) {
 
             }
         }
-        selectedContacts.push(data.contactList[($(this).attr("id"))]);
+        selectedContacts.push(data[($(this).attr("id"))]);
         $("#topLinkR").html("Next");
-        $(this).css("background", "#2a2e3e");     
+        $(this).css("background", "#2a2e3e");
     });
     
     //moving to create group page
