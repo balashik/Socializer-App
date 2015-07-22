@@ -1,4 +1,8 @@
 function initListPage(){
+    
+    $("#statsView").unbind("click");
+    $("#listView").unbind("click");
+    
     //header
     $("#topLinkR").html("");
     $("#topLinkL").html("");
@@ -27,7 +31,8 @@ function initListPage(){
                             $(".wrapper").append("<div id='listContactDiv"+i+"' class='listContactDiv'></div>");
                             for(var j=0;j<data.data[i].contacts.length;j++){
     
-                                $("#listContactDiv"+i).append("<div id='"+data.data[i].contacts[j].name+"' class='contactName'>"+data.data[i].contacts[j].name+"<div id='freqStats'>"+"0/7 W"+"</div></div>");
+                                $("#listContactDiv"+i).append("<div id='"+data.data[i].contacts[j].name+"' class='contactName'>"+data.data[i].contacts[j].name+"<div id='freqStats'>"+"0/7 W"+"</div><div class='removeFromGroup'>Delete</div></div>");
+                                $(".removeFromGroup").css("display","none");
                                 
                             }
                             $("#listContactDiv"+i).append("<div class='clear'></div>");
@@ -41,8 +46,8 @@ function initListPage(){
                             $(".wrapper").append("<div id='listContactDiv"+i+"' class='listContactDiv'></div>");
                             for(var j=0;j<data.data[i].contacts.length;j++){
     
-                                $("#listContactDiv"+i).append("<div id='"+data.data[i].contacts[j].name+"' class='contactName'>"+data.data[i].contacts[j].name+"<div id='freqStats'>"+"0/7 2W"+"</div></div>");
-                                
+                                $("#listContactDiv"+i).append("<div id='"+data.data[i].contacts[j].name+"' class='contactName'>"+data.data[i].contacts[j].name+"<div id='freqStats'>"+"0/7 2W"+"</div></div><div class='removeFromGroup'>Delete</div>");
+                                $(".removeFromGroup").css("display","none");
                             }
                             $("#listContactDiv"+i).append("<div class='clear'></div>");
                         }
@@ -53,13 +58,71 @@ function initListPage(){
                             $(".wrapper").append("<div id='listContactDiv"+i+"' class='listContactDiv'></div>");
                             for(var j=0;j<data.data[i].contacts.length;j++){
     
-                                $("#listContactDiv"+i).append("<div id='"+data.data[i].contacts[j].name+"' class='contactName'>"+data.data[i].contacts[j].name+"<div id='freqStats'>"+"0/7 M"+"</div></div>");
-                                
+                                $("#listContactDiv"+i).append("<div id='"+data.data[i].contacts[j].name+"' class='contactName'>"+data.data[i].contacts[j].name+"<div id='freqStats'>"+"0/7 M"+"</div><div class='removeFromGroup'>Delete</div></div>");
+                                $(".removeFromGroup").css("display","none");
                             }
                             $("#listContactDiv"+i).append("<div class='clear'></div>");
                         }
                     }
                 }
-                
+                var element = document.getElementsByClassName('contactName');
+                var swipeLeftEvent= new Hammer(element[0]);
+                swipeLeftEvent.on("swipeleft",function(){
+                    if($(element[0]).width()==530){
+                        $(element[0]).width(402);
+                    }else{
+                        $(element[0]).width(530)
+                    }
+                   
+                    $(element[0]).next(".removeFromGroup").toggle();
+                    
+                 
+                });
+                $(".contactName").click(function(){
+                    
+                    
+                    $(this).animate({
+                            
+                            height: "369px"
+                    }, 1000, function() {
+                        $(this).click(function(){
+                            $(this).animate({
+                               height: "25px" 
+                            },1000,function(){
+                            
+                            });
+                        });
+                    });
+                });
             }
+        
         });
+    
+    
+    $("#statsView").click(function(){
+        $("div").remove("#sortTitle");
+        $("div").remove("#groupName");
+        $("div").remove(".listContactDiv");
+        
+        initStatsPage();
+        return;
+    });
+    
+    
+    $("#addGroup").click(function(){
+        //clearing this page
+        $("div").remove("#settings");
+        $("div").remove("#addGroup");
+        $("nav").remove("#selectViewNav");
+        $("div").remove("#sortTitle");
+        $("div").remove("#groupName");
+        $("div").remove(".listContactDiv");
+        //initContactsPage
+        initContactsPage();
+    
+    
+    })
+        
+
+
+}
