@@ -136,16 +136,20 @@ function initListPage(){
                 }
                 var element = document.getElementsByClassName('contactName');
                 //console.log(element);
+                console.log($(element[0]).html());
                 var swipeLeftEvent= new Hammer(element[0]);
                 swipeLeftEvent.on("swipeleft",function(){
-                    //logger.html("swipeLeft");
-                    if(element[0].offsetWidth=="530px"){
-                        element[0].width="402px"
-                        logger.html("1");
+                    if($(element[0]).width()==530){
+                        $(element[0]).width(402);
+                        console.log("1");
                     }else{
-                        logger.html("2");
-                        element[0].width="530px"
+                        console.log("2");
+                        $(this).width(530)
                     }
+                   
+                    $(element[0]).next(".removeFromGroup").toggle();
+                    
+                 
                 });
 //                $(".contactName").on("swipeleft",function(){
 //                    if($(this).width()==530){
