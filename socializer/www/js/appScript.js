@@ -15,6 +15,8 @@ if (ww < mw) {
     $('meta[type="viewport"]').attr('content', 'initial-scale=1.0, maximum-scale=2, minimum-scale=1.0, user-scalable=yes, width=' + ww);
 }
 
+var logger= $("<div>");
+$("body").prepend(logger);
 
 var newGroup={  
     name:"",
@@ -30,8 +32,9 @@ var newGroup={
 };
 var selectedContacts=[];
 
-
 function onReady() {
+    
+    
     // temp user data, this data need to be taken from user phone
     var userData = {
         key: "123123",
@@ -131,8 +134,11 @@ function initListPage(){
                         }
                     }
                 }
-                
-                $(".contactName").on("swipeleft",function(){
+                var element = document.getElementsByClassName('contactName');
+                //console.log(element);
+                var swipeLeftEvent= new Hammer(element[0]);
+                swipeLeftEvent.on("swipeleft",function(){
+                    logger.html("swipeLeft");
                     if($(this).width()==530){
                         $(this).width(402);
                         console.log("1");
@@ -140,10 +146,35 @@ function initListPage(){
                         console.log("2");
                         $(this).width(530)
                     }
-                   
-                    $(this).next(".removeFromGroup").toggle();
+                });
+//                $(".contactName").on("swipeleft",function(){
+//                    if($(this).width()==530){
+//                        $(this).width(402);
+//                        console.log("1");
+//                    }else{
+//                        console.log("2");
+//                        $(this).width(530)
+//                    }
+//                   
+//                    $(this).next(".removeFromGroup").toggle();
+//                    
+//                }); 
+$(".contactName").click(function(){
                     
-                });    
+                    
+                    $(this).animate({
+                            
+                            height: "369px"
+                    }, 1000, function() {
+                        $(this).click(function(){
+                            $(this).animate({
+                               height: "25px" 
+                            },1000,function(){
+                            
+                            });
+                        });
+                    });
+                });
             }
         
         });
