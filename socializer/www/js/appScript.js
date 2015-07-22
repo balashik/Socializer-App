@@ -8,7 +8,10 @@ var newGroup={
         whatsapp:0,
         sms:0, 
     },
-    lastReset:Date.now()
+    lastReset:Date.now(),
+    reminder:false,
+    missedCallSnoozer:false
+    
 };
 
 var selectedContacts=[];

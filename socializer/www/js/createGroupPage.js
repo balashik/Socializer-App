@@ -16,12 +16,13 @@ function initCreateGroupPage(){
     $(".wrapper").append(" <div id='createGroup' class='notifyMe'>⊕Add a Reminder</div>");
     $(".wrapper").append(" <h1 id='createGroup'>Friends</h1>");
     $(".wrapper").append(" <div id='friendsList'></div>");
-    $(".wrapper").append(" <div id='createGroup'>Missed call snoozer <div class='onoffswitch'><input type='checkbox' name='onoffswitch' class='onoffswitch-checkbox' id='myonoffswitch' checked><label class='onoffswitch-label' for='myonoffswitch'><span class='onoffswitch-inner'></span><span class='onoffswitch-switch'></span></label></div></div>");
+    $(".wrapper").append(" <div id='createGroup' class='snoozer'>Missed call snoozer <div class='onoffswitch'><input type='checkbox' name='onoffswitch' class='onoffswitch-checkbox' id='myonoffswitch' checked><label class='onoffswitch-label' for='myonoffswitch' ><span class='onoffswitch-inner'></span><span class='onoffswitch-switch'></span></label></div></div>");
     
     for(var i=0;i<newGroup.contacts.length;i++){
-        $("#friendsList").append("<div class='createGroupfriends' id='contact"+i+"'></div>");
-        $("#contact"+i).append("<div class='cancelImage'></div>");
-        $("#contact"+i).html("<h>"+newGroup.contacts[i].name+"</h>");
+        var div = $("<div class='createGroupfriends' id='contact"+i+"'></div>");
+        $("#friendsList").append(div);
+        div.append("<div class='cancelImage'></div>");
+        div.append("<h>"+newGroup.contacts[i].name+"</h>");
         
     }
     
@@ -34,8 +35,15 @@ function initCreateGroupPage(){
     
     //add a reminder
     $(".notifyMe").click(function(){
-        $(this).css("color","#feb5a8");
-        return;
+        if(newGroup.reminder==false){
+            newGroup.reminder=true;
+            $(this).css("color","#feb5a8");
+        }else{
+            newGroup.reminder=false;
+            $(this).css("color","rgba(254, 181, 168, 0.35)");
+        }
+        
+        
     });
     
     //frequency page
@@ -45,9 +53,19 @@ function initCreateGroupPage(){
         initCreateFrequencyPage();
         return;
     });
-    
+    $(".snoozer").click(function(){
+        if($("#myonoffswitch").is(":checked")){
+            $("#myonoffswitch").prop("checked",false);
+            $(".snoozer").css("color","#feb5a8");
+        }else{
+            $("#myonoffswitch").prop("checked",true);
+            $(".snoozer").css("color","rgba(254, 181, 168, 0.35)");
+        }
+    });
     //pressed next group create finished, send data to server 
     $("#topLinkR").click(function(){
+        newGroup.missedCallSnoozer = !($("#myonoffswitch").is(":checked"));
+        console.log(newGroup.missedCallSnoozer);
         newGroup.name=$(".groupName").val();
         newGroup.lastReset = Date.now();
         
