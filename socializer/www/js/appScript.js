@@ -144,7 +144,7 @@ function initListPage(){
                         console.log("1");
                     }else{
                         console.log("2");
-                        $(this).width(530)
+                        $(element[0]).width(530)
                     }
                    
                     $(element[0]).next(".removeFromGroup").toggle();
