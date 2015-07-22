@@ -28,7 +28,6 @@ a#topLinkR{
     color: #feb5a8;
     font-weight: 300;
     float:right;
-    /*margin-right:24px;*/
 }
 
 a#topLinkL{
@@ -200,7 +199,9 @@ h1#createGroup{
     color: #feb5a8;
     float:left;
     margin-top:56px;
-    margin-left:68px;
+    margin-left:88px;*/
+    text-align: center;
+    width:91px;
     
 }
 #frequencySelect{
