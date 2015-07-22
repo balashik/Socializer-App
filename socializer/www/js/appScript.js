@@ -139,12 +139,12 @@ function initListPage(){
                 var swipeLeftEvent= new Hammer(element[0]);
                 swipeLeftEvent.on("swipeleft",function(){
                     //logger.html("swipeLeft");
-                    if($(this).width()==530){
-                        $(this).width(402);
+                    if(element[0].offsetWidth=="530px"){
+                        element[0].width="402px"
                         logger.html("1");
                     }else{
                         logger.html("2");
-                        $(this).width(530)
+                        element[0].width="530px"
                     }
                 });
 //                $(".contactName").on("swipeleft",function(){
