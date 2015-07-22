@@ -1,6 +1,8 @@
 function initCreateFrequencyPage(){
     var total=0;
-    var wf,smsf,cf=0;
+    var wf=0;
+    var smsf=0;
+    var cf=0;
     var newFrequency = {
         frequencyType:0,
         calls:0,
@@ -19,10 +21,22 @@ function initCreateFrequencyPage(){
    $(".wrapper").append("<nav id='newFrequencyNav'></nav>");
     $("#newFrequencyNav").append("<ul><li><a>Weekly</a></li><li><a>Biweekly</a></li><li><a>Monthly</a></li></ul>");
     $(".wrapper").append("<div id='frequencySelect'></div>");
-    $("#frequencySelect").append("<input type='range'min='0' max='700' step='10' value='0' name='frequency' class='whatsAppSlide' onChange='changeWAValue(this.value)'></input>");
-    $("#frequencySelect").append("<input type='range'min='0' max='700' step='10' value='0' name='frequency' class='SMSSlide' onChange='changeSMSValue(this.value)'></input>");
-    $("#frequencySelect").append("<input type='range'min='0' max='700' step='10' value='0' name='frequency' class='CallsSlide' onChange='changeCValue(this.value)'></input>");
-    $("#frequencySelect").append("<input type='range'min='0' max='700' step='10' value='0' name='frequency' class='totalSlide' onChange='changeTOTALValue(this.value)'></input>");
+    var whatsAppSlider = $("<input type='range'min='0' max='700' step='10' value='0' name='frequency' class='whatsAppSlide'></input>");
+    var smsSlider = $("<input type='range'min='0' max='700' step='10' value='0' name='frequency' class='SMSSlide'></input>");
+    var callsSlider = $("<input type='range'min='0' max='700' step='10' value='0' name='frequency' class='CallsSlide' onChange='changeCValue(this.value)'></input>");
+    whatsAppSlider.mousemove(function(e) {
+        changeWAValue(this.value);
+    });
+    smsSlider.mousemove(function(e) {
+        changeSMSValue(this.value);
+    });
+    callsSlider.mousemove(function(e) {
+        changeCValue(this.value);
+    });
+    $("#frequencySelect").append(whatsAppSlider);
+    $("#frequencySelect").append(smsSlider);
+    $("#frequencySelect").append(callsSlider);
+    $("#frequencySelect").append("<input type='range'min='0' max='21' step='1' value='0' name='frequency' class='totalSlide' disabled='disabled'></input>");
     $(".whatsAppSlide , .SMSSlide , .CallsSlide , .totalSlide").css("width","540px");
     $(".whatsAppSlide , .SMSSlide , .CallsSlide , .totalSlide").css("margin-top","100px");
     $(".whatsAppSlide , .SMSSlide , .CallsSlide , .totalSlide").css("margin-left","50px");
@@ -32,25 +46,32 @@ function initCreateFrequencyPage(){
     $("#frequencySummery").append("<div id='device' class='s'><div id='smsIcon'></div><div id='deviceName'>SMS</div><div id='frequencyResult'>  X Times</div></div>");
     $("#frequencySummery").append("<div id='device' class='c'><div id='callIcon'></div><div id='deviceName'>Calls</div><div id='frequencyResult'>X Times</div></div>");
     $("#frequencySummery").append("<div id='frequencyResult' class='t'></div>");
-    total=wf+smsf+cf;
-    console.log(parseInt(cf));
-    $(".t").html(""+total);
+   
+    $(".t").html("Total:0");
     changeWAValue = function (val){
-        $(".w #frequencyResult").html(val+" Times");
-        wf=parseInt(val);
+        wf=parseInt(parseInt(val)/100);
+         total=wf+smsf+cf;
+        $(".w #frequencyResult").html(wf+" Times");
+        $(".t").html("Total:"+total);
+        $(".totalSlide").val(total);
         
         
     }
     
     changeSMSValue = function (val){
-        $(".s #frequencyResult").html(val+" Times");
-        smsf=parseInt(val);
+        smsf=parseInt(parseInt(val)/100);
+         total=wf+smsf+cf;
+        $(".s #frequencyResult").html(smsf+" Times");
+        $(".t").html("Total:"+total);
+        $(".totalSlide").val(total);
         
     }
     changeCValue = function (val){
-        $(".c #frequencyResult").html(val+" Times");
-        cf=parseInt(val);
-       // $().html(total);
+        cf=parseInt(parseInt(val)/100);
+         total=wf+smsf+cf;
+        $(".c #frequencyResult").html(cf+" Times");
+        $(".t").html("Total:"+total);
+        $(".totalSlide").val(total);
     }
     
     $("a").click(function(){
@@ -77,6 +98,9 @@ function initCreateFrequencyPage(){
     
     //pressed Done frequency saved
     $("#topLinkR").click(function(){
+        newFrequency.whatsapp = wf;
+        newFrequency.calls = cf;
+        newFrequency.sms = smsf;
         newGroup.frequency = newFrequency;
         //moving back to createGroup Page
         clearFrequencyPage();
