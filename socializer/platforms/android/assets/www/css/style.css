@@ -28,7 +28,7 @@ a#topLinkR{
     color: #feb5a8;
     font-weight: 300;
     float:right;
-    margin-right:24px;
+    /*margin-right:24px;*/
 }
 
 a#topLinkL{
@@ -273,12 +273,16 @@ h1#createGroup{
     width: 50px;
     height: 50px;
     background-image: url(images/addGroup.png);
+    margin-left:20px;
+    margin-top:16px;
 }
 
 #settings{
     width: 51px;
     height: 50px;
     background-image:url(images/settings.png);
+    margin-top:16px;
+    margin-right:20px;
 }
 
 #selectViewNav{
@@ -294,12 +298,13 @@ h1#createGroup{
     float:left;
     width: 320px;
     height: 92px;
-    background-color: #252a3d;
+    
 }
 #statsView{
     float:left;
     width: 320px;
     height: 92px;
+    background-color: #252a3d;
 }
 
 #listImg{
@@ -307,13 +312,13 @@ h1#createGroup{
     width: 39px;
     height: 61px;
     
-    background-image: url(images/list.png);
+    background-image: url(images/list2.png);
 }
 #statsImg{
     margin-top:28px;
     width: 61px;
     height: 38px;
-    background-image: url(images/stats.png);
+    background-image: url(images/stats2.png);
 }
 
 #sortTitle{
@@ -340,7 +345,7 @@ h1#createGroup{
 
 .listContactDiv{
     background-color:#33394c;
-    /*height:85px;*/
+    
     
 }
 
@@ -360,6 +365,14 @@ h1#createGroup{
     color: #ff7058;
 }
 
+.removeFromGroup{
+    float:right;
+    width:128px;
+    height: 87px;
+    font: 400 35px / 25px Lato;
+    color: #252a3d;
+    background-color: #ff7058;
+}
 .clear{
     clear:both;
 }
