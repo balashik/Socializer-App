@@ -31,7 +31,7 @@ function initListPage(){
                             $(".wrapper").append("<div id='listContactDiv"+i+"' class='listContactDiv'></div>");
                             for(var j=0;j<data.data[i].contacts.length;j++){
     
-                                $("#listContactDiv"+i).append("<div id='"+data.data[i].contacts[j].name+"' class='contactName'>"+data.data[i].contacts[j].name+"<div id='freqStats'>"+"0/7 W"+"</div><div class='removeFromGroup'>Delete</div></div>");
+                                $("#listContactDiv"+i).append("<div id='"+data.data[i].contacts[j].displayName+"' class='contactName'>"+data.data[i].contacts[j].displayName+"<div id='freqStats'>"+"0/7 W"+"</div><div class='removeFromGroup'>Delete</div></div>");
                                 $(".removeFromGroup").css("display","none");
                                 
                             }
@@ -46,7 +46,7 @@ function initListPage(){
                             $(".wrapper").append("<div id='listContactDiv"+i+"' class='listContactDiv'></div>");
                             for(var j=0;j<data.data[i].contacts.length;j++){
     
-                                $("#listContactDiv"+i).append("<div id='"+data.data[i].contacts[j].name+"' class='contactName'>"+data.data[i].contacts[j].name+"<div id='freqStats'>"+"0/7 2W"+"</div></div><div class='removeFromGroup'>Delete</div>");
+                                $("#listContactDiv"+i).append("<div id='"+data.data[i].contacts[j].displayName+"' class='contactName'>"+data.data[i].contacts[j].displayName+"<div id='freqStats'>"+"0/7 2W"+"</div></div><div class='removeFromGroup'>Delete</div>");
                                 $(".removeFromGroup").css("display","none");
                             }
                             $("#listContactDiv"+i).append("<div class='clear'></div>");
@@ -58,7 +58,7 @@ function initListPage(){
                             $(".wrapper").append("<div id='listContactDiv"+i+"' class='listContactDiv'></div>");
                             for(var j=0;j<data.data[i].contacts.length;j++){
     
-                                $("#listContactDiv"+i).append("<div id='"+data.data[i].contacts[j].name+"' class='contactName'>"+data.data[i].contacts[j].name+"<div id='freqStats'>"+"0/7 M"+"</div><div class='removeFromGroup'>Delete</div></div>");
+                                $("#listContactDiv"+i).append("<div id='"+data.data[i].contacts[j].displayName+"' class='contactName'>"+data.data[i].contacts[j].displayName+"<div id='freqStats'>"+"0/7 M"+"</div><div class='removeFromGroup'>Delete</div></div>");
                                 $(".removeFromGroup").css("display","none");
                             }
                             $("#listContactDiv"+i).append("<div class='clear'></div>");
