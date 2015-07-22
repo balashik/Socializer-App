@@ -1,3 +1,6 @@
 fire logcat on cordova only:
-after android-sdk/platform-tools is added to %PATH%
+after android-sdk/platform-tools is added to %PATH%, works only when PhoneGap is used
 adb logcat CordovaLog:D *:S
+
+This command prints all the chromium console logs to the logcat
+adb lolcat chromium:V *:S
