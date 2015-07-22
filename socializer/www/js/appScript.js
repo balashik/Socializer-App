@@ -138,12 +138,12 @@ function initListPage(){
                 //console.log(element);
                 var swipeLeftEvent= new Hammer(element[0]);
                 swipeLeftEvent.on("swipeleft",function(){
-                    logger.html("swipeLeft");
+                    //logger.html("swipeLeft");
                     if($(this).width()==530){
                         $(this).width(402);
-                        console.log("1");
+                        logger.html("1");
                     }else{
-                        console.log("2");
+                        logger.html("2");
                         $(this).width(530)
                     }
                 });
