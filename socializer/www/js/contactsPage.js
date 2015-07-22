@@ -74,12 +74,10 @@ function clearContactPage(){
 
              
 function setLetters(data){
-    console.log(data);
     var abc = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
     var myABC=[];
     for(var i=0;i<abc.length;i++){
         for(var j = 0; j < data.length; ++j){
-            console.log(data[j]);
             if(abc[i]==data[j].displayName.charAt(0).toUpperCase()){
                 myABC.push(abc[i]);
                 abc.splice(i,1);                    

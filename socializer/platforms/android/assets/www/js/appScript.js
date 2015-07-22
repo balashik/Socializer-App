@@ -16,8 +16,6 @@ var newGroup={
 
 var selectedContacts=[];
 
-
-
 function onReady() {
 
     // temp user data, this data need to be taken from user phone
@@ -45,6 +43,12 @@ function onReady() {
 
 if(window._cordovaNative) {
     document.addEventListener("deviceready", onReady);
+    var telephoneNumber = cordova.require("cordova/plugin/telephonenumber");
+    telephoneNumber.get(function(result) {
+        console.log("Sucess: " + result);
+    }, function(err) {
+        console.log("Error: " + err);
+    });
     console.log("On cordova");
 } else {
     $(document).ready(onReady);

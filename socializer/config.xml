@@ -19,6 +19,7 @@
   <preference name="android-minSdkVersion" value="10"/>
   <preference name="android-installLocation" value="auto"/>
   <preference name="LogLevel" value="VERBOSE"/>
+  <plugin name="TelephoneNumber" value="com.simonmacdonald.cordova.plugins.TelephoneNumber"/>
   <gap:plugin name="org.apache.cordova.battery-status"/>
   <gap:plugin name="org.apache.cordova.camera"/>
   <gap:plugin name="org.apache.cordova.media-capture"/>
@@ -79,4 +80,5 @@
   </platform>
   <access origin="http://fonts.googleapis.com" />
   <access origin="http://socializerapp.herokuapp.com" />
+  
 </widget>
