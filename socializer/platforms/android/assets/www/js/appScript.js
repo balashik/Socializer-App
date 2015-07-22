@@ -15,8 +15,8 @@ if (ww < mw) {
     $('meta[type="viewport"]').attr('content', 'initial-scale=1.0, maximum-scale=2, minimum-scale=1.0, user-scalable=yes, width=' + ww);
 }
 
-var logger= $("<div>");
-$("body").prepend(logger);
+var internalLogger = $("<div>");
+$("body").prepend(internalLogger);
 
 var newGroup={  
     name:"",
@@ -34,6 +34,7 @@ var selectedContacts=[];
 
 function onReady() {
     
+    internalLogger.html(logger.level());
     
     // temp user data, this data need to be taken from user phone
     var userData = {
@@ -136,16 +137,20 @@ function initListPage(){
                 }
                 var element = document.getElementsByClassName('contactName');
                 //console.log(element);
+                console.log($(element[0]).html());
                 var swipeLeftEvent= new Hammer(element[0]);
                 swipeLeftEvent.on("swipeleft",function(){
-                    logger.html("swipeLeft");
-                    if($(this).width()==530){
-                        $(this).width(402);
+                    if($(element[0]).width()==530){
+                        $(element[0]).width(402);
                         console.log("1");
                     }else{
                         console.log("2");
-                        $(this).width(530)
+                        $(element[0]).width(530)
                     }
+                   
+                    $(element[0]).next(".removeFromGroup").toggle();
+                    
+                 
                 });
 //                $(".contactName").on("swipeleft",function(){
 //                    if($(this).width()==530){
