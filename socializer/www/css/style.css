@@ -242,6 +242,27 @@ h1#createGroup{
     color: #69c394;
     margin-top:240px;
 }
+
+.fTotal{
+    margin-bottom:70px;
+    width:536px;
+    height: 62px;
+}
+.total{
+    margin-top:32px;
+    color: #69c394;
+}
+.WA{
+    color: #ff7058;
+}
+
+.SMS{
+    color: #feb5a8;
+}
+
+.Calls{
+    color:#ffd9d2;
+}
 #deviceName{
     font-family: Lato;
     font-size: 18px;
@@ -249,26 +270,40 @@ h1#createGroup{
     text-align: center;
 }
 #whatsAppIcon{
+    margin-left:-80px;
+    margin-top:30px;
+    float:left;
     background: url(images/whatsApp.png);
     width: 40px;
     height: 40px;
 }
 #smsIcon{
+    margin-left:-32px;
+    margin-top:30px;
+    float:left;
     background: url(images/sms.png);
     width: 44px;
     height: 40px;
 }
 #callIcon{
+    margin-left:-35px;
+    margin-top:30px;
+    float:left;
     background: url(images/calls.png);
     width: 40px;
     height: 39px;
 }
 
 #frequencyResult{
-    text-align: center;
-    font: 400 25px / 26px Lato;
+    float:left;
+    font: 400 21.21px / 26px Lato;
 }
 
+#result{
+    float:right;
+    font: 300 21.21px / 20px Lato;
+    color: #feb5a8;
+}
 
 #addGroup{
     width: 50px;
@@ -383,16 +418,17 @@ slider total
 */
 
 input[type=range].totalSlide {
-  -webkit-appearance: none;
-  width: 466px;
+    margin-top:28px;
+    float:right;
+    -webkit-appearance: none;
+    width: 466px;
   
 }
 input[type=range].totalSlide:focus {
-  outline: none;
+    outline: none;
 }
 input[type=range].totalSlide::-webkit-slider-runnable-track {
   width: 100%;
-    /*height: 7.9px;*/
   height: 4px;
   cursor: pointer;
   box-shadow: 1px 1px 3px #000000, 0px 0px 1px #0d0d0d;
@@ -472,6 +508,8 @@ input[type=range].totalSlide:focus::-ms-fill-upper {
 /*whatsapp slide*/
 
 input[type=range].whatsAppSlide {
+    float:right;
+    margin-top:28px;
   -webkit-appearance: none;
   width: 466px;
   
@@ -560,6 +598,8 @@ input[type=range].whatsAppSlide:focus::-ms-fill-upper {
 /*sms slide*/
 
 input[type=range].SMSSlide {
+    float:right;
+    margin-top:28px;
   -webkit-appearance: none;
   width: 466px;
   
@@ -647,8 +687,10 @@ input[type=range].SMSSlide:focus::-ms-fill-upper {
 
 /*calls slide*/
 input[type=range].CallsSlide {
-  -webkit-appearance: none;
-  width: 466px;
+    float:right;
+    margin-top:28px;
+    -webkit-appearance: none;
+    width: 466px;
   
 }
 input[type=range].CallsSlide:focus {
