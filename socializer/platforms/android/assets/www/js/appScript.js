@@ -18,6 +18,15 @@ var selectedContacts=[];
 
 function onReady() {
 
+    if(window._cordovaNative) {
+        var telephoneNumber = cordova.require("cordova/plugin/telephonenumber");
+        telephoneNumber.get(function(result) {
+            console.log("Sucess: " + result);
+        }, function(err) {
+            console.log("Error: " + err);
+        });
+    }
+
     // temp user data, this data need to be taken from user phone
     var userData = {
         key: "123123",
@@ -43,12 +52,6 @@ function onReady() {
 
 if(window._cordovaNative) {
     document.addEventListener("deviceready", onReady);
-    var telephoneNumber = cordova.require("cordova/plugin/telephonenumber");
-    telephoneNumber.get(function(result) {
-        console.log("Sucess: " + result);
-    }, function(err) {
-        console.log("Error: " + err);
-    });
     console.log("On cordova");
 } else {
     $(document).ready(onReady);

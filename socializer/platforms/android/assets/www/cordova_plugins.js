@@ -81,6 +81,13 @@ module.exports = [
         "merges": [
             "navigator.notification"
         ]
+    },
+    {
+        "file": "plugins/io.litehelpers.cordova.sqlite/www/SQLitePlugin.js",
+        "id": "io.litehelpers.cordova.sqlite.SQLitePlugin",
+        "clobbers": [
+            "SQLitePlugin"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -88,7 +95,9 @@ module.exports.metadata =
 {
     "cordova-plugin-whitelist": "1.0.0",
     "cordova-plugin-contacts": "1.1.0",
-    "cordova-plugin-dialogs": "1.1.1"
+    "cordova-plugin-dialogs": "1.1.1",
+    "com.simonmacdonald.telephonenumber": "1.0.0",
+    "io.litehelpers.cordova.sqlite": "0.7.10-pre"
 }
 // BOTTOM OF METADATA
 });

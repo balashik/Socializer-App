@@ -18,37 +18,40 @@ var selectedContacts=[];
 
 function onReady() {
 
+    if(window._cordovaNative) {
+        var telephoneNumber = cordova.require("cordova/plugin/telephonenumber");
+        telephoneNumber.get(function(result) {
+            console.log("Success: " + result);
+        }, function(err) {
+            console.log("Error: " + err);
+        });
+    }
+
     // temp user data, this data need to be taken from user phone
     var userData = {
         key: "123123",
         pn: "0543191901"
     }
 
-        //login request
-        $.ajax({
-            method: "POST",
-            url: "http://socializerapp.herokuapp.com/login",
-            contentType: "application/x-www-form-urlencoded",
-            data: userData,
-            dataType: "json",
-            success: function(data) {
-                if(data.result>0){
-                    initListPage();
-                    //initContactsPage();    
-                }
+    //login request
+    $.ajax({
+        method: "POST",
+        url: "http://socializerapp.herokuapp.com/login",
+        contentType: "application/x-www-form-urlencoded",
+        data: userData,
+        dataType: "json",
+        success: function(data) {
+            if(data.result>0){
+                initListPage();
+                //initContactsPage();    
             }
-        });
+        }
+    });
 
 }
 
 if(window._cordovaNative) {
     document.addEventListener("deviceready", onReady);
-    var telephoneNumber = cordova.require("cordova/plugin/telephonenumber");
-    telephoneNumber.get(function(result) {
-        console.log("Sucess: " + result);
-    }, function(err) {
-        console.log("Error: " + err);
-    });
     console.log("On cordova");
 } else {
     $(document).ready(onReady);

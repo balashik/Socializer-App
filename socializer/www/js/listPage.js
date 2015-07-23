@@ -24,88 +24,92 @@ function initListPage(){
         contentType: "application/x-www-form-urlencoded",
         dataType: "json",
         success: function(data) {
-                if(data.result>0){
-                    for(var i=0;i<data.data.length;i++){
-                        if(data.data[i].frequency.frequencyType==0){
-                            $(".wrapper").append("<div id='groupName'>"+data.data[i].name+"</div>");
-                            $(".wrapper").append("<div id='listContactDiv"+i+"' class='listContactDiv'></div>");
-                            for(var j=0;j<data.data[i].contacts.length;j++){
-    
-                                $("#listContactDiv"+i).append("<div id='"+data.data[i].contacts[j].id+"' class='contactName'>"+data.data[i].contacts[j].displayName+"<div id='freqStats'>"+"0/7 W"+"</div><div class='removeFromGroup'>Delete</div></div>");
-                                $(".removeFromGroup").css("display","none");
-                                
-                            }
-                            $("#listContactDiv"+i).append("<div class='clear'></div>");
-                           
+            if(data.result>0){
+                for(var i=0;i<data.data.length;i++){
+                    if(data.data[i].frequency.frequencyType==0){
+                        $(".wrapper").append("<div id='groupName'>"+data.data[i].name+"</div>");
+                        $(".wrapper").append("<div id='listContactDiv"+i+"' class='listContactDiv'></div>");
+                        for(var j=0;j<data.data[i].contacts.length;j++){
+
+                            $("#listContactDiv"+i).append("<div id='"+data.data[i].contacts[j].id+"' class='contactName'>"+data.data[i].contacts[j].displayName+"<div id='freqStats'>"+"0/7 W"+"</div><div class='removeFromGroup'>Delete</div></div>");
+                            $(".removeFromGroup").css("display","none");
+                            
                         }
-                        
+                        $("#listContactDiv"+i).append("<div class='clear'></div>");
+                       
                     }
-                    for(var i=0;i<data.data.length;i++){
-                        if(data.data[i].frequency.frequencyType==1){
-                            $(".wrapper").append("<div id='groupName'>"+data.data[i].name+"</div>");
-                            $(".wrapper").append("<div id='listContactDiv"+i+"' class='listContactDiv'></div>");
-                            for(var j=0;j<data.data[i].contacts.length;j++){
-    
-                                $("#listContactDiv"+i).append("<div id='"+data.data[i].contacts[j].displayName+"' class='contactName'>"+data.data[i].contacts[j].displayName+"<div id='freqStats'>"+"0/7 2W"+"</div></div><div class='removeFromGroup'>Delete</div>");
-                                $(".removeFromGroup").css("display","none");
-                            }
-                            $("#listContactDiv"+i).append("<div class='clear'></div>");
+                    
+                }
+                for(var i=0;i<data.data.length;i++){
+                    if(data.data[i].frequency.frequencyType==1){
+                        $(".wrapper").append("<div id='groupName'>"+data.data[i].name+"</div>");
+                        $(".wrapper").append("<div id='listContactDiv"+i+"' class='listContactDiv'></div>");
+                        for(var j=0;j<data.data[i].contacts.length;j++){
+
+                            $("#listContactDiv"+i).append("<div id='"+data.data[i].contacts[j].displayName+"' class='contactName'>"+data.data[i].contacts[j].displayName+"<div id='freqStats'>"+"0/7 2W"+"</div></div><div class='removeFromGroup'>Delete</div>");
+                            $(".removeFromGroup").css("display","none");
                         }
-                    }
-                    for(var i=0;i<data.data.length;i++){
-                        if(data.data[i].frequency.frequencyType==2){
-                            $(".wrapper").append("<div id='groupName'>"+data.data[i].name+"</div>");
-                            $(".wrapper").append("<div id='listContactDiv"+i+"' class='listContactDiv'></div>");
-                            for(var j=0;j<data.data[i].contacts.length;j++){
-    
-                                $("#listContactDiv"+i).append("<div id='"+data.data[i].contacts[j].displayName+"' class='contactName'>"+data.data[i].contacts[j].displayName+"<div id='freqStats'>"+"0/7 M"+"</div><div class='removeFromGroup'>Delete</div></div>");
-                                $(".removeFromGroup").css("display","none");
-                            }
-                            $("#listContactDiv"+i).append("<div class='clear'></div>");
-                        }
+                        $("#listContactDiv"+i).append("<div class='clear'></div>");
                     }
                 }
-                var element = document.getElementsByClassName('contactName');
-                var swipeLeftEvent= new Hammer(element[0]);
-                swipeLeftEvent.on("swipeleft",function(){
-                    console.log("swipe created");
-                    if($(element[0]).width()==530){
-                        $(element[0]).width(402);
-                    }else{
-                        $(element[0]).width(530)
+                for(var i=0;i<data.data.length;i++){
+                    if(data.data[i].frequency.frequencyType==2){
+                        $(".wrapper").append("<div id='groupName'>"+data.data[i].name+"</div>");
+                        $(".wrapper").append("<div id='listContactDiv"+i+"' class='listContactDiv'></div>");
+                        for(var j=0;j<data.data[i].contacts.length;j++){
+
+                            $("#listContactDiv"+i).append("<div id='"+data.data[i].contacts[j].displayName+"' class='contactName'>"+data.data[i].contacts[j].displayName+"<div id='freqStats'>"+"0/7 M"+"</div><div class='removeFromGroup'>Delete</div></div>");
+                            $(".removeFromGroup").css("display","none");
+                        }
+                        $("#listContactDiv"+i).append("<div class='clear'></div>");
                     }
-                   
-                    $(element[0]).next(".removeFromGroup").toggle();
-                    
-                 
-                });
-                $(".contactName").click(function(){
-                    
-                    
-                    $(this).animate({
-                            
-                            height: "369px"
-                    }, 1000, function() {
-                        $(this).click(function(){
-                            $(this).animate({
-                               height: "25px" 
-                            },1000,function(){
-                            
-                            });
+                }
+            }
+            var element = document.getElementsByClassName('contactName');
+            var swipeLeftEvent= new Hammer(element[0]);
+            swipeLeftEvent.on("swipeleft",function(){
+                console.log("swipe created");
+                if($(element[0]).width()==530){
+                    $(element[0]).width(402);
+                }else{
+                    $(element[0]).width(530)
+                }
+               
+                $(element[0]).next(".removeFromGroup").toggle();
+                
+             
+            });
+
+            var contactClickFunction = function() {
+                $(this).animate({
+                        height: "369px"
+                }, animationTime /*Comes from loadinPage.js*/, "easeOutQuart", function() {
+                    $(this).click(function(){
+                        $(this).animate({
+                           height: "25px" 
+                        }, animationTime /*Comes from loadinPage.js*/, "easeOutQuart", function(){
+                        
                         });
+                        $(this).unbind("click");
+                        $(this).click(contactClickFunction);
                     });
                 });
+                $(this).unbind("click");
             }
-        
-        });
+
+            $(".contactName").click(contactClickFunction);
+            PageLoaded();
+        }
+    });
     
     
     $("#statsView").click(function(){
         $("div").remove("#sortTitle");
         $("div").remove("#groupName");
         $("div").remove(".listContactDiv");
-        
-        initStatsPage();
+        LoadPage(function() {
+            initStatsPage();
+        });
         return;
     });
     
@@ -119,11 +123,8 @@ function initListPage(){
         $("div").remove("#groupName");
         $("div").remove(".listContactDiv");
         //initContactsPage
-        initContactsPage();
-    
-    
-    })
-        
-
-
+        LoadPage(function() {
+            initContactsPage();
+        });
+    });
 }

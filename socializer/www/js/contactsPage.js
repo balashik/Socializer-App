@@ -123,10 +123,14 @@ var buildPage = function(data) {
         newGroup.contacts = selectedContacts;
         
         //moving into createGroupPage
-        clearContactPage();
-        //initializing createGroupPage
-        initCreateGroupPage();
+        LoadPage(function() {
+            clearContactPage();
+            //initializing createGroupPage
+            initCreateGroupPage();
+        })
+        
         
         return;
     });
+    PageLoaded();
 }

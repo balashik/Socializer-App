@@ -11,12 +11,24 @@
 </head>
     
 <body>
+
+    <div id="loadingContainer" disabled="disabled">
+        <div>
+            <div id="loadingWrapper"></div>
+            <div>
+                <div id="loadingMediaDiv">
+                    <h1>Loading</h1>
+                    <cavnas id="spinny" width="200" height="200"></cavnas>
+                </div>
+            </div>
+        </div>
+    </div>
     
     <div class="wrapper">
         <header>
             <!--<div id='logo'></div>-->
-            <ul><li><a id = 'topLinkL'></a></li></ul>
-            <ul><li><a id = 'topLinkR'></a></li></ul>
+            <ul><li><a id='topLinkL'></a></li></ul>
+            <ul><li><a id='topLinkR'></a></li></ul>
         </header>
     
     </div>
@@ -30,6 +42,7 @@
 	<script type="text/javascript" charset="utf-8" src="js/lib/jquery-migrate-1.2.1.min.js"></script>
     <script type="text/javascript" charset="utf-8" src="js/lib/jquery-ui.js"></script>
     <script type="text/javascript" charset="utf-8" src='js/lib/hammer.min.js'></script>
+    <script type="text/javascript" charset="utf-8" src="js/loadingPage.js"></script>
 
     <script type="text/javascript" charset="utf-8" src="js/cordovaAdditions.js"></script>
 	<script type="text/javascript" charset="utf-8" src="js/listPage.js"></script>
@@ -37,6 +50,7 @@
 	<script type="text/javascript" charset="utf-8" src="js/createFrequencyPage.js"></script>
 	<script type="text/javascript" charset="utf-8" src="js/contactsPage.js"></script>
 	<script type="text/javascript" charset="utf-8" src="js/createGroupPage.js"></script>
+    
     <script type="text/javascript" charset="utf-8" src="js/appScript.js"></script>
     
 </body>

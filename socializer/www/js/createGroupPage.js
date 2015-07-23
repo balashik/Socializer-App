@@ -49,8 +49,10 @@ function initCreateGroupPage(){
     //frequency page
     $("#createFrequency").click(function(){
         //go to creating frequency page
-        clearCreateGroupPage();                                
-        initCreateFrequencyPage();
+        LoadPage(function() {
+            clearCreateGroupPage();                                
+            initCreateFrequencyPage();
+        });
         return;
     });
     $(".snoozer").click(function(){
@@ -81,13 +83,13 @@ function initCreateGroupPage(){
             dataType: "json",
             success: function(data) {
                 console.log(data);
-                //move to groups list page    
-                clearCreateGroupPage();
-                initListPage();
-        
+                //move to groups list page  
+                LoadPage(function() {
+                    clearCreateGroupPage();
+                    initListPage();
+                }); 
             }
         });
-        
         
         return;
                                     
@@ -99,6 +101,8 @@ function initCreateGroupPage(){
         initContactsPage();
         return;
     });
+
+    PageLoaded();
 
 }
 

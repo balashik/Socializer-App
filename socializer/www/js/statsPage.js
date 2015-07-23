@@ -17,7 +17,10 @@ function initStatsPage(){
         $("div").remove("#statsView");
         $("nav").remove("#selectViewNav");
         $("nav").remove("#newFrequencyNav");
-        initListPage();
+        LoadPage(function() {
+            initListPage();
+        });
         return;
     });
+    PageLoaded();
 }
