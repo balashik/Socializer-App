@@ -384,15 +384,16 @@ slider total
 
 input[type=range].totalSlide {
   -webkit-appearance: none;
-  width: 100%;
-  margin: 10.05px 0;
+  width: 466px;
+  
 }
 input[type=range].totalSlide:focus {
   outline: none;
 }
 input[type=range].totalSlide::-webkit-slider-runnable-track {
   width: 100%;
-  height: 7.9px;
+    /*height: 7.9px;*/
+  height: 4px;
   cursor: pointer;
   box-shadow: 1px 1px 3px #000000, 0px 0px 1px #0d0d0d;
   background: #7cc69e;
@@ -472,15 +473,15 @@ input[type=range].totalSlide:focus::-ms-fill-upper {
 
 input[type=range].whatsAppSlide {
   -webkit-appearance: none;
-  width: 100%;
-  margin: 10.05px 0;
+  width: 466px;
+  
 }
 input[type=range].whatsAppSlide:focus {
   outline: none;
 }
 input[type=range].whatsAppSlide::-webkit-slider-runnable-track {
   width: 100%;
-  height: 7.9px;
+  height: 4px;
   cursor: pointer;
   box-shadow: 1px 1px 3px #000000, 0px 0px 1px #0d0d0d;
   background: #ff6f57;
@@ -560,15 +561,15 @@ input[type=range].whatsAppSlide:focus::-ms-fill-upper {
 
 input[type=range].SMSSlide {
   -webkit-appearance: none;
-  width: 100%;
-  margin: 10.05px 0;
+  width: 466px;
+  
 }
 input[type=range].SMSSlide:focus {
   outline: none;
 }
 input[type=range].SMSSlide::-webkit-slider-runnable-track {
   width: 100%;
-  height: 7.9px;
+  height: 4px;
   cursor: pointer;
   box-shadow: 1px 1px 3px #000000, 0px 0px 1px #0d0d0d;
   background: #f8a99c;
@@ -647,15 +648,15 @@ input[type=range].SMSSlide:focus::-ms-fill-upper {
 /*calls slide*/
 input[type=range].CallsSlide {
   -webkit-appearance: none;
-  width: 100%;
-  margin: 10.05px 0;
+  width: 466px;
+  
 }
 input[type=range].CallsSlide:focus {
   outline: none;
 }
 input[type=range].CallsSlide::-webkit-slider-runnable-track {
   width: 100%;
-  height: 7.9px;
+  height: 4px;
   cursor: pointer;
   box-shadow: 1px 1px 3px #000000, 0px 0px 1px #0d0d0d;
   background: #fcd7d2;

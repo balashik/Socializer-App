@@ -21,9 +21,9 @@ function initCreateFrequencyPage(){
    $(".wrapper").append("<nav id='newFrequencyNav'></nav>");
     $("#newFrequencyNav").append("<ul><li><a>Weekly</a></li><li><a>Biweekly</a></li><li><a>Monthly</a></li></ul>");
     $(".wrapper").append("<div id='frequencySelect'></div>");
-    var whatsAppSlider = $("<input type='range'min='0' max='700' step='10' value='0' name='frequency' class='whatsAppSlide'></input>");
-    var smsSlider = $("<input type='range'min='0' max='700' step='10' value='0' name='frequency' class='SMSSlide'></input>");
-    var callsSlider = $("<input type='range'min='0' max='700' step='10' value='0' name='frequency' class='CallsSlide' onChange='changeCValue(this.value)'></input>");
+    var whatsAppSlider = $("<div class='fWhatsApp'><input type='range'min='0' max='700' step='10' value='0' name='frequency' class='whatsAppSlide'></input></div>");
+    var smsSlider = $("<div class='fSMS'><input type='range'min='0' max='700' step='10' value='0' name='frequency' class='SMSSlide'></input></div>");
+    var callsSlider = $("<div class='fCalls'><input type='range'min='0' max='700' step='10' value='0' name='frequency' class='CallsSlide' onChange='changeCValue(this.value)'></input></div>");
     whatsAppSlider.mousemove(function(e) {
         changeWAValue(this.value);
     });
@@ -33,19 +33,21 @@ function initCreateFrequencyPage(){
     callsSlider.mousemove(function(e) {
         changeCValue(this.value);
     });
+    
+    $("#frequencySelect").append("<div class='fTotal'><input type='range'min='0' max='21' step='1' value='0' name='frequency' class='totalSlide' disabled='disabled'></input></div>");
+    $(".fTotal").append("<div id='frequencyResult' class='t'></div>");
     $("#frequencySelect").append(whatsAppSlider);
     $("#frequencySelect").append(smsSlider);
     $("#frequencySelect").append(callsSlider);
-    $("#frequencySelect").append("<input type='range'min='0' max='21' step='1' value='0' name='frequency' class='totalSlide' disabled='disabled'></input>");
-    $(".whatsAppSlide , .SMSSlide , .CallsSlide , .totalSlide").css("width","540px");
+        
     $(".whatsAppSlide , .SMSSlide , .CallsSlide , .totalSlide").css("margin-top","100px");
-    $(".whatsAppSlide , .SMSSlide , .CallsSlide , .totalSlide").css("margin-left","50px");
+    //$(".whatsAppSlide , .SMSSlide , .CallsSlide , .totalSlide").css("margin-left","50px");
     $(".wrapper").append("<div id='frequencySummery'></div>");
     $("#frequencySummery").append("<h>Frequency summery</h>");
     $("#frequencySummery").append("<div id='device' class='w'><div id='whatsAppIcon'></div><div id='deviceName'>WhatsApp</div><div id='frequencyResult'>0 Times</div></div>");
     $("#frequencySummery").append("<div id='device' class='s'><div id='smsIcon'></div><div id='deviceName'>SMS</div><div id='frequencyResult'>  0 Times</div></div>");
     $("#frequencySummery").append("<div id='device' class='c'><div id='callIcon'></div><div id='deviceName'>Calls</div><div id='frequencyResult'>0 Times</div></div>");
-    $("#frequencySummery").append("<div id='frequencyResult' class='t'></div>");
+//    $("#frequencySummery").append("<div id='frequencyResult' class='t'></div>");
    
     $(".t").html("Total:0");
     changeWAValue = function (val){
