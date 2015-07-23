@@ -68,6 +68,7 @@ function initListPage(){
                 var element = document.getElementsByClassName('contactName');
                 var swipeLeftEvent= new Hammer(element[0]);
                 swipeLeftEvent.on("swipeleft",function(){
+                    console.log("swipe created");
                     if($(element[0]).width()==530){
                         $(element[0]).width(402);
                     }else{

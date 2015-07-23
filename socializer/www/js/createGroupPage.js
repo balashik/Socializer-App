@@ -22,7 +22,7 @@ function initCreateGroupPage(){
         var div = $("<div class='createGroupfriends' id='contact"+i+"'></div>");
         $("#friendsList").append(div);
         div.append("<div class='cancelImage'></div>");
-        div.append("<h>"+newGroup.contacts[i].name+"</h>");
+        div.append("<h>"+newGroup.contacts[i].displayName+"</h>");
         
     }
     
