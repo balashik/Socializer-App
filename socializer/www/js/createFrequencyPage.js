@@ -101,10 +101,14 @@ function initCreateFrequencyPage(){
         newFrequency.sms = smsf;
         newGroup.frequency = newFrequency;
         //moving back to createGroup Page
-        clearFrequencyPage();
-        initCreateGroupPage();
+        LoadPage(function() {
+            clearFrequencyPage();
+            initCreateGroupPage();
+        });
+        
         return;
     });
+    PageLoaded();
 }
 
 function clearFrequencyPage(){

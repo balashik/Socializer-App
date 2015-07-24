@@ -127,7 +127,7 @@ var buildPage = function(data) {
             clearContactPage();
             //initializing createGroupPage
             initCreateGroupPage();
-        })
+        });
         
         
         return;

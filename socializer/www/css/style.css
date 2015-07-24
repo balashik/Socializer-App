@@ -33,8 +33,12 @@ ul{
     left: 50%;
     top: 50%;
     transform: translate(-50%,-50%);
-    font: 400 33px / 25px Lato;
+}
+#loadingMediaDiv h1 {
+    font: 50px Lato;
     color: #ff7058;
+    margin-bottom: 50px;
+    text-align: center;
 }
 #loadingWrapper {
     float: left;
