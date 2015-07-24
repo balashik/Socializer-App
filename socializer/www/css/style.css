@@ -412,6 +412,26 @@ h1#createGroup{
     color: #252a3d;
     background-color: #ff7058;
 }
+.topStats{
+    height: 419px;
+}
+
+/*progress {
+    background-color: red;
+    border: 0;
+    height: 18px;
+    border-radius: 9px;
+}*/
+
+progress::-webkit-progress-bar {
+    width: 466px;
+    height: 4px;
+    background-color: #252a3d;
+}
+progress::-webkit-progress-value {
+    background-color: #ff7058;
+}
+
 .clear{
     clear:both;
 }
