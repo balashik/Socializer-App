@@ -12,9 +12,18 @@ function initStatsPage(){
     $(".wrapper").append("<div id='topStats'></div>");
     $("#topStats").append("<nav id='newFrequencyNav'></nav>");
     $("#newFrequencyNav").append("<ul><li><a>Weekly</a></li><li><a>Biweekly</a></li><li><a>Monthly</a></li></ul>");
-    $("#topStats").append("<div id='topStatsPrograssBar'></div>");
-    $("#topStatsPrograssBar").progressbar({
+    $("#topStats").append("<div class='fTotal'><h>Urgency</h><div id='result' class='totalResult'>30% completed</div><div id='frequencyResult' class='topSumStats'>High</div><div class='prograssBar'></div></div>");
+    $(".wrapper").append("<nav class='centerStatsNav'><ul><li>High</li><li>Medium</li><li>Low</li></ul></nav>");
+    
+
+    $(".prograssBar").progressbar({
         value:65
+    });
+    
+    $(".centerStatsNav > ul > li").click(function(){
+        $(this).addClass("selectedStatsVal");
+        console.log("sdadsd");
+    
     });
     
     $("#listView").click(function(){

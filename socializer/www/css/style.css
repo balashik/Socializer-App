@@ -265,6 +265,20 @@ h1#createGroup{
     width:536px;
     height: 62px;
 }
+
+.fTotal > h{
+    margin-top:-7px;
+    margin-left:15px;
+    float:left;
+    font: 300 25px Lato;
+    color:#feb5a8;
+}
+.topSumStats{
+    margin-left: -88px;
+    margin-top:40px;
+    color:#feb5a8;
+    
+}
 .total{
     margin-top:32px;
     color: #69c394;
@@ -415,22 +429,49 @@ h1#createGroup{
 .topStats{
     height: 419px;
 }
-
-/*progress {
-    background-color: red;
-    border: 0;
-    height: 18px;
-    border-radius: 9px;
-}*/
-
-progress::-webkit-progress-bar {
-    width: 466px;
+.prograssBar{
+    float:right;
+    margin-top:30px;
     height: 4px;
-    background-color: #252a3d;
+    width: 466px;
+    border:none;
+    background: #252a3d;
 }
-progress::-webkit-progress-value {
-    background-color: #ff7058;
+
+.prograssBar > div{
+    background: #ff7058;
+    border:1px solid #ff7058;
 }
+
+
+.centerStatsNav{
+    height: 92px;
+    border-top: 1px solid #1b2135;
+    border-bottom: 1px solid #1b2135;
+    background-color:#252a3d;
+
+}
+
+
+
+.centerStatsNav > ul > li{
+    border-left: 1px solid #1b2135;
+    border-right: 1px solid #1b2135;
+    padding-top:35px;
+    float:left;
+    text-align: center;
+    height: 57px;
+    width:210px;
+    font: 300 25px Lato;
+    color:rgba(254, 181, 168, 0.3);
+    
+}
+
+.selectedStatsVal{
+    background-color:#2a2e3e;
+    color:#feb5a8;
+}
+
 
 .clear{
     clear:both;
