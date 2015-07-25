@@ -88,6 +88,17 @@ module.exports = [
         "clobbers": [
             "SQLitePlugin"
         ]
+    },
+    {
+        "file": "plugins/com.ubookr.plugins.calllog/www/CallLog.js",
+        "id": "com.ubookr.plugins.calllog.CallLog",
+        "clobbers": [
+            "window.plugins.calllog"
+        ]
+    },
+    {
+        "file": "plugins/com.ubookr.plugins.calllog/test/tests.js",
+        "id": "com.ubookr.plugins.calllog.tests"
     }
 ];
 module.exports.metadata = 
@@ -97,7 +108,8 @@ module.exports.metadata =
     "cordova-plugin-contacts": "1.1.0",
     "cordova-plugin-dialogs": "1.1.1",
     "com.simonmacdonald.telephonenumber": "1.0.0",
-    "io.litehelpers.cordova.sqlite": "0.7.10-pre"
+    "io.litehelpers.cordova.sqlite": "0.7.10-pre",
+    "com.ubookr.plugins.calllog": "2.0"
 }
 // BOTTOM OF METADATA
 });

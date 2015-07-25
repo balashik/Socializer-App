@@ -15,6 +15,8 @@ function LoadingManager() {
 	var afterFadeIn = null;
 	var afterFadeOut = null;
 
+	var present = false
+
 	this.LoadPage = function(dependency) {
 		if(fadeInSemahpore) {
 			return;
@@ -26,6 +28,7 @@ function LoadingManager() {
 		}
 
 		fadeInSemahpore = true;
+		present = true;
 
 		spinny.Spin();
 		$("body").prepend(loadingContainer);
@@ -58,6 +61,8 @@ function LoadingManager() {
 				PageLoaded();
 			}
 			return;
+		} else if(!present) {
+			return;
 		}
 
 		fadeOutSemaphore = true;
@@ -76,6 +81,7 @@ function LoadingManager() {
 				afterFadeOut();
 				afterFadeOut = null;
 			}
+			present = false;
 		});
 
 		loadingMediaDiv.animate({

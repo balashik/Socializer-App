@@ -39,5 +39,14 @@
         },
         "is_top_level": true,
         "variables": {}
+    },
+    "com.ubookr.plugins.calllog": {
+        "source": {
+            "type": "git",
+            "url": "https://github.com/dalyc/Cordova-CallLog-Plugin",
+            "subdir": "."
+        },
+        "is_top_level": true,
+        "variables": {}
     }
 }
