@@ -107,9 +107,7 @@ function initListPage(){
         $("div").remove("#sortTitle");
         $("div").remove("#groupName");
         $("div").remove(".listContactDiv");
-        LoadPage(function() {
-            initStatsPage();
-        });
+        initStatsPage();
         return;
     });
     

@@ -30,7 +30,7 @@ if(window._cordovaNative) {
       				console.log("rowsAffected: " + res.rowsAffected);
 				});
 			});
-		}
+		},
 		read: function(field, callback) {
 			db.transaction(function(tx) {
 				tx.executeSql("SELECT data FROM main_table WHERE id = " + field, function(tx, res) {
@@ -45,7 +45,9 @@ if(window._cordovaNative) {
 		db.executeSql("pragma table_info (test_table);", [], function(res) {
 	      console.log("PRAGMA res: " + JSON.stringify(res));
 	    });
+		db.executeSql("SELECT data FROM main_table WHERE id = 'key'", function(tx, res) {
 
-	}
+		});
+	});
 
 }

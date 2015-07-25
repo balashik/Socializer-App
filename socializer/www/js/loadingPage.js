@@ -15,7 +15,7 @@ function LoadingManager() {
 	var afterFadeIn = null;
 	var afterFadeOut = null;
 
-	var present = false
+	var present = true;
 
 	this.LoadPage = function(dependency) {
 		if(fadeInSemahpore) {
