@@ -7,13 +7,21 @@ function initListPage(){
     $("#topLinkR").html("");
     $("#topLinkL").html("");
     $("#logo").html("");
-    $("#topLinkR").append("<div id='settings'></div>");
+    $("#topLinkR").append("<div class='settings'></div>");
     $("#topLinkL").append("<div id='addGroup'></div>");
     //body
     $(".wrapper").append("<nav id='selectViewNav'></nav>");
     $("#selectViewNav").append("<div id='listView'></div><div id='statsView'></div>");
     $("#listView").append("<div id='listImg'></div>");
     $("#statsView").append("<div id='statsImg'></div>");
+    //Settings Window
+    $(".wrapper").append("<div id='settingsWindow'></div>");
+    $("#settingsWindow").append("<div id='settingsTitle'><div class='settings' ></div><h>Settings</h></div>");
+    $("#settingsWindow").append("<div id='settingsBtn'><h>Notification & Sound</h></div>");
+    $("#settingsWindow").append("<div id='settingsBtn'><h>Frequency</h></div>");
+    $("#settingsWindow").append("<div id='settingsBtn'><h>Time Zone: Jerusalem</h></div>");
+    $("#settingsWindow").append("<div id='settingsBtn'><h>Week Start: Sunday</h></div>");
+    $("#settingsWindow").append("<div id='settingsBtn'><h>Reset Data</h></div>");
     
     //sort title
     $(".wrapper").append("<div id='sortTitle'></div>");
@@ -111,7 +119,17 @@ function initListPage(){
         return;
     });
     
-    
+    $(".settings").click(function(){
+        console.log("clicked");
+        $("#settingsWindow").toggle("slide",{direction:"right",easing :"easeOutQuart"},800,function(){
+//            $("#settings").click(function(){
+//                //$("#settingsWindow").toggle("slide",{direction:"right",easing :"easeOutQuart"},800);
+//                console.log("clicked");
+//            });
+                
+            
+        });
+    });
     $("#addGroup").click(function(){
         //clearing this page
         $("div").remove("#settings");

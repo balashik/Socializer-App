@@ -340,7 +340,7 @@ h1#createGroup{
     margin-left:20px;
     margin-top:16px;
 }
-#settings{
+.settings{
     width: 51px;
     height: 50px;
     background-image:url(images/settings.png);
@@ -453,8 +453,6 @@ h1#createGroup{
 
 }
 
-
-
 .centerStatsNav > ul > li{
     border-left: 1px solid #1b2135;
     border-right: 1px solid #1b2135;
@@ -497,9 +495,49 @@ h1#createGroup{
 }
 .contactBar{
     width: 512px;
+    
 }
 
+#settingsWindow{
+    
+    display: none;
+    position:absolute;
+    left:50%;
+    height: 100%;
+    top:0px;
+    background-color: #2a2e3e;
+    border-left:1px solid #1b2135;
+    width:328px;
+    z-index: 666;
+}
 
+#settingsTitle{
+    height: 84px;
+    border-bottom:1px solid #1b2135;
+    
+}
+#settingsBtn{
+    height: 62px;
+    border-bottom:1px solid #1b2135;
+}
+#settingsBtn > h{
+    font: 300 25px / 25px Lato;
+    text-align: center;
+    margin-top:30px;
+    color: rgba(255, 255, 254, 0.6);
+
+}
+#settingsTitle > h{
+    font: 300 35px / 25px Lato;
+    color:rgba(255, 255, 255, 0.6);
+    float:left;
+    margin-top:26px;
+    margin-left:105px;
+}
+#settingsTitle > .settings{
+    margin-top:16px;
+    float:right;
+}
 .clear{
     clear:both;
 }
