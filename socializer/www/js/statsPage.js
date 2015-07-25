@@ -22,7 +22,9 @@ function initStatsPage(){
     });
     
     $(".centerStatsNav > ul > li").click(function(){
+        $(".centerStatsNav > ul >li").removeClass("selectedStatsVal");
         $(this).addClass("selectedStatsVal");
+        $("div").remove(".wrapper > .fTotal");
         for(var i=0;i<10;i++){
             $(".wrapper").append("<div class='fTotal'><div id='contactStats' class='contact"+i+"'></div><div class='prograssBar contactBar' id='pBar"+i+"'></div></div>");
             $(".contact"+i).append("<h id='name'>dadNew</h><div id='rightStats'><div id='contactResult'>45%</div><h>completed</h><div>")

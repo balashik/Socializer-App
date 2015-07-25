@@ -83,11 +83,11 @@ function initListPage(){
             var contactClickFunction = function() {
                 $(this).animate({
                         height: "369px"
-                }, animationTime /*Comes from loadinPage.js*/, "easeOutQuart", function() {
+                }, loadingManager.animationTime /*Comes from loadinPage.js*/, "easeOutQuart", function() {
                     $(this).click(function(){
                         $(this).animate({
                            height: "25px" 
-                        }, animationTime /*Comes from loadinPage.js*/, "easeOutQuart", function(){
+                        }, LoadingManager.animationTime /*Comes from loadinPage.js*/, "easeOutQuart", function(){
                         
                         });
                         $(this).unbind("click");
