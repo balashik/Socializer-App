@@ -449,6 +449,7 @@ h1#createGroup{
     border-top: 1px solid #1b2135;
     border-bottom: 1px solid #1b2135;
     background-color:#252a3d;
+    margin-bottom:65px;
 
 }
 
@@ -468,8 +469,30 @@ h1#createGroup{
 }
 
 .selectedStatsVal{
-    background-color:#2a2e3e;
-    color:#feb5a8;
+    background-color: #33394c;
+    color:#feb5a8 !important;
+}
+
+#contactStats > #name{
+    float:left;
+    margin-top:20px;
+    margin-left:20px;
+    font: 300 25px / 25px Lato;
+    color: #feb5a8;
+}
+#rightStats{
+    float:right;
+}
+#rightStats > h{
+    font: 300 18px / 25px Lato;
+    color: #feb5a8;
+}
+#contactResult{
+    font: 300 35px / 25px Lato;
+    color: #feb5a8;
+}
+.contactBar{
+    width: 512px;
 }
 
 
