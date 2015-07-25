@@ -261,7 +261,7 @@ h1#createGroup{
     margin-top:240px;
 }
 .fTotal{
-    margin-bottom:70px;
+    padding-bottom:70px;
     width:536px;
     height: 62px;
 }
@@ -471,6 +471,10 @@ h1#createGroup{
 .selectedStatsVal{
     background-color: #33394c;
     color:#feb5a8 !important;
+}
+
+.selectedUnderline{
+    border-bottom:1px solid;
 }
 
 #contactStats > #name{
