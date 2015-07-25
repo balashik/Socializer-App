@@ -1,6 +1,7 @@
 function initStatsPage(){
     $("#topLinkL").unbind("click");
     $("#topLinkR").unbind("click");
+    $("#addGroup").unbind("click");
     $("#statsView").unbind("click");
     $("#listView").unbind("click");
     //body
@@ -34,12 +35,30 @@ function initStatsPage(){
     });
     
     $("#listView").click(function(){
-        $("div").remove("#listView");
-        $("div").remove("#statsView");
-        $("nav").remove("#selectViewNav");
-        $("nav").remove("#newFrequencyNav");
+        clearStatsPage();
         initListPage();
         return;
     });
     PageLoaded();
+    $("#addGroup").click(function(){
+        LoadPage(function(){
+            clearStatsPage();
+            initContactsPage();
+        });
+    });
+    
+}
+
+
+function clearStatsPage(){
+    $("div").remove("#listView");
+    $("div").remove("#statsView");
+    $("nav").remove("#selectViewNav");
+    $("nav").remove("#newFrequencyNav");
+    $("div").remove("#topStats");
+    $("nav").remove(".centerStatsNav");
+    $("div").remove(".fTotal");
+    
+    
+
 }
