@@ -10,7 +10,9 @@ function initCreateGroupPage(){
     $("#topLinkR").css("color","white");
     
     //body
-    $(".wrapper").css("background","#2a2e3e"); 
+    $(".wrapper").removeClass("blueBackground");
+    $(".wrapper").addClass("deepBlueBackground");
+    //$(".wrapper").css("background","#2a2e3e"); 
     $(".wrapper").append("<input type='text' name='groupname' placeholder='Group Name' id='createGroup' class='groupName'></input>");
     $(".wrapper").append("<div id='createFrequency'>frequency</div>");
     $(".wrapper").append(" <div id='createGroup' class='notifyMe'>⊕Add a Reminder</div>");

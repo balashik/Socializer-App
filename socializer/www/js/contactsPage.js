@@ -18,6 +18,8 @@ function initContactsPage(){
     $("#topLinkR").css("color","#feb5a8");
     
     //body
+    $(".wrapper").removeClass("deepBlueBackground");
+    $(".wrapper").addClass("blueBackground");
     $(".wrapper").append("<div id='search'><input type='text' name='search' placeholder='Search'></input></div>");
     
     

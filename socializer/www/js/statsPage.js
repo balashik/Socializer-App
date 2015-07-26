@@ -9,7 +9,8 @@ function initStatsPage(){
     $("#listView").unbind("click");
     //body
     
-    $("#statsView").css("background-color","#33394c");
+    
+    $("#statsView").addClass("deepBlueBackground");
     $("#listView").css("background-color","#252a3d");
     $("#statsImg").css("background-image","url(./css/images/stats.png)");
     $("#listImg").css("background-image","url(./css/images/list.png)");

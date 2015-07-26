@@ -10,6 +10,7 @@ function initListPage(){
     $("#topLinkR").append("<div class='settings'></div>");
     $("#topLinkL").append("<div id='addGroup'></div>");
     //body
+    $(".wrapper").addClass("deepBlueBackground");
     $(".wrapper").append("<nav id='selectViewNav'></nav>");
     $("#selectViewNav").append("<div id='listView'></div><div id='statsView'></div>");
     $("#listView").append("<div id='listImg'></div>");
