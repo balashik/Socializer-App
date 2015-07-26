@@ -76,7 +76,7 @@ header{
 	height:84px;
 	border-bottom: thin solid;
     border-color: #1b2135;
-    background-color:#33394c;
+    background-color:#2a2e3e;
 }
 #logo{
     
@@ -350,7 +350,7 @@ h1#createGroup{
 #selectViewNav{
     
     height: 92px;
-    background-color:#33394c;
+    background-color:#2a2e3e;
     border-bottom-color: #1b2135;
     border-bottom-style: solid;
     border-bottom-width: 1px;
@@ -382,7 +382,7 @@ h1#createGroup{
 }
 #sortTitle{
     height: 46px;
-    background-color:#33394c;
+    background-color:#2a2e3e;
     border-bottom-color: #1b2135;
     border-bottom-style: solid;
     border-bottom-width: 1px;
@@ -401,7 +401,7 @@ h1#createGroup{
     border-bottom-width: 1px;
 }
 .listContactDiv{
-    background-color:#33394c;
+    background-color:#2a2e3e;
 }
 .contactName{
     padding-bottom: 35px;
@@ -467,7 +467,7 @@ h1#createGroup{
 }
 
 .selectedStatsVal{
-    background-color: #33394c;
+    background-color: #2a2e3e;
     color:#feb5a8 !important;
 }
 
@@ -538,6 +538,13 @@ h1#createGroup{
     margin-top:16px;
     float:right;
 }
+.deepBlueBackground{
+    background-color:#2a2e3e !important;
+}
+.blueBackground{
+    background-color:#33394c !important;
+}
+
 .clear{
     clear:both;
 }

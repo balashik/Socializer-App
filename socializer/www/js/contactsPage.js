@@ -35,10 +35,12 @@ function initContactsPage(){
         }
         for(var i=0;i<titleArraySearch.length;i++){
             //console.log($(titleArraySearch[i]).text());
-            if($(this).val()[0].toUpperCase()==$(titleArraySearch[i]).text()){
-                $(titleArraySearch[i]).css("display","block");
-            }else{
-                $(titleArraySearch[i]).css("display","none");
+            if($(this).val() != null) {
+                if($(this).val()[0].toUpperCase()==$(titleArraySearch[i]).text()){
+                    $(titleArraySearch[i]).css("display","block");
+                }else{
+                    $(titleArraySearch[i]).css("display","none");
+                }
             }
         }
 
