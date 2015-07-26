@@ -4,14 +4,10 @@ function initContactsPage(){
     $("#topLinkR").unbind("click");
     
     //header
-    //$(".wrapper").append("<header></header");
     $("header").append("<div id='logo'></div>");
-    //$("header").append("<ul><li><a id = 'topLinkL'></a></li></ul>");
-    //$("header").append("<ul><li><a id = 'topLinkR'></a></li></ul>");
-    
-    
     $("#logo").html("Your Contacts");
-    $("#topLinkR").html("Choose");
+    //$("#topLinkR").html("Choose");
+    $("#topLinkR").html("<div>Choose</div>");
     $("#topLinkL").html("");
     $("#logo").css("color","#feb5a8");
     $("#topLinkL").css("color","#feb5a8");
@@ -139,7 +135,7 @@ var buildPage = function(data) {
             }
         }
         selectedContacts.push(data[($(this).attr("id"))]);
-        $("#topLinkR").html("Next");
+        $("#topLinkR").html("<div>Next</div>");
         $(this).css("background", "#2a2e3e");
     });
     

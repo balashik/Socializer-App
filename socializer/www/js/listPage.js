@@ -133,8 +133,8 @@ function initListPage(){
     });
     $("#addGroup").click(function(){
         //clearing this page
-        $("div").remove("#settings");
-        $("div").remove("#addGroup");
+        //$("div").remove("#settings");
+        //$("div").remove("#addGroup");
         $("nav").remove("#selectViewNav");
         $("div").remove("#sortTitle");
         $("div").remove("#groupName");
