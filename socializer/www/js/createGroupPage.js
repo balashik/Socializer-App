@@ -3,7 +3,7 @@ function initCreateGroupPage(){
     $("#topLinkL").unbind("click");
     $("#topLinkR").unbind("click");
     //header
-    $("#topLinkL").html("Back");
+    $("#topLinkL").html("<div>Back</div>");
     $("#logo").html("New Group");
     $("#logo").css("color","white");
     $("#topLinkL").css("color","white");

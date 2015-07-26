@@ -140,19 +140,21 @@ var buildPage = function(data) {
     });
     
     //moving to create group page
-    $("#topLinkR").click(function(){
-        //moving all contacts selected into new group contacts
-        newGroup.contacts = selectedContacts;
-        
-        //moving into createGroupPage
-        LoadPage(function() {
-            clearContactPage();
-            //initializing createGroupPage
-            initCreateGroupPage();
+        $("#topLinkR").click(function(){
+            console.log(contactsLetters.length+ " this");
+            //moving all contacts selected into new group contacts
+            newGroup.contacts = selectedContacts;
+
+            //moving into createGroupPage
+            LoadPage(function() {
+                clearContactPage();
+                //initializing createGroupPage
+                initCreateGroupPage();
+            });
+
+
+            return;
         });
-        
-        
-        return;
-    });
-    PageLoaded();
+        PageLoaded();
+    }
 }
