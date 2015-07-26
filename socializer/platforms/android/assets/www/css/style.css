@@ -4,7 +4,6 @@
 	margin:0 auto;
 	display:block;
 }
-
 html, body { height:100%; }
 
 ul li a{
@@ -12,16 +11,45 @@ ul li a{
 }
 ul{
     padding:0px;
-
 }
-
 .wrapper{
     width:640px;
     min-height:100%;
     background-color: #33394c;
-	
 }
-
+#loadingContainer {
+    position: absolute;
+    left: 50%;
+    height: 100%;
+    z-index: 9999;
+}
+#loadingContainer > div {
+    position: relative;
+    left: -50%;
+    height: 100%;
+}
+#loadingMediaDiv {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+}
+#loadingMediaDiv h1 {
+    font: 50px Lato;
+    color: #ff7058;
+    margin-bottom: 50px;
+    text-align: center;
+}
+#loadingWrapper {
+    float: left;
+    width: 640px;
+    height: 100%;
+    background-color: #444a5d;
+}
+#loadingWrapper + div {
+    width: 640px;
+    height: 100%;
+}
 a#topLinkR{
     font-family: Lato;
     font-size:29px;
@@ -29,28 +57,27 @@ a#topLinkR{
     font-weight: 300;
     float:right;
 }
-
+a#topLinkR{
+    font-family: Lato;
+    font-size:29px;
+    color: #feb5a8;
+    font-weight: 300;
+    float:right;
+}
 a#topLinkL{
     font-family: Lato;
     font-size:29px;
     color: #feb5a8;
     font-weight: 300;
     float:left;
-    
-    
 }
-
-
-
 header{
     width:100%;
 	height:84px;
 	border-bottom: thin solid;
     border-color: #1b2135;
     background-color:#33394c;
-	
 }
-
 #logo{
     
     text-align: center;
@@ -110,22 +137,15 @@ header{
     margin-top:46px;
 }
 div#createGroup{
-    
     color: rgba(254, 181, 168, 0.35);
 }
-
-
 h1#createGroup{
     background-color:#2a2e3e;
 }
-
-
 #friendsList{
     height: 181px;
     background-color:#33394c;
 }
-
-
 .createGroupfriends{
     position:relative;
     border-color: #ffc5bb;
@@ -173,8 +193,6 @@ h1#createGroup{
 #contacts{
     height: 84%;
 }
-
-
 .contactDiv{
 	height:13.2%;
 	border-bottom:solid;
@@ -242,6 +260,40 @@ h1#createGroup{
     color: #69c394;
     margin-top:240px;
 }
+.fTotal{
+    padding-bottom:70px;
+    width:536px;
+    height: 62px;
+}
+
+.fTotal > h{
+    margin-top:-7px;
+    margin-left:15px;
+    float:left;
+    font: 300 25px Lato;
+    color:#feb5a8;
+}
+.topSumStats{
+    margin-left: -88px;
+    margin-top:40px;
+    color:#feb5a8;
+    
+}
+.total{
+    margin-top:32px;
+    color: #69c394;
+}
+.WA{
+    color: #ff7058;
+}
+
+.SMS{
+    color: #feb5a8;
+}
+
+.Calls{
+    color:#ffd9d2;
+}
 #deviceName{
     font-family: Lato;
     font-size: 18px;
@@ -249,27 +301,38 @@ h1#createGroup{
     text-align: center;
 }
 #whatsAppIcon{
+    margin-left:-80px;
+    margin-top:30px;
+    float:left;
     background: url(images/whatsApp.png);
     width: 40px;
     height: 40px;
 }
 #smsIcon{
+    margin-left:-32px;
+    margin-top:30px;
+    float:left;
     background: url(images/sms.png);
     width: 44px;
     height: 40px;
 }
 #callIcon{
+    margin-left:-35px;
+    margin-top:30px;
+    float:left;
     background: url(images/calls.png);
     width: 40px;
     height: 39px;
 }
-
 #frequencyResult{
-    text-align: center;
-    font: 400 25px / 26px Lato;
+    float:left;
+    font: 400 21.21px / 26px Lato;
 }
-
-
+#result{
+    float:right;
+    font: 300 21.21px / 20px Lato;
+    color: #feb5a8;
+}
 #addGroup{
     width: 50px;
     height: 50px;
@@ -277,15 +340,13 @@ h1#createGroup{
     margin-left:20px;
     margin-top:16px;
 }
-
-#settings{
+.settings{
     width: 51px;
     height: 50px;
     background-image:url(images/settings.png);
     margin-top:16px;
     margin-right:20px;
 }
-
 #selectViewNav{
     
     height: 92px;
@@ -294,7 +355,6 @@ h1#createGroup{
     border-bottom-style: solid;
     border-bottom-width: 1px;
 }
-
 #listView{
     float:left;
     width: 320px;
@@ -307,7 +367,6 @@ h1#createGroup{
     height: 92px;
     background-color: #252a3d;
 }
-
 #listImg{
     margin-top:17px;
     width: 39px;
@@ -321,7 +380,6 @@ h1#createGroup{
     height: 38px;
     background-image: url(images/stats2.png);
 }
-
 #sortTitle{
     height: 46px;
     background-color:#33394c;
@@ -329,7 +387,6 @@ h1#createGroup{
     border-bottom-style: solid;
     border-bottom-width: 1px;
 }
-
 #groupName{
     background-color: #252a3d;
     /*margin-left:17px;
@@ -343,13 +400,9 @@ h1#createGroup{
     border-bottom-style: solid;
     border-bottom-width: 1px;
 }
-
 .listContactDiv{
     background-color:#33394c;
-    
-    
 }
-
 .contactName{
     padding-bottom: 35px;
     padding-top:28px;
@@ -365,7 +418,6 @@ h1#createGroup{
     font: 300 33px / 25px Lato;
     color: #ff7058;
 }
-
 .removeFromGroup{
     float:right;
     width:128px;
@@ -373,6 +425,118 @@ h1#createGroup{
     font: 400 35px / 25px Lato;
     color: #252a3d;
     background-color: #ff7058;
+}
+.topStats{
+    height: 419px;
+}
+.prograssBar{
+    float:right;
+    margin-top:30px;
+    height: 4px;
+    width: 466px;
+    border:none;
+    background: #252a3d;
+}
+
+.prograssBar > div{
+    background: #ff7058;
+    border:1px solid #ff7058;
+}
+
+
+.centerStatsNav{
+    height: 92px;
+    border-top: 1px solid #1b2135;
+    border-bottom: 1px solid #1b2135;
+    background-color:#252a3d;
+    margin-bottom:65px;
+
+}
+
+.centerStatsNav > ul > li{
+    border-left: 1px solid #1b2135;
+    border-right: 1px solid #1b2135;
+    padding-top:35px;
+    float:left;
+    text-align: center;
+    height: 57px;
+    width:210px;
+    font: 300 25px Lato;
+    color:rgba(254, 181, 168, 0.3);
+    
+}
+
+.selectedStatsVal{
+    background-color: #33394c;
+    color:#feb5a8 !important;
+}
+
+.selectedUnderline{
+    border-bottom:1px solid;
+}
+
+#contactStats > #name{
+    float:left;
+    margin-top:20px;
+    margin-left:20px;
+    font: 300 25px / 25px Lato;
+    color: #feb5a8;
+}
+#rightStats{
+    float:right;
+}
+#rightStats > h{
+    font: 300 18px / 25px Lato;
+    color: #feb5a8;
+}
+#contactResult{
+    font: 300 35px / 25px Lato;
+    color: #feb5a8;
+}
+.contactBar{
+    width: 512px;
+    
+}
+
+#settingsWindow{
+    
+    display: none;
+    position:absolute;
+    left:50%;
+    height: 100%;
+    top:0px;
+    background-color: #2a2e3e;
+    border-left:1px solid #1b2135;
+    width:328px;
+    z-index: 666;
+}
+
+#settingsTitle{
+    height: 84px;
+    border-bottom:1px solid #1b2135;
+    
+}
+#settingsBtn{
+    height: 62px;
+    border-bottom:1px solid #1b2135;
+}
+#settingsBtn > h{
+    font: 300 25px / 25px Lato;
+    text-align: center;
+    margin-top:30px;
+    color: rgba(255, 255, 254, 0.6);
+
+}
+#settingsTitle > h{
+    font: 300 35px / 25px Lato;
+    color:rgba(255, 255, 255, 0.6);
+    float:left;
+    margin-top:26px;
+    margin-left:105px;
+}
+#settingsTitle > .settings{
+    margin-top:16px;
+    float:right;
 }
 .clear{
     clear:both;
@@ -383,16 +547,18 @@ slider total
 */
 
 input[type=range].totalSlide {
-  -webkit-appearance: none;
-  width: 100%;
-  margin: 10.05px 0;
+    margin-top:28px;
+    float:right;
+    -webkit-appearance: none;
+    width: 466px;
+  
 }
 input[type=range].totalSlide:focus {
-  outline: none;
+    outline: none;
 }
 input[type=range].totalSlide::-webkit-slider-runnable-track {
   width: 100%;
-  height: 7.9px;
+  height: 4px;
   cursor: pointer;
   box-shadow: 1px 1px 3px #000000, 0px 0px 1px #0d0d0d;
   background: #7cc69e;
@@ -471,16 +637,18 @@ input[type=range].totalSlide:focus::-ms-fill-upper {
 /*whatsapp slide*/
 
 input[type=range].whatsAppSlide {
+  float:right;
+  margin-top:28px;
   -webkit-appearance: none;
-  width: 100%;
-  margin: 10.05px 0;
+  width: 466px;
+  
 }
 input[type=range].whatsAppSlide:focus {
   outline: none;
 }
 input[type=range].whatsAppSlide::-webkit-slider-runnable-track {
   width: 100%;
-  height: 7.9px;
+  height: 4px;
   cursor: pointer;
   box-shadow: 1px 1px 3px #000000, 0px 0px 1px #0d0d0d;
   background: #ff6f57;
@@ -559,16 +727,17 @@ input[type=range].whatsAppSlide:focus::-ms-fill-upper {
 /*sms slide*/
 
 input[type=range].SMSSlide {
+    float:right;
+    margin-top:28px;
   -webkit-appearance: none;
-  width: 100%;
-  margin: 10.05px 0;
+  width: 466px;
 }
 input[type=range].SMSSlide:focus {
   outline: none;
 }
 input[type=range].SMSSlide::-webkit-slider-runnable-track {
   width: 100%;
-  height: 7.9px;
+  height: 4px;
   cursor: pointer;
   box-shadow: 1px 1px 3px #000000, 0px 0px 1px #0d0d0d;
   background: #f8a99c;
@@ -646,16 +815,17 @@ input[type=range].SMSSlide:focus::-ms-fill-upper {
 
 /*calls slide*/
 input[type=range].CallsSlide {
-  -webkit-appearance: none;
-  width: 100%;
-  margin: 10.05px 0;
+    float:right;
+    margin-top:28px;
+    -webkit-appearance: none;
+    width: 466px;
 }
 input[type=range].CallsSlide:focus {
   outline: none;
 }
 input[type=range].CallsSlide::-webkit-slider-runnable-track {
   width: 100%;
-  height: 7.9px;
+  height: 4px;
   cursor: pointer;
   box-shadow: 1px 1px 3px #000000, 0px 0px 1px #0d0d0d;
   background: #fcd7d2;
@@ -730,7 +900,6 @@ input[type=range].CallsSlide:focus::-ms-fill-lower {
 input[type=range].CallsSlide:focus::-ms-fill-upper {
   background: #fcd7d2;
 }
-
 .sliders{
     margin-top:50px;
 }

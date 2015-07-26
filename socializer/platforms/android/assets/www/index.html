@@ -11,25 +11,42 @@
 </head>
     
 <body>
+
+    <div id="loadingContainer" disabled="disabled">
+        <div>
+            <div id="loadingWrapper"></div>
+            <div>
+                <div id="loadingMediaDiv">
+                    <h1>Loading</h1>
+                    <canvas id="spinny" width="210" height="210"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
     
     <div class="wrapper">
         <header>
             <!--<div id='logo'></div>-->
-            <ul><li><a id = 'topLinkL'></a></li></ul>
-            <ul><li><a id = 'topLinkR'></a></li></ul>
+            <ul><li><a id='topLinkL'></a></li></ul>
+            <ul><li><a id='topLinkR'></a></li></ul>
         </header>
     
     </div>
-    
+    <link rel="stylesheet" type="text/css" href="js/lib/jquery-ui-1.11.4/jquery-ui.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
+    
+    
 
     <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
-    <script type="text/javascript" charset="utf-8" src="js/lib/telephonenumber.js"></script>
 
     <script type="text/javascript" charset="utf-8" src="js/lib/jquery-1.11.3.min.js"></script>
 	<script type="text/javascript" charset="utf-8" src="js/lib/jquery-migrate-1.2.1.min.js"></script>
-    <script type="text/javascript" charset="utf-8" src="js/lib/jquery-ui.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/lib/jquery-ui-1.11.4/jquery-ui.min.js"></script>
     <script type="text/javascript" charset="utf-8" src='js/lib/hammer.min.js'></script>
+
+    <script type="text/javascript" charset="utf-8" src="js/spinny.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/loadingPage.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/networking.js"></script>
 
     <script type="text/javascript" charset="utf-8" src="js/cordovaAdditions.js"></script>
 	<script type="text/javascript" charset="utf-8" src="js/listPage.js"></script>
@@ -37,6 +54,7 @@
 	<script type="text/javascript" charset="utf-8" src="js/createFrequencyPage.js"></script>
 	<script type="text/javascript" charset="utf-8" src="js/contactsPage.js"></script>
 	<script type="text/javascript" charset="utf-8" src="js/createGroupPage.js"></script>
+    
     <script type="text/javascript" charset="utf-8" src="js/appScript.js"></script>
     
 </body>

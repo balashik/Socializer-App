@@ -17,7 +17,7 @@
     </engines>
 
     <js-module src="www/CallLog.js" name="CallLog">
-        <clobbers target="window.plugins.calllog"/>
+        <clobbers target="window.calllog"/>
     </js-module>
 
     <js-module src="test/tests.js" name="tests">

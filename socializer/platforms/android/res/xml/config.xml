@@ -11,8 +11,11 @@
     <feature name="Notification">
         <param name="android-package" value="org.apache.cordova.dialogs.Notification" />
     </feature>
-    <feature name="TelephoneNumber">
-        <param name="android-package" value="com.simonmacdonald.cordova.plugins.TelephoneNumber" />
+    <feature name="SQLitePlugin">
+        <param name="android-package" value="io.liteglue.SQLitePlugin" />
+    </feature>
+    <feature name="CallLog">
+        <param name="android-package" value="com.ubookr.plugins.CallLogPlugin" />
     </feature>
     <allow-intent href="market:*" />
     <name>socializer</name>
@@ -87,10 +90,4 @@
     <allow-intent href="geo:*" />
     <access origin="http://fonts.googleapis.com" />
     <access origin="http://socializerapp.herokuapp.com" />
-    <feature name="SQLitePlugin">
-        <param name="android-package" value="io.liteglue.SQLitePlugin" />
-    </feature>
-    <feature name="CallLog">
-        <param name="android-package" value="com.ubookr.plugins.CallLogPlugin" />
-    </feature>
 </widget>

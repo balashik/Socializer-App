@@ -87,7 +87,7 @@ public class CallLogPlugin extends CordovaPlugin {
         });
     }
 
-    private void list(final JSONArray args, final CallbackContext callbackContext) {
+    private void list(final JSONObject args, final CallbackContext callbackContext) {
 
         cordova.getThreadPool().execute(new Runnable() {
             public void run() {
@@ -97,15 +97,22 @@ public class CallLogPlugin extends CordovaPlugin {
                     String limiter = null;
                     if (!args.isNull(0)) {
                         // make number positive in case caller give negative days
-                        int days = Math.abs(Integer.valueOf(args.getString(0)));
-                        Log.d(TAG, "Days is: " + days);
-                        //turn this into a date
-                        Calendar calendar = Calendar.getInstance();
-                        calendar.setTime(new Date());
+						
+						// int days = Math.abs(Integer.valueOf(args.getString(0)));
+						
+						int milliseconds = args.optInt("milliseconds");
+						if(miliseconds != null) {
+							
+							Log.d(TAG, "Milliseconds is: " + milliseconds);
+							//turn this into a date
+							Calendar calendar = Calendar.getInstance();
+							calendar.setTime(new Date());
 
-                        calendar.add(Calendar.DAY_OF_YEAR, -days);
-                        Date limitDate = calendar.getTime();
-                        limiter = String.valueOf(limitDate.getTime());
+							calendar.add(Calendar.MILLISECOND, -milliseconds);
+							Date limitDate = calendar.getTime();
+							limiter = String.valueOf(limitDate.getTime());
+							
+						}
                     }
 
                     //now do required search
@@ -118,7 +125,7 @@ public class CallLogPlugin extends CordovaPlugin {
                     result = new PluginResult(Status.JSON_EXCEPTION, e.getMessage());
                 } catch (NumberFormatException e) {
                     Log.d(TAG, "Got NumberFormatException " + e.getMessage());
-                    result = new PluginResult(Status.ERROR, "Non integer passed to list");
+                    result = new PluginResult(Status.ERROR, "Non integer passed to list, and this is my line");
                 } catch (Exception e) {
                     Log.d(TAG, "Got Exception " + e.getMessage());
                     result = new PluginResult(Status.ERROR, e.getMessage());

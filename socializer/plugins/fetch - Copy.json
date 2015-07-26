@@ -23,6 +23,14 @@
         "is_top_level": true,
         "variables": {}
     },
+    "com.simonmacdonald.telephonenumber": {
+        "source": {
+            "type": "registry",
+            "id": "com.simonmacdonald.telephonenumber"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
     "io.litehelpers.cordova.sqlite": {
         "source": {
             "type": "git",
@@ -34,8 +42,8 @@
     },
     "com.ubookr.plugins.calllog": {
         "source": {
-            "type": "registry",
-            "url": "com.ubookr.plugins.calllog",
+            "type": "git",
+            "url": "https://github.com/dalyc/Cordova-CallLog-Plugin",
             "subdir": "."
         },
         "is_top_level": true,
