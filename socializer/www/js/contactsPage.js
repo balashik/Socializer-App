@@ -140,8 +140,8 @@ var buildPage = function(data) {
     });
     
     //moving to create group page
-        $("#topLinkR").click(function(){
-            console.log(contactsLetters.length+ " this");
+    $("#topLinkR").click(function(){
+        if(selectedContacts.length>0){
             //moving all contacts selected into new group contacts
             newGroup.contacts = selectedContacts;
 
@@ -152,9 +152,11 @@ var buildPage = function(data) {
                 initCreateGroupPage();
             });
 
-
-            return;
-        });
-        PageLoaded();
-    }
+        }
+        return;
+    });
+    
+    PageLoaded();
+    
+    
 }
