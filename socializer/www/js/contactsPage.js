@@ -20,8 +20,29 @@ function initContactsPage(){
     //body
     $(".wrapper").removeClass("deepBlueBackground");
     $(".wrapper").addClass("blueBackground");
-    $(".wrapper").append("<div id='search'><input type='text' name='search' placeholder='Search'></input></div>");
+    $(".wrapper").append("<div id='search'><input type='text' name='search' placeholder='Search' ></input></div>");
     
+    $("input").keyup(function(){
+        var titleArraySearch = $(".letterTitles");
+        var contactsArraySearch = $(".contactDiv");
+        for(var i=0;i<contactsArraySearch.length;i++){
+            if($(contactsArraySearch[i]).text().indexOf($(this).val())>-1){
+                $(contactsArraySearch[i]).css("display","block");
+            }else{
+                $(contactsArraySearch[i]).css("display","none");
+            }
+            
+        }
+        for(var i=0;i<titleArraySearch.length;i++){
+            //console.log($(titleArraySearch[i]).text());
+            if($(this).val()[0].toUpperCase()==$(titleArraySearch[i]).text()){
+                $(titleArraySearch[i]).css("display","block");
+            }else{
+                $(titleArraySearch[i]).css("display","none");
+            }
+        }
+
+    });   
     
     var contactsLetters=[];
     
@@ -74,7 +95,7 @@ function clearContactPage(){
     $(".contactDiv").css("display","none");
 }
 
-             
+         
 function setLetters(data){
     var abc = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
     var myABC=[];
