@@ -19,27 +19,17 @@ function initContactsPage(){
     $(".wrapper").append("<div id='search'><input type='text' name='search' placeholder='Search' ></input></div>");
     
     $("input").keyup(function(){
-        var titleArraySearch = $(".letterTitles");
-        var contactsArraySearch = $(".contactDiv");
-        for(var i=0;i<contactsArraySearch.length;i++){
-            if($(contactsArraySearch[i]).text().indexOf($(this).val())>-1){
-                $(contactsArraySearch[i]).css("display","block");
-            }else{
-                $(contactsArraySearch[i]).css("display","none");
-            }
-            
-        }
-        for(var i=0;i<titleArraySearch.length;i++){
-            if($(this).val()[0]==null){
-                $(titleArraySearch[i]).css("display","block");
-            }else{
-                if($(this).val()[0].toUpperCase()==$(titleArraySearch[i]).text()){
-                    $(titleArraySearch[i]).css("display","block");
+            var contactsArraySearch = $(".contactDiv");
+            var lettersArraySearch=$(".lettersTitle");
+            for(var i=0;i<contactsArraySearch.length;i++){
+                if($(contactsArraySearch[i]).text().indexOf($(this).val())>-1){
+                    $(contactsArraySearch[i]).css("display","block");
                 }else{
-                    $(titleArraySearch[i]).css("display","none");
+                    $(contactsArraySearch[i]).css("display","none");
                 }
+
             }
-        }
+        
 
     });   
     
