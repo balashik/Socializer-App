@@ -13,7 +13,7 @@ function InitStatsPage(){
     $("#wrapper").append("<div id='topStats'></div>");
     $("#topStats").append("<nav id='newFrequencyNav'></nav>");
     $("#newFrequencyNav").append("<ul><li><a>Weekly</a></li><li><a>Biweekly</a></li><li><a>Monthly</a></li></ul>");
-    $("#topStats").append("<div class='fTotal'><h>Urgency</h><div id='result' class='totalResult'></div><div id='frequencyResult' class='topSumStats'>High</div><div class='prograssBar'></div></div>");
+    $("#topStats").append("<div class='fTotal'><h>Urgency</h><div id='result' class='totalResult'></div><div id='frequencyResult' class='topSumStats'>High</div><div class='progressBar'></div></div>");
     $("#wrapper").append("<nav class='centerStatsNav'><ul><li><a>High</a></li><li><a>Medium</a></li><li><a>Low</a></li></ul></nav>");
     
     $("#newFrequencyNav > ul > li > a").click(function() {
@@ -21,15 +21,15 @@ function InitStatsPage(){
         $(this).addClass("selectedUnderline");
         if($(this).text()=="Weekly") {
             $(".totalResult").html("30"+"% completed")
-            $(".prograssBar").progressbar("value",30);
+            $(".progressBar").progressbar("value",30);
         }
         if($(this).text()=="Biweekly") {
             $(".totalResult").html("40"+"% completed")
-            $(".prograssBar").progressbar("value",40);
+            $(".progressBar").progressbar("value",40);
         }
         if($(this).text()=="Monthly") {
             $(".totalResult").html("50"+"% completed")
-            $(".prograssBar").progressbar("value",50);
+            $(".progressBar").progressbar("value",50);
         }
     });
 
@@ -39,7 +39,7 @@ function InitStatsPage(){
         $("div").remove("#wrapper > .fTotal");
         if($(this).text()=="High"){
             for(var i=0;i<10;i++){
-                $("#wrapper").append("<div class='fTotal'><div id='contactStats' class='contact"+i+"'></div><div class='prograssBar contactBar' id='pBar"+i+"'></div></div>");
+                $("#wrapper").append("<div class='fTotal'><div id='contactStats' class='contact"+i+"'></div><div class='progressBar contactBar' id='pBar"+i+"'></div></div>");
                 $(".contact"+i).append("<h id='name'>dadNew</h><div id='rightStats'><div id='contactResult'>45%</div><h>completed</h><div>")
                 $("#pBar"+i).progressbar({
                     value:10
