@@ -2,21 +2,21 @@
     {
         "id": "12345",
         "displayName": "gal",
-        "phoneNumber": [ "111111111" ]
+        "phoneNumbers": [ "111111111" ]
     },
     {
         "id": "55ff55",
         "displayName": "gurfankel",
-        "phoneNumber": [ "44444444" ]
+        "phoneNumbers": [ "44444444" ]
     },
     {
         "id": "gfdsaw3",
         "displayName": "victor",
-        "phoneNumber": [ "222222222"]
+        "phoneNumbers": [ "222222222"]
     },
     {
         "id": "kkjjfhd6",
         "displayName": "salim",
-        "phoneNumber": [ "333333333" ]
+        "phoneNumbers": [ "333333333" ]
     }
 ]

@@ -12,25 +12,44 @@
     
 <body>
 
-    <div id="loadingContainer" disabled="disabled">
-        <div>
-            <div id="loadingWrapper"></div>
+    
+    
+    <div id="wrapper">
+        <div id="loadingContainer" class="deepBlueBackground" disabled="disabled">
             <div>
+                <div id="loadingBackground"></div>
                 <div id="loadingMediaDiv">
                     <h1>Loading</h1>
                     <canvas id="spinny" width="210" height="210"></canvas>
                 </div>
             </div>
         </div>
-    </div>
-    
-    <div class="wrapper">
         <header>
             <!--<div id='logo'></div>-->
             <ul><li><a id='topLinkL'></a></li></ul>
             <ul><li><a id='topLinkR'></a></li></ul>
         </header>
-    
+        <div id='settingsWindow'>
+            <div id='settingsTitle'>
+                <div class='settings' ></div>
+                <h>Settings</h>
+            </div>
+            <div class='settingsBtn'>
+                <h>Notification & Sound</h>
+            </div>
+            <div class='settingsBtn'>
+                <h>Frequency</h>
+            </div>
+            <div class='settingsBtn'>
+                <h>Time Zone: Jerusalem</h>
+            </div>
+            <div class='settingsBtn'>
+                <h>Week Start: Sunday</h>
+            </div>
+            <div class='settingsBtn'>
+                <h>Reset Data</h>
+            </div>
+        </div>
     </div>
     <link rel="stylesheet" type="text/css" href="js/lib/jquery-ui-1.11.4/jquery-ui.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">

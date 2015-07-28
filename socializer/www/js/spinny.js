@@ -5,7 +5,7 @@ function Spinny(elementId) {
 	var ctx = canvas.getContext("2d");
 
 	var halter = false;
-	var speed = 0.07;
+	var speed = 0.11;
 	var sAngle = 0;
 	var eAngle = 0;
 	var stage = 0;

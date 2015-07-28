@@ -12,43 +12,46 @@ ul li a{
 ul{
     padding:0px;
 }
-.wrapper{
+#wrapper{
+    position: relative;
     width:640px;
     min-height:100%;
-    background-color: #33394c;
+    background-color: #2a2e3e;
 }
 #loadingContainer {
     position: absolute;
-    left: 50%;
+    float: left;
+    width: 100%;
     height: 100%;
     z-index: 9999;
 }
 #loadingContainer > div {
     position: relative;
-    left: -50%;
+    margin: auto 0;
     height: 100%;
 }
 #loadingMediaDiv {
     position: absolute;
-    left: 50%;
+    width: 300px;
+    height: 400px;
     top: 50%;
-    transform: translate(-50%,-50%);
+    left: 50%;
+    transform: translate(-50%, -50%)
 }
 #loadingMediaDiv h1 {
     font: 50px Lato;
     color: #ff7058;
     margin-bottom: 50px;
     text-align: center;
+    width: 300px;
+    height: 100px;
 }
-#loadingWrapper {
+#loadingBackground {
+    position: absolute;
     float: left;
-    width: 640px;
+    width: 100%;
     height: 100%;
     background-color: #444a5d;
-}
-#loadingWrapper + div {
-    width: 640px;
-    height: 100%;
 }
 a#topLinkR{
     font-family: Lato;
@@ -147,6 +150,8 @@ h1#createGroup{
     background-color:#2a2e3e;
 }
 #friendsList{
+    display: flex;
+    flex-wrap: wrap;
     height: 181px;
     background-color:#33394c;
 }
@@ -155,20 +160,72 @@ h1#createGroup{
     border-color: #ffc5bb;
     border-style: solid;
     border-width: 2px;
-    
     width: 172px;
     height: 55px;
     float: left;
-    margin-left:16px;
-    margin-top:27px;
-    
+    margin-left: 16px;
+    margin-right: 18px;
+    margin-top: 20px;
+    margin-bottom: -5px;
 }
 .createGroupfriends h{
-    margin-top:17px;
+    margin-top:11px;
     text-align: center;
     font-family: Lato;
     font-weight: 300;
     font-size: 25px;
+    color: #ffc5bb;
+    z-index: -10;
+}
+#searchBox {
+    height: 55px;
+    float: left;
+    margin-left: 16px;
+    margin-right: 18px;
+    margin-top: 20px;
+    margin-bottom: -5px;
+    -webkit-flex: 1;
+}
+#searchField {
+    margin-top:11px;
+    margin-left: 12px;
+    font-family: Lato;
+    font-weight: 300;
+    font-size: 25px;
+    color:#ffc5bb;
+    background-color: #33394c;
+    border-style: none;
+    width: 100%;
+}
+#searchField:focus {
+    outline: none;
+}
+#searchResult {
+    display: none;
+    position: relative;
+    height: 122px;
+    width: 231px;
+    border-color: #ffc5bb;
+    border-style: solid;
+    border-width: 2px;
+    overflow: hidden;
+}
+.searchContact {
+    position:relative;
+    border-color: #ffc5bb;
+    border-style: solid;
+    border-width: 1px;
+    width: 230px;
+    height: 35px;
+    float: left;
+}
+.searchContact h {
+    margin: 0;
+    margin-top: 5px;
+    margin-left: 10px;
+    font-family: Lato;
+    font-weight: 300;
+    font-size: 18px;
     color:#ffc5bb;
     z-index: -10;
 }
@@ -210,6 +267,7 @@ h1#createGroup{
     font-size:24px;
     color: #ffffff;
     font-family: 'Lato';
+    background-color: #33394c;
 }
 #newFrequencyNav{
     height: 125px;
@@ -304,7 +362,7 @@ h1#createGroup{
     font-weight: 300;
     text-align: center;
 }
-#whatsAppIcon{
+.whatsAppIcon{
     margin-left:-80px;
     margin-top:30px;
     float:left;
@@ -312,7 +370,7 @@ h1#createGroup{
     width: 40px;
     height: 40px;
 }
-#smsIcon{
+.smsIcon{
     margin-left:-32px;
     margin-top:30px;
     float:left;
@@ -320,7 +378,7 @@ h1#createGroup{
     width: 44px;
     height: 40px;
 }
-#callIcon{
+.callIcon{
     margin-left:-35px;
     margin-top:30px;
     float:left;
@@ -407,20 +465,69 @@ h1#createGroup{
 .listContactDiv{
     background-color:#2a2e3e;
 }
-.contactName{
-    padding-bottom: 35px;
-    padding-top:28px;
-    float:left;
-    margin-left:52px;
-    width: 530px;
+.contactBlock {
+    margin: 0;
+}
+.contactName {
+    display: flex;
+    width: 640px;
+    height: 48px;
+    margin-bottom: 20px;
     font: 400 33px / 25px Lato;
     color: #ff7058;
 }
-#freqStats{
+.contactName h {
+    margin-left: 52px;
+    margin-right: 52px;
+    margin-top: 26px;
+}
+.freqStats {
+    margin-right: 52px;
+    padding-top: 26px;
     float:right;
     width:110px;
     font: 300 33px / 25px Lato;
     color: #ff7058;
+}
+.statusField {
+    margin-top: 25px;
+    width: 640px;
+}
+/* top */
+.statusField div {
+    display: flex;
+    font: 300 25px Lato;
+}
+/* block title */
+.statusField div h {
+    float: left;
+    margin-left: 50px;
+    font-weight: 500;
+}
+/* completed */
+.statusField div h + h {
+    float: right;
+    margin-right: 50px;
+    font-weight: 300;
+}
+/* bottom */
+.statusField div + div {
+    margin-top: 11px;
+}
+/* icon */
+.statusField div + div div {
+    margin: 0;
+    width: 45px;
+    margin-left: 50px;
+    background-repeat: no-repeat;
+}
+/* progress bar */
+.statusField div + div div + div {
+    margin: 0;
+    margin-top: 17px;
+    margin-left: 12px;
+    margin-right: 54px;
+    width: 484px;
 }
 .removeFromGroup{
     float:right;
@@ -433,7 +540,7 @@ h1#createGroup{
 .topStats{
     height: 419px;
 }
-.prograssBar{
+.progressBar{
     float:right;
     margin-top:30px;
     height: 4px;
@@ -454,24 +561,33 @@ h1#createGroup{
     border-bottom: 1px solid #1b2135;
     background-color:#252a3d;
     margin-bottom:65px;
-
 }
 
-.centerStatsNav > ul > li{
-    border-left: 1px solid #1b2135;
+.centerStatsNav > ul > li {
+    position: absolute;
     border-right: 1px solid #1b2135;
     padding-top:35px;
-    float:left;
     text-align: center;
     height: 57px;
     width:210px;
     font: 300 25px Lato;
     color:rgba(254, 181, 168, 0.3);
-    
+    background-color: #252a3d;
+}
+.centerStatsNav > ul > li + li {
+    border-right-style: none;
+    width: 220px;
+    left:211px;
+}
+.centerStatsNav > ul > li + li + li {
+    border-left: 1px solid #1b2135;
+    border-right-style: none;
+    left: 429px;
+    width: 210px;
 }
 
 .selectedStatsVal{
-    background-color: #2a2e3e;
+    background-color: #2a2e3e !important;
     color:#feb5a8 !important;
 }
 
@@ -520,11 +636,11 @@ h1#createGroup{
     border-bottom:1px solid #1b2135;
     
 }
-#settingsBtn{
+.settingsBtn{
     height: 62px;
     border-bottom:1px solid #1b2135;
 }
-#settingsBtn > h{
+.settingsBtn > h{
     font: 300 25px / 25px Lato;
     text-align: center;
     margin-top:30px;

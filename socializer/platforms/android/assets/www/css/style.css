@@ -12,44 +12,47 @@ ul li a{
 ul{
     padding:0px;
 }
-.wrapper{
+#wrapper{
+    position: relative;
     width:640px;
     min-height:100%;
-    background-color: #33394c;
+    background-color: #2a2e3e;
 }
 #loadingContainer {
     position: absolute;
-    left: 50%;
+    float: left;
+    width: 100%;
     height: 100%;
     z-index: 9999;
 }
 #loadingContainer > div {
     position: relative;
-    left: -50%;
+    margin: auto 0;
     height: 100%;
 }
 #loadingMediaDiv {
     position: absolute;
-    left: 50%;
+    width: 300px;
+    height: 400px;
     top: 50%;
-    transform: translate(-50%,-50%);
+    left: 50%;
+    transform: translate(-50%, -50%)
 }
 #loadingMediaDiv h1 {
     font: 50px Lato;
     color: #ff7058;
     margin-bottom: 50px;
     text-align: center;
+    width: 300px;
+    height: 100px;
 }
-#loadingWrapper {
+#loadingBackground {
+    position: absolute;
     float: left;
-    width: 640px;
+    width: 100%;
     height: 100%;
     background-color: #444a5d;
 }
-#loadingWrapper + div {
-    width: 640px;
-    height: 100%;
-}
 a#topLinkR{
     font-family: Lato;
     font-size:29px;
@@ -57,12 +60,11 @@ a#topLinkR{
     font-weight: 300;
     float:right;
 }
-a#topLinkR{
-    font-family: Lato;
-    font-size:29px;
-    color: #feb5a8;
-    font-weight: 300;
-    float:right;
+
+a#topLinkR > div{
+    margin-top:25px;
+    margin-right:20px;
+    
 }
 a#topLinkL{
     font-family: Lato;
@@ -70,6 +72,12 @@ a#topLinkL{
     color: #feb5a8;
     font-weight: 300;
     float:left;
+}
+
+a#topLinkL > div{
+    margin-top:25px;
+    margin-left:20px;
+    
 }
 header{
     width:100%;
@@ -205,6 +213,7 @@ h1#createGroup{
     font-size:24px;
     color: #ffffff;
     font-family: 'Lato';
+    background-color: #33394c;
 }
 #newFrequencyNav{
     height: 125px;
@@ -336,15 +345,15 @@ h1#createGroup{
     width: 50px;
     height: 50px;
     background-image: url(images/addGroup.png);
-    margin-left:20px;
-    margin-top:16px;
+    margin-top:16px !important;
 }
 .settings{
     width: 51px;
     height: 50px;
     background-image:url(images/settings.png);
-    margin-top:16px;
+    margin-top:16px !important;
     margin-right:20px;
+    
 }
 #selectViewNav{
     
@@ -449,24 +458,33 @@ h1#createGroup{
     border-bottom: 1px solid #1b2135;
     background-color:#252a3d;
     margin-bottom:65px;
-
 }
 
-.centerStatsNav > ul > li{
-    border-left: 1px solid #1b2135;
+.centerStatsNav > ul > li {
+    position: absolute;
     border-right: 1px solid #1b2135;
     padding-top:35px;
-    float:left;
     text-align: center;
     height: 57px;
     width:210px;
     font: 300 25px Lato;
     color:rgba(254, 181, 168, 0.3);
-    
+    background-color: #252a3d;
+}
+.centerStatsNav > ul > li + li {
+    border-right-style: none;
+    width: 220px;
+    left:211px;
+}
+.centerStatsNav > ul > li + li + li {
+    border-left: 1px solid #1b2135;
+    border-right-style: none;
+    left: 429px;
+    width: 210px;
 }
 
 .selectedStatsVal{
-    background-color: #2a2e3e;
+    background-color: #2a2e3e !important;
     color:#feb5a8 !important;
 }
 
@@ -515,11 +533,11 @@ h1#createGroup{
     border-bottom:1px solid #1b2135;
     
 }
-#settingsBtn{
+.settingsBtn{
     height: 62px;
     border-bottom:1px solid #1b2135;
 }
-#settingsBtn > h{
+.settingsBtn > h{
     font: 300 25px / 25px Lato;
     text-align: center;
     margin-top:30px;

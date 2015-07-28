@@ -1,9 +1,10 @@
 
 function LoadingManager() {
 
-	var loadingWrapper = $("#loadingWrapper");
+	var loadingWrapper = $("#loadingBackground");
 	var loadingContainer = $("#loadingContainer");
 	var loadingMediaDiv = $("#loadingMediaDiv");
+	var wrapper = $("#wrapper");
 
 	var animationTime = 500;
 
@@ -12,81 +13,87 @@ function LoadingManager() {
 	var fadeInSemahpore = false;
 	var fadeOutSemaphore = false;
 
-	var afterFadeIn = null;
-	var afterFadeOut = null;
-
 	var present = true;
 
+	var height = loadingWrapper.height();
+	var width = loadingWrapper.width();
+	console.log("height: " + height + ", width: " + width);
+
+	var sizeOffset = -100;
+
 	this.LoadPage = function(dependency) {
+		console.log("LoadPage");
 		if(fadeInSemahpore) {
 			return;
 		} else if(fadeOutSemaphore) {
-			afterFadeOut = function() {
-				LoadPage(dependency);
-			}
-			return;
+			loadingWrapper.stop(true);
+			loadingMediaDiv.stop(true);
+			fadeOutSemaphore = false;
 		}
 
 		fadeInSemahpore = true;
 		present = true;
 
 		spinny.Spin();
-		$("body").prepend(loadingContainer);
+		wrapper.prepend(loadingContainer);
+		var calculatedTime = animationTime * ((width - parseFloat(loadingWrapper.css("width"))) / Math.abs(sizeOffset));
+		console.log(calculatedTime);
 		loadingWrapper.animate({
-			width: "+=100",
-			height: "+=100",
+			width: "" + width + "px",
+			height: "" + height + "px",
 			opacity: "1",
 			marginTop: 0,
 			marginLeft: 0
-		}, animationTime, function() {
+		}, calculatedTime, function() {
 			document.location.href="#loadingContainer";
 			dependency();
+			console.log("Dependency called");
 			fadeInSemahpore = false;
-			if(afterFadeIn != null) {
-				afterFadeIn();
-				afterFadeIn = null;
-			}
 		});
 
 		loadingMediaDiv.animate({
 			opacity: "1"
-		}, animationTime);
+		}, calculatedTime);
 	}
 
 	this.PageLoaded = function() {
+		console.log("PageLoaded");
 		if(fadeOutSemaphore) {
 			return;
 		} else if(fadeInSemahpore) {
-			afterFadeIn = function() {
-				PageLoaded();
-			}
-			return;
+			loadingWrapper.stop(true);
+			loadingMediaDiv.stop(true);
+			fadeInSemahpore = false;
 		} else if(!present) {
 			return;
 		}
 
 		fadeOutSemaphore = true;
-
+		var calculatedTime = animationTime * ((parseFloat(loadingWrapper.css("width")) - (width + sizeOffset)) / Math.abs(sizeOffset));
+		console.log(calculatedTime);
 		loadingWrapper.animate({
-			width: "-=100",
-			height: "-=100",
+			width: "" + (width + sizeOffset) + "px",
+			height: "" + (height + sizeOffset) + "px",
 			opacity: "0",
-			marginTop: 50,
-			marginLeft: 50
-		}, animationTime, function() {
+			marginTop: (sizeOffset * -0.5),
+			marginLeft: (sizeOffset * -0.5)
+		}, calculatedTime, function() {
 			loadingContainer.remove();
 			spinny.Stop();
 			fadeOutSemaphore = false;
-			if(afterFadeOut != null) {
-				afterFadeOut();
-				afterFadeOut = null;
-			}
 			present = false;
 		});
 
 		loadingMediaDiv.animate({
 			opacity: "0"
-		}, animationTime);
+		}, calculatedTime);
+	}
+
+	this.AlignPage = function(ratio) {
+		loadingMediaDiv.css({left: '50%', top: '50%', transform: 'translate(-50%, -50%)'});
+		width = $('body').width();
+		height = width * (window.screen.height / window.screen.width);
+		console.log("height: " + height + ", width: " + width);
 	}
 
 }
@@ -94,7 +101,6 @@ function LoadingManager() {
 var loadingManager = new LoadingManager();
 
 function LoadPage(dependency) {
-	console.log("Loading: " + dependency);
 	loadingManager.LoadPage(dependency);
 }
 

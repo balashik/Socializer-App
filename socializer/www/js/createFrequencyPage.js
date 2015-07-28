@@ -1,4 +1,12 @@
-function initCreateFrequencyPage(){
+function InitCreateFrequencyPage(){
+
+    globalController.setBackButtonListener(function() {
+        LoadPage(function() {
+            ClearFrequencyPage();
+            InitCreateGroupPage();
+        });
+    });
+
     var total=0;
     var wf=0;
     var smsf=0;
@@ -9,53 +17,62 @@ function initCreateFrequencyPage(){
         whatsapp:0,
         sms:0,
     }
-    
-    $("#topLinkL").unbind("click");
-    $("#topLinkR").unbind("click");
-     
     //header
-    $("#topLinkR").html("Done");
+    $("#topLinkR").html("<div>Done</div>");
     $("#logo").html("Frequency");
     
     //body
-   $(".wrapper").append("<nav id='newFrequencyNav'></nav>");
+    $("#wrapper").append("<nav id='newFrequencyNav'></nav>");
     $("#newFrequencyNav").append("<ul><li><a>Weekly</a></li><li><a>Biweekly</a></li><li><a>Monthly</a></li></ul>");
-    $(".wrapper").append("<div id='frequencySelect'></div>");
-    var whatsAppSlider = $("<div class='fTotal'><div id='result' class='waResult'></div><div id='frequencyResult' class='WA'>WhatsApp</div><div id='whatsAppIcon'></div><input type='range'min='0' max='700' step='10' value='0' name='frequency' class='whatsAppSlide'></input></div>");
-    var smsSlider      = $("<div class='fTotal'><div id='result' class='smsResult'></div><div id='frequencyResult' class='SMS'>SMS</div><div id='smsIcon'></div><input type='range'min='0' max='700' step='10' value='0' name='frequency' class='SMSSlide'></input></div>");
-    var callsSlider    = $("<div class='fTotal'><div id='result' class='callResult'></div><div id='frequencyResult' class='Calls'>Calls</div><div id='callIcon'></div><input type='range'min='0' max='700' step='10' value='0' name='frequency' class='CallsSlide' ></input></div>");
-    whatsAppSlider.mousemove(function(e) {
+    $("#wrapper").append("<div id='frequencySelect'></div>");
+    var whatsAppSlider = $("<div class='fTotal'><div id='result' class='waResult'></div><div id='frequencyResult' class='WA'>WhatsApp</div><div class='whatsAppIcon'></div><input type='range'min='0' max='700' step='10' value='0' name='frequency' class='whatsAppSlide'></input></div>");
+    var smsSlider      = $("<div class='fTotal'><div id='result' class='smsResult'></div><div id='frequencyResult' class='SMS'>SMS</div><div class='smsIcon'></div><input type='range'min='0' max='700' step='10' value='0' name='frequency' class='SMSSlide'></input></div>");
+    var callsSlider    = $("<div class='fTotal'><div id='result' class='callResult'></div><div id='frequencyResult' class='Calls'>Calls</div><div class='callIcon'></div><input type='range'min='0' max='700' step='10' value='0' name='frequency' class='CallsSlide' ></input></div>");
+    whatsAppSlider.on("mousemove touchmove", function(e) {
         changeWAValue($(this).find("input").val());
     });
-    smsSlider.mousemove(function(e) {
+    whatsAppSlider.change(function(e) {
+        changeWAValue($(this).find("input").val());
+    });
+    smsSlider.on("mousemove touchmove", function(e) {
         changeSMSValue($(this).find("input").val());
     });
-    callsSlider.mousemove(function(e) {
+    smsSlider.change(function(e) {
+        changeSMSValue($(this).find("input").val());
+    });
+    callsSlider.on("mousemove touchmove", function(e) {
         changeCValue($(this).find("input").val());
     });
+    callsSlider.change(function(e) {
+        changeCValue($(this).find("input").val());
+    });
+    // whatsAppSlider.mousemove(function(e) {
+    //     changeWAValue($(this).find("input").val());
+    // });
+    // smsSlider.mousemove(function(e) {
+    //     changeSMSValue($(this).find("input").val());
+    // });
+    // callsSlider.mousemove(function(e) {
+    //     changeCValue($(this).find("input").val());
+    // });
     
     $("#frequencySelect").append("<div class='fTotal'><div id='result' class='totalResult'></div><div id='frequencyResult' class='total'>Total</div><input type='range'min='0' max='21' step='1' value='0' name='frequency' class='totalSlide' disabled='disabled'></input></div>");
     $("#frequencySelect").append(whatsAppSlider);
     $("#frequencySelect").append(smsSlider);
     $("#frequencySelect").append(callsSlider);
-        
-    
    
     $(".totalResult").html("Total:0");
     $(".waResult").html("0 Times");
     $(".smsResult").html("0 Times");
     $(".callResult").html("0 Times");
+
     changeWAValue = function (val){
-        
         wf=parseInt(parseInt(val)/100);
          total=wf+smsf+cf;
         $(".waResult").html(wf+" Times");
         $(".totalResult").html("Total:"+total);
         $(".totalSlide").val(total);
-        
-        
     }
-    
     changeSMSValue = function (val){
         smsf=parseInt(parseInt(val)/100);
          total=wf+smsf+cf;
@@ -102,16 +119,24 @@ function initCreateFrequencyPage(){
         newGroup.frequency = newFrequency;
         //moving back to createGroup Page
         LoadPage(function() {
-            clearFrequencyPage();
-            initCreateGroupPage();
+            ClearFrequencyPage();
+            InitCreateGroupPage();
         });
         
         return;
     });
+    $("#topLinkL").click(function() {
+        LoadPage(function() {
+            ClearFrequencyPage();
+            InitCreateGroupPage();
+        });
+    });
     PageLoaded();
 }
 
-function clearFrequencyPage(){
+function ClearFrequencyPage(){
+    $("#topLinkL").unbind("click");
+    $("#topLinkR").unbind("click");
     $("nav").remove("#newFrequencyNav");
     $("div").remove("#frequencySelect");
     $("div").remove("#frequencySummery");
